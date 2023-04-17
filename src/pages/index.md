@@ -1,22 +1,22 @@
 ---
-title: Overview - Cat Analytics
-description: This is the overview page of Cat Analytics
+title: Overview - Express Add-Ons
+description: This is the overview page of Express Add-Ons
 contributors:
   - https://github.com/icaraps 
 ---
 
 <Hero slots="heading, text"/>
 
-# Cat Analytics API
+# Express Add-Ons API
 
-Cat Product API offers limitless ways to integrate your most important customer data into key business processes. Cat Product API offer limitless ways.
+Express Add-Ons API offers limitless ways to integrate your most important customer data into key business processes.
 
 <Resources slots="heading, links"/>
 
 #### Resources
 
 * [Quickstart Guide](https://developer.adobe.com)
-* [Cat Analytics Github Repo](https://github.com/AdobeDocs/dev-site)
+* [Express Add-Ons Github Repo](https://github.com/AdobeDocs/express-add-ons)
 
 ## Overview
 
