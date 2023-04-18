@@ -33,4 +33,3 @@ You can also create reports to explore, get insights, or answer important questi
 ### Get Started
 
 [Quickstart Guide](docs/index.md)
-
