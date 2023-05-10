@@ -35,8 +35,7 @@
     border-color: #F4DFF9 !important;
 }
 
-.add-ones-hero>div>div:first-child>div>div>div:nth-child(2)>a>span>span,
-.primaryBtn>div>div>a>span>span {
+.add-ones-hero>div>div:first-child>div>div>div:nth-child(2)>a>span>span {
     color: white !important;
 }
 
@@ -60,18 +59,24 @@
 }
 
 .wrapperforCreatorTool>div {
-    width: 55% !important;
+    width: 75% !important;
     margin: auto !important;
 }
 
-.primaryBtn>div>div>a {
-    background-color: #1473E7 !important;
-    border-color: #1473E7 !important;
+.primaryBtn {
+    background-color: #f8f8f8 !important;
 }
 
-.primaryBtn {
-    height: fit-content !important;
-    padding-bottom: 5% !important;
+.primaryBtn>div>div>div>div:nth-child(2) {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.primaryBtn>div>div,
+.primaryBtn>div>div>div {
+    margin: auto !important;
+    width: 100% !important;
+    margin-bottom: 5% !important;
 }
 
 .exploreCapabilities>div {
@@ -200,6 +205,13 @@ td>div {
     color: #427dcd !important;
 }
 
+@media screen and (max-width:2000px) {
+    .wrapperforCreatorTool>div {
+        width: 55% !important;
+        margin: auto !important;
+    }
+}
+
 @media screen and (min-width:320px) and (max-width:1024px) {
 
     .reverseImage>div>div {
@@ -217,6 +229,10 @@ td>div {
 
     .add-ones-hero>div>div:first-child {
         margin: 0 5% !important;
+    }
+    
+    .wrapperforCreatorTool>div{
+        width: 100% !important;
     }
 
 }
@@ -302,4 +318,11 @@ td>div {
         width: 600px !important;
         height: 400px !important;
     }
+
+    .wrapperforCreatorTool>div {
+        width: 75% !important;
+        margin: auto !important;
+    }
+
 }
+

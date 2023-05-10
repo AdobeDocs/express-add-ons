@@ -2,6 +2,7 @@
 import './styles/main.css'
 import CreatorToolBox from "./add-ons/creatorToolBox.md"
 import DeveloperToolBox from "./add-ons/developerTool.md"
+import LearnMoreBtn from "./add-ons/learnmore.md"
 import bgImg from "./images/Summary_BgImage.jpg"
 import img1 from "./images/LogoSDK.png"
 import img2 from "./images/change_log.png"
@@ -27,11 +28,9 @@ homeheroAssertImage
 
 <CreatorToolBox />
 
-<AnnouncementBlock slots="heading, button" className="primaryBtn"/>
+<WrapperComponent slots="content" repeat="1" theme="light"/>
 
-### 
-
-[Learn more](https://adobe.io)
+<LearnMoreBtn />
 
 <TextBlock slots="heading" className="announcement exploreCapabilities" theme="lightest"/>
 
@@ -102,13 +101,13 @@ We've got a set of libraries and developers tools to make your job even easier.
 ### We've got your resources covered.
 
 <TableBlock textColor="#427dcd" resources = {[
-        [{ header: "Blog", img: img1, description: "Stay up to date on platform release, best practices, and more." },
-        { header: "Changelog", img: img2, description: "Read up on the latest changes." }],
-        [{ header: "Discord", img: img3, description: "Join our active community of developers." },
-        { header: "Samples", img: img4, description: "Get started quickly - access common patterns with our collections of code samples" }]
-]}/>
+        [{ header: `Blog`, img: img1, description: `Stay up to date on platform release, best practices, and more.` },
+        { header: `Changelog`, img: img2, description: `Read up on the latest changes.`}],
+        [{ header: `Discord`, img: img3, description: `Join our active community of developers.` },
+        { header: `Samples`, img: img4, description: `Get started quickly - access common patterns with our collections of code samples` }] ]}
+/>
 
-<TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/> 
+<TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 
 ### It's go time.
 
@@ -116,8 +115,3 @@ View our developer quickstart guide to start building add-ons in Adobe Express.
 
 - [View the guide](../guides/)
 - [Try an add-on](../guides/)
-
-
-
-
-
