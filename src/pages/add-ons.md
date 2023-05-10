@@ -11,7 +11,7 @@ import img4 from "./images/code.png"
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
-# Make building add-ons your superpower.
+## Make building add-ons your superpower.
 
 Give users new ways to create and share by building add-ons in Adobe Express.
 
@@ -82,7 +82,7 @@ Export renditions of your users' work to a variety of formats
 
 ### See what's coming.
 
-Define where and how the Adobe Express full editor is launched to ensure users get to the right tools and templates when they need them.
+Powerful content-authoring APIs are right around the corner
 
 - [Learn more](https://adobe.io)
 
@@ -90,7 +90,7 @@ Define where and how the Adobe Express full editor is launched to ensure users g
 
 ### Build and share your add-on in no time.
 
-We've got a set of libraries and developers tools to make your job even easier.
+We’ve got a set of libraries and developer tools to make your job even easier.
 
 <WrapperComponent slots="content" repeat="1" theme="light" className="wrapperforCreatorTool"/>
 
@@ -102,9 +102,8 @@ We've got a set of libraries and developers tools to make your job even easier.
 
 <TableBlock textColor="#427dcd" resources = {[
         [{ header: `Blog`, img: img1, description: `Stay up to date on platform release, best practices, and more.` },
-        { header: `Changelog`, img: img2, description: `Read up on the latest changes.`}],
-        [{ header: `Discord`, img: img3, description: `Join our active community of developers.` },
-        { header: `Samples`, img: img4, description: `Get started quickly - access common patterns with our collections of code samples` }] ]}
+        { header: `Code samples`, img: img4, description: `Get started quickly - access common patterns with our collections of code samples` },
+        { header: `Changelog`, img: img2, description: `Read up on the latest changes.`}]]}
 />
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>

@@ -133,7 +133,9 @@
 .viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span {
     color: white !important;
 }
-
+.viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span>span {
+    color: white !important;
+}
 .mobileContent {
     display: none;
 }
@@ -199,10 +201,6 @@ td>div {
     width: 700px;
     height: 480px;
     background-position: bottom center !important;
-}
-
-.resourceHeader h3 {
-    color: #427dcd !important;
 }
 
 @media screen and (max-width:2000px) {

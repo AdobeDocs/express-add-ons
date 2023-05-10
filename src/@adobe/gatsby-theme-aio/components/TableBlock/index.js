@@ -83,9 +83,7 @@ const TableBlock = ({
                                             align-items:start;
                                             width: 300px;
                                             height: 95%;
-                                            border: 2px solid #f1f3f4;
                                             justify-content:center;
-                                            border-radius : 5px;
                                             padding-left:5%;
                                             gap:15%;
 
@@ -95,19 +93,8 @@ const TableBlock = ({
                                                 css={css`
                                                 font-size: x-large !important;
                                                 font-weight: 700 !important;
-                                                color:${textColor}
                                                 `}
                                             >{data.header}</div>
-                                            <div
-                                                css={css`
-
-                                                @media screen and (min-width:320px) and (max-width:767px){
-                                                    font-size:15px !important;
-                                                }
-                                                
-                                                color:${textColor}
-                                                `}
-                                            >{data.description}</div>
                                         </div>
                                     </div>
                                 )
