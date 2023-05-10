@@ -9,7 +9,7 @@ import img2 from "./images/change_log.png"
 import img3 from "./images/dicord.png"
 import img4 from "./images/code.png"
 
- <Hero slots="heading, text, buttons , assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
+<Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
 # Make building add-ons your superpower.
 
@@ -113,5 +113,5 @@ We've got a set of libraries and developers tools to make your job even easier.
 
 View our developer quickstart guide to start building add-ons in Adobe Express.
 
-- [View the guide](../guides/)
-- [Try an add-on](../guides/)
+- [View the guide](https://adobe.io)
+- [Try an add-on](https://adobe.io)

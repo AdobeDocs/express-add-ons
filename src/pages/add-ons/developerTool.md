@@ -15,4 +15,4 @@ Test and debug your add-on with [these developer tools](https://adobe.io).
 
 ![Slack logo](../images/Developer_Tool_3.svg)
 
-[Package and submit]((https://adobe.io)) your add-on to the marketplace.
+[Package and submit](https://adobe.io) your add-on to the marketplace.
