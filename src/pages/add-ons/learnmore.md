@@ -1,3 +1,3 @@
-<TeaserBlock  slots="buttons" className="primaryBtn"/> 
+<TeaserBlock  slots="buttons" className="primaryBtn"/>
 
 - [Learn more](../guides/)
