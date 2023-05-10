@@ -16,7 +16,7 @@ import img4 from "./images/code.png"
 Give users new ways to create and share by building add-ons in Adobe Express.
 
 - [Get started](https://adobe.io)
-- [Explore add-ons](https://adobe.io) 
+- [Explore add-ons](https://adobe.io)
 
 homeheroAssertImage
 
