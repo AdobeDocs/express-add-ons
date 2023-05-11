@@ -1,0 +1,326 @@
+/* add-ones page  */
+
+.add-ones-hero {
+    background: url('../images/Hero_BgImage.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+}
+
+.add-ones-hero>div {
+    width: 80% !important;
+    margin: 3% auto;
+    gap: 10%;
+}
+
+.add-ones-hero>div>div {
+    width: 50% !important;
+}
+
+.add-ones-hero>div>div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.add-ones-hero>div>div>h1 {
+    color: white;
+    font-family: inherit;
+}
+
+.add-ones-hero>div>div>p {
+    color: #F7DBFD;
+}
+
+.add-ones-hero>div>div>div>div>div:nth-child(2)>a {
+    border-color: #F4DFF9 !important;
+}
+
+.add-ones-hero>div>div:first-child>div>div>div:nth-child(2)>a>span>span {
+    color: white !important;
+}
+
+.announcement>div>div>div {
+    width: 100%;
+    text-align: center;
+}
+
+.announcement>div>div>div>h3,
+.viewAddOn h3 {
+    font-size: 35px !important;
+}
+
+.creatorToolBox {
+    padding: 0 !important;
+}
+
+.creatorToolBox>div>p:first-child,
+.developerTool>div>p:first-child {
+    height: 150px !important;
+}
+
+.wrapperforCreatorTool>div {
+    width: 75% !important;
+    margin: auto !important;
+}
+
+.primaryBtn {
+    background-color: #f8f8f8 !important;
+}
+
+.primaryBtn>div>div>div>div:nth-child(2) {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.primaryBtn>div>div,
+.primaryBtn>div>div>div {
+    margin: auto !important;
+    width: 100% !important;
+    margin-bottom: 5% !important;
+}
+
+.exploreCapabilities>div {
+    padding-bottom: 0 !important;
+}
+
+.explore>div {
+    padding: 2% 0 !important;
+}
+
+.explore a {
+    border-color: #626262 !important;
+}
+
+.explore a>span {
+    color: #525252 !important;
+}
+
+.explore p {
+    color: #424242 !important;
+}
+
+.reverseImage>div>div {
+    flex-direction: row-reverse !important;
+}
+
+.developerTool a {
+    text-decoration: underline !important;
+    color: black !important;
+}
+
+.viewAddOn>div {
+    padding: 3% 0 !important;
+}
+
+.viewAddOn>div>div>div {
+    margin: auto !important;
+    text-align: center !important;
+}
+
+.viewAddOn>div>div>div>div:nth-child(4) {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.viewAddOn p {
+    color: #E2CAF1 !important;
+}
+
+.viewAddOn>div>div {
+    margin: auto !important;
+}
+
+.viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span {
+    color: white !important;
+}
+.viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span>span {
+    color: white !important;
+}
+.mobileContent {
+    display: none;
+}
+
+table {
+    width: 40% !important;
+    margin: auto !important;
+}
+
+th {
+    display: none !important;
+}
+
+td {
+    border: none !important;
+    padding: 0 !important;
+}
+
+tr>th:first-child,
+tr>th:nth-child(2) {
+    white-space: nowrap;
+}
+
+td>div {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 5% 2%;
+    white-space: nowrap;
+}
+
+td>div>span>span {
+    padding: 0 !important;
+}
+
+td>div>span {
+    margin: unset !important;
+}
+
+td>div>p {
+    margin: 0 0 0 10px !important;
+    font-size: 20px !important;
+}
+
+td>div>span>picture>img {
+    height: auto !important;
+    width: auto !important;
+    position: unset !important;
+}
+
+tr:hover {
+    background-color: white !important;
+}
+
+td>div {
+    cursor: pointer !important;
+}
+
+.homeheroAssertImage {
+    background-image: url('../images/Hero-Image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 700px;
+    height: 480px;
+    background-position: bottom center !important;
+}
+
+@media screen and (max-width:2000px) {
+    .wrapperforCreatorTool>div {
+        width: 55% !important;
+        margin: auto !important;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:1024px) {
+
+    .reverseImage>div>div {
+        flex-direction: column !important;
+    }
+
+    .add-ones-hero {
+        margin-top: 5% !important;
+    }
+
+    .add-ones-hero>div>div,
+    .add-ones-hero>div {
+        width: 100% !important;
+    }
+
+    .add-ones-hero>div>div:first-child {
+        margin: 0 5% !important;
+    }
+    
+    .wrapperforCreatorTool>div{
+        width: 100% !important;
+    }
+
+}
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .announcement>div {
+        padding: 2% !important;
+    }
+
+    .creatorToolBox {
+        padding: 8% 0 !important;
+    }
+
+    .viewAddOn>div>div>div,
+    .add-ones-hero>div>div {
+        width: 100% !important;
+    }
+
+    .developerTool {
+        padding: 10% 2% !important;
+    }
+
+    .homeheroAssertImage {
+        background-image: url('../images/Hero-Image.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 450px !important;
+        width: 600px !important;
+        background-position: bottom center !important;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:767px) {
+
+    .homeheroAssertImage {
+        background-image: url('../images/Hero-Image.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 250px !important;
+        width: 320px !important;
+        background-position: bottom center !important;
+    }
+
+    .add-ones-hero>div>div>div>div {
+        flex-direction: column !important;
+    }
+
+    .add-ones-hero {
+        margin-top: 10% !important;
+    }
+
+    .announcement>div,
+    .developerTool {
+        padding: 0 !important;
+    }
+
+    .wrapperforCreatorTool>div {
+        width: 100% !important;
+    }
+
+    .creatorToolBox>div,
+    .announcement>div>div>div,
+    .developerTool>div {
+        padding: 5% !important;
+    }
+
+    .viewAddOn>div>div>div>div:nth-child(4)>div {
+        justify-content: center !important;
+    }
+
+    .resourceContent {
+        display: none !important;
+    }
+
+    .mobileContent {
+        display: block !important;
+    }
+
+}
+
+@media screen and (min-width:1300px) and (max-width:1500px) {
+    .homeheroAssertImage {
+        width: 600px !important;
+        height: 400px !important;
+    }
+
+    .wrapperforCreatorTool>div {
+        width: 75% !important;
+        margin: auto !important;
+    }
+
+}
+

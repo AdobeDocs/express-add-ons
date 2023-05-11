@@ -18,6 +18,29 @@ module.exports = {
         title: 'Docs',
         path: 'docs'
       },
+      {
+        title: 'Adobe Express',
+        path: 'docs'
+      },
+      {
+        title: 'Add-ons',
+        path: '/add-ons'
+      },
+      {
+        title: 'Embed SDK',
+        path: 'docs'
+      },
+      {
+        title: 'Documentation',
+        menu: [
+          {
+            title: 'Full editor'
+          },
+          {
+            title: 'Quick actions'
+          },
+        ]
+      }
     ],
     subPages: [
       {
