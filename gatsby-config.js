@@ -14,27 +14,28 @@ module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/express/add-ons/',
   siteMetadata: {
     pages: [
-      {
-        title: 'Docs',
-        path: 'docs'
-      },
-      {
-        title: 'Adobe Express',
-        path: 'docs'
-      },
+      // {
+      //   title: 'Docs',
+      //   path: 'docs'
+      // },
+      // {
+      //   title: 'Adobe Express',
+      //   path: 'docs'
+      // },
       {
         title: 'Add-ons',
         path: '/add-ons'
       },
       {
         title: 'Embed SDK',
-        path: 'docs'
+        path: 'https://developer.adobe.com/embed-sdk'
       },
       {
         title: 'Documentation',
         menu: [
           {
-            title: 'Full editor'
+            title: 'Embed SDK',
+            path: 'https://developer.adobe.com/embed-sdk'
           },
           {
             title: 'Quick actions'
@@ -42,18 +43,18 @@ module.exports = {
         ]
       }
     ],
-    subPages: [
-      {
-        title: 'Docs',
-        path: '/docs/',
-        pages: [
-          {
-            title: 'Overview',
-            path: '/docs/index.md'
-          }
-        ]
-      },
-    ]
+    // subPages: [
+    //   {
+    //     title: 'Docs',
+    //     path: '/docs/',
+    //     pages: [
+    //       {
+    //         title: 'Overview',
+    //         path: '/docs/index.md'
+    //       }
+    //     ]
+    //   },
+    // ]
   },
   plugins: [`@adobe/gatsby-theme-aio`]
 };
