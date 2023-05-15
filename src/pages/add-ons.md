@@ -13,7 +13,7 @@ import img4 from "./images/code.png"
 
 ## Make building add-ons your superpower.
 
-Give users new ways to create and share by building add-ons in Adobe Express.
+Give users new ways to create and share by building add-ons in [Adobe Express](https://express.adobe.com/).
 
 - [Get started](https://adobe.io)
 - [Explore add-ons](https://adobe.io)
@@ -38,12 +38,13 @@ homeheroAssertImage
 
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="zigzag-cta-two explore reverseImage" />
 
-![Forge the path to customer success](images/ValueProp_01_PoweredbyWeb.png)
+![Abstract illustration of add-ons panel in Adobe Express](images/ValueProp_01_PoweredbyWeb.png)
 
 ### Leverage familiar web technologies.
 
-Use HTML, CSS, JS/TS, and Spectrum Design libraries to build native-feeling user experiences for your add-on.
+Use HTML, CSS, JavaScript/TypeScript, and [Spectrum](https://spectrum.adobe.com/) to build native-feeling user experiences for your add-on.
 
+<!-- CTA FOR LEARN MORe -->
 - [Learn more](https://adobe.io)
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" />
@@ -62,7 +63,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 ### Import from anywhere.
 
-Enable users to drag and drop any image or video asset to a page.
+Enable users to drag and drop any image or video asset to a document.
 
 - [Learn more](https://adobe.io)
 
@@ -82,7 +83,7 @@ Export renditions of your users' work to a variety of formats
 
 ### See what's coming.
 
-Powerful content-authoring APIs are right around the corner
+Powerful content-authoring APIs are right around the corner.
 
 - [Learn more](https://adobe.io)
 
