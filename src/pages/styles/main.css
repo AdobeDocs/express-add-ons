@@ -6,6 +6,8 @@
     background-size: cover !important;
 }
 
+
+
 .add-ones-hero>div {
     width: 80% !important;
     margin: 3% auto;
@@ -30,6 +32,11 @@
 .add-ones-hero>div>div>p {
     color: #F7DBFD;
 }
+
+.add-ones-hero>div>div>p>a {
+    text-decoration: underline !important;
+}
+
 
 .add-ones-hero>div>div>div>div>div:nth-child(2)>a {
     border-color: #F4DFF9 !important;
@@ -84,9 +91,12 @@
     padding-bottom: 0 !important;
 }
 
-.explore>div {
+
+.exploreCapabilities>div {
     padding: 2% 0 0 0;
 }
+
+
 
 .explore a {
     border-color: #626262 !important;
@@ -100,9 +110,16 @@
     color: #424242 !important;
 }
 
+
+
+.reverseImage>div {
+    padding: 0 !important;
+}
+
 .reverseImage>div>div {
     flex-direction: row-reverse !important;
     gap: 5%;
+    
 }
 
 .developerTool a {

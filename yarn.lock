@@ -3844,6 +3844,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@spectrum-css/link@npm:^4.0.40":
+  version: 4.0.40
+  resolution: "@spectrum-css/link@npm:4.0.40"
+  peerDependencies:
+    "@spectrum-css/tokens": ">=10.0.0"
+  checksum: 5b224ab5a593b04fc13e8fd218b06c12ba6f0c36f15fa44ba4a9096761e77c8b48f0a1ce41207fd67ec2bf2e09d40e0e868021216768b983951721f7c00b6f46
+  languageName: node
+  linkType: hard
+
 "@spectrum-css/menu@npm:4.0.4":
   version: 4.0.4
   resolution: "@spectrum-css/menu@npm:4.0.4"
@@ -7758,6 +7767,7 @@ __metadata:
   resolution: "dev-site-documentation-template@workspace:."
   dependencies:
     "@adobe/gatsby-theme-aio": ^4.9.8
+    "@spectrum-css/link": ^4.0.40
     gatsby: 4.22.0
     react: ^17.0.2
     react-dom: ^17.0.2
