@@ -11,7 +11,7 @@
  */
 
 module.exports = {
-  pathPrefix: process.env.PATH_PREFIX || '/express/add-ons/',
+  pathPrefix: process.env.PATH_PREFIX || '/express-add-ons/',
   siteMetadata: {
     pages: [
       // {
@@ -24,7 +24,7 @@ module.exports = {
       // },
       {
         title: 'Add-ons',
-        path: '/add-ons'
+        path: '/'
       },
       {
         title: 'Embed SDK',

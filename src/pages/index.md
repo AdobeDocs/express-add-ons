@@ -1,35 +1,117 @@
----
-title: Overview - Express Add-Ons
-description: This is the overview page of Express Add-Ons
-contributors:
-  - https://github.com/icaraps 
----
 
-<Hero slots="heading, text"/>
+import './styles/main.css'
+import CreatorToolBox from "./add-ons/creatorToolBox.md"
+import DeveloperToolBox from "./add-ons/developerTool.md"
+import LearnMoreBtn from "./add-ons/learnmore.md"
+import bgImg from "./images/Summary_BgImage.jpg"
+import img1 from "./images/LogoSDK.png"
+import img2 from "./images/change_log.png"
+import img3 from "./images/dicord.png"
+import img4 from "./images/code.png"
 
-# Express Add-Ons API
+<Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
-Express Add-Ons API offers limitless ways to integrate your most important customer data into key business processes.
+## Make building add-ons your superpower.
 
-<Resources slots="heading, links"/>
+Give users new ways to create and share by building add-ons in [Adobe Express](https://express.adobe.com/).
 
-#### Resources
+- [Get started](https://adobe.io)
+- [Explore add-ons](https://adobe.io)
 
-* [Quickstart Guide](https://developer.adobe.com)
-* [Express Add-Ons Github Repo](https://github.com/AdobeDocs/express-add-ons)
+homeheroAssertImage
 
-## Overview
+<TextBlock slots="heading" className="announcement" theme="light"/>
 
-This documentation provides instructions for Catt Analytics 2.0 APIs. For working with Cat Analytics APIs, see [Cat Analytics API Documentation](https://github.com/AdobeDocs/dev-site).
+### Expand the creator toolbox.
 
-The Cat Analytics APIs are a collection of APIs that power Cat Analytics products like Cat Workspace.
-The APIs allow for the creation of data rich user interfaces that you can use to manipulate and integrate data.
-You can also create reports to explore, get insights, or answer important questions about your data.
+<WrapperComponent slots="content" repeat="1" theme="light" className="wrapperforCreatorTool"/>
 
-## Discover
+<CreatorToolBox />
 
-<DiscoverBlock width="100%" slots="heading, link, text"/>
+<WrapperComponent slots="content" repeat="1" theme="light"/>
 
-### Get Started
+<LearnMoreBtn />
 
-[Quickstart Guide](docs/index.md)
+<TextBlock slots="heading" className="announcement exploreCapabilities" theme="lightest"/>
+
+### Explore our capabilities.
+
+<TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="zigzag-cta-two explore reverseImage" />
+
+![Abstract illustration of add-ons panel in Adobe Express](images/ValueProp_01_PoweredbyWeb.png)
+
+### Leverage familiar web technologies.
+
+Use HTML, CSS, JavaScript/TypeScript, and [Spectrum](https://spectrum.adobe.com/) to build native-feeling user experiences for your add-on.
+
+<!-- CTA FOR LEARN MORe -->
+- [Learn more](https://adobe.io)
+
+<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" />
+
+### Connect to other services.
+
+Tap into helper libraries to access secure API endpoints with OAuth 2.0.
+
+![Inspire confident creators](images/Explore_Image_2.png)
+
+- [Learn more](https://adobe.io)
+
+<TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="zigzag-cta-two explore reverseImage" />
+
+![Forge the path to customer success](images/Explore_Image_3.png)
+
+### Import from anywhere.
+
+Enable users to drag and drop any image or video asset to a document.
+
+- [Learn more](https://adobe.io)
+
+<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" />
+
+### Export to everywhere.
+
+Export renditions of your users' work to a variety of formats
+
+![Inspire confident creators](images/Explore_Image_4.png)
+
+- [Learn more](https://adobe.io)
+
+<TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore zigzag-cta-two reverseImage" />
+
+![Forge the path to customer success](images/Explore_Image_5.png)
+
+### See what's coming.
+
+Powerful content-authoring APIs are right around the corner.
+
+- [Learn more](https://adobe.io)
+
+<TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
+
+### Build and share your add-on in no time.
+
+We’ve got a set of libraries and developer tools to make your job even easier.
+
+<WrapperComponent slots="content" repeat="1" theme="light" className="wrapperforCreatorTool"/>
+
+<DeveloperToolBox />
+
+<TextBlock slots="heading" className="announcement resourceHeader" theme="lightest"/>
+
+### We've got your resources covered.
+
+<TableBlock textColor="#427dcd" resources = {[
+        [{ header: `Blog`, img: img1, description: `Stay up to date on platform release, best practices, and more.` },
+        { header: `Code samples`, img: img4, description: `Get started quickly - access common patterns with our collections of code samples` },
+        { header: `Changelog`, img: img2, description: `Read up on the latest changes.`}]]}
+/>
+
+<TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
+
+### It's go time.
+
+View our developer quickstart guide to start building add-ons in Adobe Express.
+
+- [View the guide](https://adobe.io)
+- [Try an add-on](https://adobe.io)
