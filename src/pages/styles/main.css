@@ -13,7 +13,7 @@
 }
 
 .add-ones-hero>div>div {
-    width: 50% !important;
+    width: 60% !important;
 }
 
 .add-ones-hero>div>div:nth-child(2) {
@@ -59,8 +59,9 @@
 }
 
 .wrapperforCreatorTool>div {
-    width: 75% !important;
-    margin: auto !important;
+    width: 80% !important;
+    /* margin: auto !important; */
+    overflow: hidden;
 }
 
 .primaryBtn {
@@ -84,7 +85,7 @@
 }
 
 .explore>div {
-    padding: 2% 0 !important;
+    padding: 2% 0 0 0;
 }
 
 .explore a {
@@ -101,6 +102,7 @@
 
 .reverseImage>div>div {
     flex-direction: row-reverse !important;
+    gap: 5%;
 }
 
 .developerTool a {
@@ -198,15 +200,17 @@ td>div {
     background-image: url('../images/Hero-Image.png');
     background-repeat: no-repeat;
     background-size: cover;
-    width: 700px;
-    height: 480px;
+    width: 600px;
+    height: 400px;
     background-position: bottom center !important;
 }
 
 @media screen and (max-width:2000px) {
     .wrapperforCreatorTool>div {
-        width: 55% !important;
-        margin: auto !important;
+        width: 80% !important;
+        /* width: 55% !important;
+        margin: auto !important; */
+        overflow: hidden;
     }
 }
 
@@ -217,7 +221,7 @@ td>div {
     }
 
     .add-ones-hero {
-        margin-top: 5% !important;
+        /* margin-top: 5% !important; */
     }
 
     .add-ones-hero>div>div,
@@ -230,7 +234,7 @@ td>div {
     }
     
     .wrapperforCreatorTool>div{
-        width: 100% !important;
+        width: 80% !important;
     }
 
 }
@@ -257,8 +261,8 @@ td>div {
         background-image: url('../images/Hero-Image.png');
         background-repeat: no-repeat;
         background-size: cover;
-        height: 450px !important;
-        width: 600px !important;
+        height: 400px !important;
+        width: 650px !important;
         background-position: bottom center !important;
     }
 }
@@ -269,8 +273,8 @@ td>div {
         background-image: url('../images/Hero-Image.png');
         background-repeat: no-repeat;
         background-size: cover;
-        height: 250px !important;
-        width: 320px !important;
+        height: 280px !important;
+        width: 450px !important;
         background-position: bottom center !important;
     }
 
@@ -279,7 +283,7 @@ td>div {
     }
 
     .add-ones-hero {
-        margin-top: 10% !important;
+        /* margin-top: 10% !important; */
     }
 
     .announcement>div,
@@ -288,7 +292,7 @@ td>div {
     }
 
     .wrapperforCreatorTool>div {
-        width: 100% !important;
+        width: 80% !important;
     }
 
     .creatorToolBox>div,
@@ -318,8 +322,10 @@ td>div {
     }
 
     .wrapperforCreatorTool>div {
-        width: 75% !important;
+        
+        width: 80% !important;
         margin: auto !important;
+        overflow: hidden;
     }
 
 }
