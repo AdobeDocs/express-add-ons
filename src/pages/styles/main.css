@@ -18,10 +18,6 @@
     width: 60% !important;
 }
 
-.add-ones-hero>div>a {
-    text-decoration: underline;
-}
-
 .add-ones-hero>div>div:nth-child(2) {
     display: flex;
     justify-content: center;
