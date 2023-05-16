@@ -37,6 +37,7 @@ const TableBlock = ({
                             css={css`
                             display:flex;
                             margin:auto;
+                            justify-content:center;
                             gap:5%;
                             
 
@@ -44,8 +45,15 @@ const TableBlock = ({
                                 flex-direction:column !important;
                                 width:90% !important;
                                 gap:40px !important
+                            }
+
+                            @media screen and (min-width:768px) and (max-width:1024px){
+                                flex-direction:column !important;
+                                width:50% !important;
+                                gap:40px !important
                                 
                             }
+
                         `}
                         >
                             {resource.map((data) => {
@@ -53,11 +61,7 @@ const TableBlock = ({
                                     <div
                                         css={css`
                                             display:flex;
-                                            // box-shadow: 5px 5px 5px rgb(68 68 68 / 0.6);
-
-                                            @media screen and (min-width:320px) and (max-width:767px){
-                                                justify-content: center !important;
-                                            }
+                                            box-shadow: 0 9px 15px 5px #ebebeb;
                                             
                                             `}
                                     >
@@ -94,6 +98,10 @@ const TableBlock = ({
                                         `}>
                                             <div
                                                 css={css`
+                                                height: 9vh;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
                                                 font-size: x-large !important;
                                                 font-weight: 700 !important;
                                                 `}

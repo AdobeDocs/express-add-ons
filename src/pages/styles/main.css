@@ -6,6 +6,8 @@
     background-size: cover !important;
 }
 
+
+
 .add-ones-hero>div {
     width: 80% !important;
     margin: 3% auto;
@@ -30,6 +32,11 @@
 .add-ones-hero>div>div>p {
     color: #F7DBFD;
 }
+
+.add-ones-hero>div>div>p>a {
+    text-decoration: underline !important;
+}
+
 
 .add-ones-hero>div>div>div>div>div:nth-child(2)>a {
     border-color: #F4DFF9 !important;
@@ -84,8 +91,19 @@
     padding-bottom: 0 !important;
 }
 
-.explore>div {
+
+.exploreCapabilities>div {
     padding: 2% 0 0 0;
+}
+
+.explore>div {
+    width: 75% !important;
+    margin: auto !important;
+}
+
+.explore img {
+    border-radius: 10px;
+    box-shadow: 0 9px 15px 5px #ebebeb;
 }
 
 .explore a {
@@ -98,11 +116,6 @@
 
 .explore p {
     color: #424242 !important;
-}
-
-.reverseImage>div>div {
-    flex-direction: row-reverse !important;
-    gap: 5%;
 }
 
 .developerTool a {
@@ -135,9 +148,11 @@
 .viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span {
     color: white !important;
 }
+
 .viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span>span {
     color: white !important;
 }
+
 .mobileContent {
     display: none;
 }
@@ -205,6 +220,10 @@ td>div {
     background-position: bottom center !important;
 }
 
+.explore>div>div>div{
+    padding: 0px 15px !important;
+}
+
 @media screen and (max-width:2000px) {
     .wrapperforCreatorTool>div {
         width: 80% !important;
@@ -220,8 +239,16 @@ td>div {
         flex-direction: column !important;
     }
 
+    .wrapperforCreatorTool>div {
+        margin: auto !important;
+    }
+
     .add-ones-hero {
-        /* margin-top: 5% !important; */
+        margin-top: 5% !important;
+    }
+
+    .explore>div {
+        padding: 5% 0 !important;
     }
 
     .add-ones-hero>div>div,
@@ -232,8 +259,12 @@ td>div {
     .add-ones-hero>div>div:first-child {
         margin: 0 5% !important;
     }
-    
-    .wrapperforCreatorTool>div{
+
+    .reverse>div>div {
+        flex-direction: column !important;
+    }
+
+    .wrapperforCreatorTool>div {
         width: 80% !important;
     }
 
@@ -265,6 +296,11 @@ td>div {
         width: 650px !important;
         background-position: bottom center !important;
     }
+
+    .explore>div {
+        width: 90% !important;
+        margin: auto !important;
+    }
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
@@ -273,8 +309,8 @@ td>div {
         background-image: url('../images/Hero-Image.png');
         background-repeat: no-repeat;
         background-size: cover;
-        height: 280px !important;
-        width: 450px !important;
+        height: 200px !important;
+        width: 310px !important;
         background-position: bottom center !important;
     }
 
@@ -282,8 +318,12 @@ td>div {
         flex-direction: column !important;
     }
 
+    .explore>div {
+        width: 100% !important;
+    }
+
     .add-ones-hero {
-        /* margin-top: 10% !important; */
+        margin-top: 10% !important;
     }
 
     .announcement>div,
@@ -322,11 +362,10 @@ td>div {
     }
 
     .wrapperforCreatorTool>div {
-        
+
         width: 80% !important;
         margin: auto !important;
         overflow: hidden;
     }
 
 }
-
