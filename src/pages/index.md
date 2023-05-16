@@ -56,7 +56,9 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 - [Learn more](https://adobe.io)
 
+
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
+
 
 ![Forge the path to customer success](images/Explore_Image_3.png)
 
