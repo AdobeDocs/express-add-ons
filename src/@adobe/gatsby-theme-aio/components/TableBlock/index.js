@@ -45,8 +45,15 @@ const TableBlock = ({
                                 flex-direction:column !important;
                                 width:90% !important;
                                 gap:40px !important
+                            }
+
+                            @media screen and (min-width:768px) and (max-width:1024px){
+                                flex-direction:column !important;
+                                width:50% !important;
+                                gap:40px !important
                                 
                             }
+
                         `}
                         >
                             {resource.map((data) => {
@@ -54,6 +61,8 @@ const TableBlock = ({
                                     <div
                                         css={css`
                                             display:flex;
+
+
                                             border-style:solid;
                                             border-color:#E6E6E6;
                                             
@@ -61,6 +70,7 @@ const TableBlock = ({
                                             @media screen and (min-width:320px) and (max-width:767px){
                                                 justify-content: center !important;
                                             }
+
                                             
                                             `}
                                     >
@@ -97,6 +107,10 @@ const TableBlock = ({
                                         `}>
                                             <div
                                                 css={css`
+                                                height: 9vh;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
                                                 font-size: x-large !important;
                                                 font-weight: 700 !important;
                                                 `}
