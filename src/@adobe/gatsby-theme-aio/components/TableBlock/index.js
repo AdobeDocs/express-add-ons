@@ -61,10 +61,7 @@ const TableBlock = ({
                                     <div
                                         css={css`
                                             display:flex;
-
-
-                                            border-style:solid;
-                                            border-color:#E6E6E6;
+                                            box-shadow: 0 9px 15px 5px #ebebeb;
                                             
 
                                             @media screen and (min-width:320px) and (max-width:767px){
