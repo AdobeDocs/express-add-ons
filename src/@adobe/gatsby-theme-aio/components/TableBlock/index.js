@@ -37,6 +37,7 @@ const TableBlock = ({
                             css={css`
                             display:flex;
                             margin:auto;
+                            justify-content:center;
                             gap:5%;
                             
 
@@ -53,7 +54,9 @@ const TableBlock = ({
                                     <div
                                         css={css`
                                             display:flex;
-                                            // box-shadow: 5px 5px 5px rgb(68 68 68 / 0.6);
+                                            border-style:solid;
+                                            border-color:#E6E6E6;
+                                            
 
                                             @media screen and (min-width:320px) and (max-width:767px){
                                                 justify-content: center !important;
