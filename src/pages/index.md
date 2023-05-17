@@ -75,15 +75,15 @@ Export renditions of your users' work to a variety of formats
 
 - [Learn more](https://adobe.io)
 
-<TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
+<TextBlock slots="image, heading,text" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
 ![Forge the path to customer success](images/Explore_Image_5.png)
 
-### See what's coming.
+### More in the works.
 
-Powerful content-authoring APIs are right around the corner.
+Powerful new APIs are right around the corner.
 
-- [Learn more](https://adobe.io)
+<!-- - [Learn more](https://adobe.io) -->
 
 <TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
 

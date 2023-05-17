@@ -34,8 +34,8 @@ const TableBlock = ({ resources }) => {
             margin: auto;
 
             @media screen and (min-width:768px) and (max-width:1024px) {
-                gap :2% !important;
-                width: 97% !important;
+                gap :5% !important;
+                // width: 97% !important;
                 padding: 10px 0;
             }
 
@@ -46,7 +46,7 @@ const TableBlock = ({ resources }) => {
             }
 
             @media screen and (min-width:1024px) and (max-width:1500px){
-                width: 97% !important;
+                // width: 97% !important;
                 padding: 10px 0;
             }
 
@@ -54,14 +54,13 @@ const TableBlock = ({ resources }) => {
                 {resources.map(({ header, img }) => {
                     return (
                         <div css={css`
-                        border: 1px solid #e6e6e6;
                         text-align: center;
                         display : flex;
                         gap:2%;
-                        box-shadow: 0 9px 15px 5px #ebebeb;
+                        box-shadow: 0 9px 15px 5px #e6e6e6;
 
                         @media screen and (min-width:768px) and (max-width:1024px) {
-                            gap :0 !important
+                            gap :5px !important
                         }
 
                         `}>
@@ -89,7 +88,9 @@ const TableBlock = ({ resources }) => {
                                 width:200px;
                                 
                                 @media screen and (min-width:768px) and (max-width:1024px) {
-                                   width : 140px !important
+                                   width : 140px !important;
+                                   padding-left:2%;
+                                   font-size: large !important;
                                 }
 
                                 @media screen and (min-width:320px) and (max-width:767px) {

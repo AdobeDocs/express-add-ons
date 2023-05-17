@@ -34,6 +34,7 @@
 
 .add-ones-hero>div>div>p>a {
     text-decoration: underline !important;
+    color: white !important;
 }
 
 
@@ -104,10 +105,6 @@
     margin: auto !important;
 }
 
-.explore img {
-    border-radius: 10px;
-    box-shadow: 0 9px 15px 5px #ebebeb;
-}
 
 
 .explore a {
@@ -190,17 +187,9 @@
 
 @media screen and (min-width:320px) and (max-width:1024px) {
 
-    .reverseImage>div>div {
-        flex-direction: column !important;
-    }
-
     .wrapperforCreatorTool>div {
         margin: auto !important;
     }
-
-    /* .add-ones-hero {
-        margin-top: 5% !important;
-    } */
 
     .explore>div {
         padding: 5% 0 !important;
@@ -213,10 +202,6 @@
 
     .add-ones-hero>div>div:first-child {
         margin: 0 5% !important;
-    }
-
-    .reverse>div>div {
-        flex-direction: column !important;
     }
 
     .wrapperforCreatorTool>div {
