@@ -43,18 +43,6 @@ module.exports = {
         ]
       }
     ],
-    // subPages: [
-    //   {
-    //     title: 'Docs',
-    //     path: '/docs/',
-    //     pages: [
-    //       {
-    //         title: 'Overview',
-    //         path: '/docs/index.md'
-    //       }
-    //     ]
-    //   },
-    // ]
   },
   plugins: [`@adobe/gatsby-theme-aio`]
 };

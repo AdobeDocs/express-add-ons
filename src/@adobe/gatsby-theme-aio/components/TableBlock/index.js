@@ -13,117 +13,100 @@
 import React from "react";
 import { css } from "@emotion/react";
 
-const TableBlock = ({
-    resources,
-    textColor = "black"
-}) => {
+const TableBlock = ({ resources }) => {
     return (
         <section
             css={css`
-            margin-bottom:5%;
+                margin-bottom: 5%;
+
+                @media screen and (min-width:320px) and (max-width:767px) {
+                    margin-bottom: 15% !important;
+                }
             `}
         >
-            <div
-                css={css`
-                display:flex;
-                flex-direction:column;
-                align-items:center;
-                gap:40px
-                `}
-            >
-                {resources.map((resource) => {
+            <div css={css`
+          
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+            gap:5%;
+            width: 80%;
+            margin: auto;
+
+            @media screen and (min-width:768px) and (max-width:1024px) {
+                gap :5% !important;
+                // width: 97% !important;
+                padding: 10px 0;
+            }
+
+            @media screen and (min-width:320px) and (max-width:767px) {
+                grid-template-columns: auto !important;
+                width:90% !important;
+                padding:0 !important;
+            }
+
+            @media screen and (min-width:1024px) and (max-width:1500px){
+                // width: 97% !important;
+                padding: 10px 0;
+            }
+
+            `}>
+                {resources.map(({ header, img }) => {
                     return (
-                        <div
-                            css={css`
-                            display:flex;
-                            margin:auto;
-                            justify-content:center;
-                            gap:5%;
-                            
+                        <div css={css`
+                        text-align: center;
+                        display : flex;
+                        gap:2%;
+                        box-shadow: 0 9px 15px 5px #e6e6e6;
 
-                            @media screen and (min-width:367px) and (max-width:767px){
-                                flex-direction:column !important;
-                                width:90% !important;
-                                gap:40px !important
-                            }
+                        @media screen and (min-width:768px) and (max-width:1024px) {
+                            gap :5px !important
+                        }
 
-                            @media screen and (min-width:768px) and (max-width:1024px){
-                                flex-direction:column !important;
-                                width:50% !important;
-                                gap:40px !important
+                        `}>
+                            <img
+                                css={css`
+                                    height: 100px;
+
+                                    @media screen and (min-width:768px) and (max-width:1024px) {
+                                        height: 75px !important;
+                                    }
+
+                                `}
+                                src={img}
+                                alt={header}
+                            />
+                            <div
+                                css={css`
+                                display: flex;
+                                align-items: center;
+                                padding-left:2%;
+                                font-size: x-large !important;
+                                font-weight: 700 !important; 
+                                white-space : nowrap !important;
+                                text-align:initial !important;
+                                width:200px;
                                 
-                            }
+                                @media screen and (min-width:768px) and (max-width:1024px) {
+                                   width : 140px !important;
+                                   padding-left:2%;
+                                   font-size: large !important;
+                                }
 
-                        `}
-                        >
-                            {resource.map((data) => {
-                                return (
-                                    <div
-                                        css={css`
-                                            display:flex;
-                                            box-shadow: 0 9px 15px 5px #ebebeb;
-                                            
-
-                                            @media screen and (min-width:320px) and (max-width:767px){
-                                                justify-content: center !important;
-                                            }
-
-                                            
-                                            `}
-                                    >
-                                        <img css={css`
-                                        height:100px
-                                        `}
-                                            src={data.img}
-                                            alt={`${data.header}`} />
-                                        <div css={css`
-
-                                            @media screen and (min-width:768px) and (max-width:1024px){
-                                                width: 200px !important;
-                                                gap:5%;
-                                            }
-
-                                            @media screen and (min-width:320px) and (max-width:767px){
-                                                width: 190px !important;
-                                                gap:5%;
-                                                padding-left:2% !important;
-                                                height:auto !important;
-                                            }
-
-                                            display:flex;
-                                            flex-direction:column;
-                                            text-align:start;
-                                            align-items:start;
-                                            width: 300px;
-                                            height: 95%;
-                                            justify-content:center;
-                                            padding-left:5%;
-                                            gap:15%;
-
-                                           
-                                        `}>
-                                            <div
-                                                css={css`
-                                                height: 9vh;
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                                font-size: x-large !important;
-                                                font-weight: 700 !important;
-                                                `}
-                                            >{data.header}</div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-
+                                @media screen and (min-width:320px) and (max-width:767px) {
+                                    width : 150px !important
+                                }
+                                
+                                `}
+                            >{header}</div>
                         </div>
-
                     )
+
                 })}
             </div>
-        </section>
-    )
-}
 
-export { TableBlock }
+        </section>
+    );
+};
+
+export { TableBlock };
