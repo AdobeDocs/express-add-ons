@@ -6,6 +6,7 @@
     background-size: cover !important;
 }
 
+
 .add-ones-hero>div {
     width: 80% !important;
     margin: 3% auto;
@@ -33,7 +34,6 @@
 
 .add-ones-hero>div>div>p>a {
     text-decoration: underline !important;
-    color: white !important;
 }
 
 
@@ -66,6 +66,7 @@
 
 .wrapperforCreatorTool>div {
     width: 80% !important;
+    margin: auto !important;
     overflow: hidden;
 }
 
@@ -91,13 +92,23 @@
 
 
 .exploreCapabilities>div {
-    padding: 2% 0 0 0;
+    padding: 5% 0 0 0;
+}
+
+.resourceHeader>div {
+    padding: 5% 0 !important;
 }
 
 .explore>div {
     width: 75% !important;
     margin: auto !important;
 }
+
+.explore img {
+    border-radius: 10px;
+    box-shadow: 0 9px 15px 5px #ebebeb;
+}
+
 
 .explore a {
     border-color: #626262 !important;
@@ -151,84 +162,45 @@
     display: none;
 }
 
-table {
-    width: 40% !important;
-    margin: auto !important;
-}
-
-th {
-    display: none !important;
-}
-
-td {
-    border: none !important;
-    padding: 0 !important;
-}
-
-tr>th:first-child,
-tr>th:nth-child(2) {
-    white-space: nowrap;
-}
-
-td>div {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    padding: 5% 2%;
-    white-space: nowrap;
-}
-
-td>div>span>span {
-    padding: 0 !important;
-}
-
-td>div>span {
-    margin: unset !important;
-}
-
-td>div>p {
-    margin: 0 0 0 10px !important;
-    font-size: 20px !important;
-}
-
-td>div>span>picture>img {
-    height: auto !important;
-    width: auto !important;
-    position: unset !important;
-}
-
-tr:hover {
-    background-color: white !important;
-}
-
-td>div {
-    cursor: pointer !important;
-}
-
 .homeheroAssertImage {
     background-image: url('../images/Hero-Image.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     width: 600px;
     height: 400px;
     background-position: bottom center !important;
 }
 
-.explore>div>div>div{
+.explore>div>div>div {
     padding: 0px 15px !important;
+}
+
+.learnMoreWrapper>div {
+    width: 100% !important;
 }
 
 @media screen and (max-width:2000px) {
     .wrapperforCreatorTool>div {
         width: 80% !important;
+        /* width: 55% !important; */
+        margin: auto !important;
         overflow: hidden;
     }
 }
 
 @media screen and (min-width:320px) and (max-width:1024px) {
+
+    .reverseImage>div>div {
+        flex-direction: column !important;
+    }
+
     .wrapperforCreatorTool>div {
         margin: auto !important;
     }
+
+    /* .add-ones-hero {
+        margin-top: 5% !important;
+    } */
 
     .explore>div {
         padding: 5% 0 !important;
@@ -243,15 +215,27 @@ td>div {
         margin: 0 5% !important;
     }
 
+    .reverse>div>div {
+        flex-direction: column !important;
+    }
+
     .wrapperforCreatorTool>div {
         width: 80% !important;
+    }
+
+    .add-ones-hero>div {
+        margin: 10% auto !important;
     }
 
 }
 
 @media screen and (min-width:768px) and (max-width:1024px) {
     .announcement>div {
-        padding: 2% !important;
+        padding: 6% 0 0 0 !important;
+    }
+
+    .resourceHeader>div>div>div {
+        margin: 5% 0 7% 0 !important;
     }
 
     .creatorToolBox {
@@ -270,7 +254,7 @@ td>div {
     .homeheroAssertImage {
         background-image: url('../images/Hero-Image.png');
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         height: 400px !important;
         width: 650px !important;
         background-position: bottom center !important;
@@ -287,7 +271,7 @@ td>div {
     .homeheroAssertImage {
         background-image: url('../images/Hero-Image.png');
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         height: 200px !important;
         width: 310px !important;
         background-position: bottom center !important;
@@ -299,6 +283,10 @@ td>div {
 
     .explore>div {
         width: 100% !important;
+    }
+
+    .add-ones-hero {
+        margin-top: 10% !important;
     }
 
     .announcement>div,
@@ -330,10 +318,10 @@ td>div {
 
 }
 
-@media screen and (min-width:1300px) and (max-width:1500px) {
+@media screen and (min-width:1024px) and (max-width:1500px) {
     .homeheroAssertImage {
         width: 600px !important;
-        height: 400px !important;
+        height: 370px !important;
     }
 
     .wrapperforCreatorTool>div {
@@ -342,5 +330,4 @@ td>div {
         margin: auto !important;
         overflow: hidden;
     }
-
 }

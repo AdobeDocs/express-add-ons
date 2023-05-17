@@ -4,10 +4,9 @@ import CreatorToolBox from "./add-ons/creatorToolBox.md"
 import DeveloperToolBox from "./add-ons/developerTool.md"
 import LearnMoreBtn from "./add-ons/learnmore.md"
 import bgImg from "./images/Summary_BgImage.jpg"
-import img1 from "./images/LogoSDK.png"
-import img2 from "./images/change_log.png"
-import img3 from "./images/dicord.png"
-import img4 from "./images/code.png"
+import img1 from "./images/LogoSDK.jpg"
+import img2 from "./images/change_log.jpg"
+import img4 from "./images/code.jpg"
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
@@ -28,7 +27,7 @@ homeheroAssertImage
 
 <CreatorToolBox />
 
-<WrapperComponent slots="content" repeat="1" theme="light"/>
+<WrapperComponent slots="content" repeat="1" theme="light" className="learnMoreWrapper"/>
 
 <LearnMoreBtn />
 
@@ -38,7 +37,7 @@ homeheroAssertImage
 
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right"/>
 
-![Abstract illustration of add-ons panel in Adobe Express](images/ValueProp_01_PoweredbyWeb.png)
+![Abstract illustration of add-ons panel in Adobe Express](images/Explore_Image_1.png)
 
 ### Leverage familiar web technologies.
 
@@ -56,9 +55,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 - [Learn more](https://adobe.io)
 
-
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
-
 
 ![Forge the path to customer success](images/Explore_Image_3.png)
 
@@ -102,10 +99,7 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### We've got your resources covered.
 
-<TableBlock textColor="#427dcd" resources = {[
-        [{ header: `Blog`, img: img1, description: `Stay up to date on platform release, best practices, and more.` },
-        { header: `Code samples`, img: img4, description: `Get started quickly - access common patterns with our collections of code samples` },
-        { header: `Changelog`, img: img2, description: `Read up on the latest changes.`}]]}
+<TableBlock textColor="#427dcd" resources = {[{ header: `Blog`, img: img1 },{ header: `Code samples`, img: img4 },{ header: `Changelog`, img: img2}]}
 />
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
