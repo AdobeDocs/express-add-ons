@@ -35,7 +35,7 @@ const TableBlock = ({ resources }) => {
 
             @media screen and (min-width:768px) and (max-width:1024px) {
                 gap :5% !important;
-                // width: 97% !important;
+                width: 97% !important;
                 padding: 10px 0;
             }
 
@@ -46,7 +46,7 @@ const TableBlock = ({ resources }) => {
             }
 
             @media screen and (min-width:1024px) and (max-width:1500px){
-                // width: 97% !important;
+                width: 97% !important;
                 padding: 10px 0;
             }
 

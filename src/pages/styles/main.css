@@ -88,12 +88,7 @@
 }
 
 .exploreCapabilities>div {
-    padding-bottom: 0 !important;
-}
-
-
-.exploreCapabilities>div {
-    padding: 5% 0 0 0;
+    padding: 5% 0 3% 0;
 }
 
 .resourceHeader>div {
@@ -103,9 +98,8 @@
 .explore>div {
     width: 75% !important;
     margin: auto !important;
+    padding: 1% 0 !important;
 }
-
-
 
 .explore a {
     border-color: #626262 !important;
@@ -118,7 +112,6 @@
 .explore p {
     color: #424242 !important;
 }
-
 
 .developerTool a {
     text-decoration: underline !important;
