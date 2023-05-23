@@ -103,9 +103,11 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 ### Blog
 
 ![Code samples](images/code.jpg)
+
 ### Code samples
 
 ![Changelog](images/change_log.jpg)
+
 ### Changelog
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
