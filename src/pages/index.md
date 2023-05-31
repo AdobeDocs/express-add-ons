@@ -66,7 +66,7 @@ Enable users to drag and drop any image or video asset to a document.
 
 ### Export to everywhere.
 
-Export renditions of your users' work to a variety of formats
+Export renditions of your users' work to a variety of formats.
 
 ![Inspire confident creators](images/Explore_Image_4.png)
 

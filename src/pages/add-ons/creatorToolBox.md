@@ -11,7 +11,7 @@ Meet marketers, influencers, and communicators where they create.
 
 ![JIRA Cloud logo](../images/Creator_Tool_2.png)
 
-### Lead with innovation.
+### Innovate on our platform.
 
 Unlock new capabilities and creative features.
 
@@ -19,6 +19,6 @@ Unlock new capabilities and creative features.
 
 ![Slack logo](../images/Creator_Tool_3.png)
 
-### Give user workflows a boost.
+### Create custom workflows.
 
-Unlock custom workflows by creating add-ons that are specific to your business.
+Build add-ons that are specific to your business and tailored to your users.
