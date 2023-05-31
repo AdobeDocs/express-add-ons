@@ -4,9 +4,6 @@ import CreatorToolBox from "./add-ons/creatorToolBox.md"
 import DeveloperToolBox from "./add-ons/developerTool.md"
 import LearnMoreBtn from "./add-ons/learnmore.md"
 import bgImg from "./images/Summary_BgImage.jpg"
-import img1 from "./images/LogoSDK.jpg"
-import img2 from "./images/change_log.jpg"
-import img4 from "./images/code.jpg"
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
@@ -99,8 +96,19 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### We've got your resources covered.
 
-<TableBlock textColor="#427dcd" resources = {[{ header: `Blog`, img: img1 },{ header: `Code samples`, img: img4 },{ header: `Changelog`, img: img2}]}
-/>
+<MiniResourceCard slots="image,heading" repeat="3" theme="lightest" inRow="3" className="mini-card" />
+
+![Blog](images/LogoSDK.jpg)
+
+### Blog
+
+![Code samples](images/code.jpg)
+
+### Code samples
+
+![Changelog](images/change_log.jpg)
+
+### Changelog
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 
