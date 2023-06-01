@@ -24,8 +24,8 @@ import bgImg from "./images/Summary_BgImage.jpg"
 
 Give users new ways to create and share by building add-ons in <a href="https://new.express.adobe.com">Adobe Express</a>.
 
-- [Get started](https://adobe.io)
-- [Explore add-ons](https://adobe.io)
+- [Get started](https://developer.adobe.com/express-add-ons/docs/guides)
+- [Explore add-ons](https://new.express.adobe.com/new?category=addOns&addOnId=)
 
 homeheroAssertImage
 
@@ -123,7 +123,7 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 
-### It's go time.
+<p className="teaserBlockCustomHeading">It's go time.</p>
 
 View our developer quickstart guide to start building add-ons in Adobe Express.
 
