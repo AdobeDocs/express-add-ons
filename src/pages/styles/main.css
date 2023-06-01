@@ -149,17 +149,19 @@
 
 .viewAddOn p {
     color: #E2CAF1 !important;
+    font-size: 16pt;
 }
 
 .viewAddOn>div>div {
     margin: auto !important;
 }
 
-.viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span {
+
+.viewAddOn>div>div>div>div:nth-child(3)>div>div:nth-child(2)>a>span {
     color: white !important;
 }
 
-.viewAddOn>div>div>div>div:nth-child(4)>div>div:nth-child(2)>a>span>span {
+.viewAddOn>div>div>div>div:nth-child(3)>div>div:nth-child(2)>a>span>span {
     color: white !important;
 }
 
