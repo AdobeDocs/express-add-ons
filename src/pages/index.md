@@ -1,3 +1,16 @@
+---
+title: Adobe Express Add-ons
+description: Adobe Express is an all-in-one content creation app that makes it fast, easy and fun to design standout flyers, TikToks, resumes, Reels, banners, logos, invitations, webpages and so much more. Add-ons allow developers to extend the core functionality of Adobe Express, with a dedicated marketplace for them to be distributed for others to discover and enjoy.
+keywords:
+  - Adobe Express
+  - Add-ons
+  - API Documentation
+  - JavaScript
+  - TypeScript
+  - SDK
+  - Extensibility
+  - Developer Tooling
+---
 
 import './styles/main.css'
 import CreatorToolBox from "./add-ons/creatorToolBox.md"
@@ -79,8 +92,6 @@ Export renditions of your users' work to a variety of formats.
 ### More in the works.
 
 Powerful new APIs are right around the corner.
-
-<!-- - [Learn more](https://adobe.io) -->
 
 <TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
 
