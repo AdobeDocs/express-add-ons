@@ -9,7 +9,7 @@ import bgImg from "./images/Summary_BgImage.jpg"
 
 ## Make building add-ons your superpower.
 
-Give users new ways to create and share by building add-ons in <a href="https://express.adobe.com">Adobe Express</a>.
+Give users new ways to create and share by building add-ons in <a href="https://new.express.adobe.com">Adobe Express</a>.
 
 - [Get started](https://adobe.io)
 - [Explore add-ons](https://adobe.io)
