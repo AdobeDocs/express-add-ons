@@ -62,7 +62,7 @@
 
 .creatorToolBox>div>p:first-child,
 .developerTool>div>p:first-child {
-    height: 150px !important;
+    height: 100px !important;
 }
 
 .wrapperforCreatorTool>div {
@@ -92,11 +92,11 @@
 }
 
 .resourceHeader>div {
-    padding: 5% 0 !important;
+    padding: 4% 0 !important;
 }
 
 .explore>div {
-    width: 75% !important;
+    width: 70% !important;
     margin: auto !important;
     padding: 1% 0 !important;
 }
@@ -163,6 +163,13 @@
 
 .explore>div>div>div {
     padding: 0px 15px !important;
+    width: 42% !important;
+}
+
+.explore>div>div {
+    width: 85% !important;
+    justify-content: center !important;
+    margin: auto !important;
 }
 
 .learnMoreWrapper>div {
@@ -170,18 +177,18 @@
 }
 
 .mini-card {
-    padding: 0 0 5% 0 !important;
+    padding: 0 0 4% 0 !important;
 }
 
-.mini-card h3{
+.mini-card h3 {
     font-size: x-large !important;
     font-weight: 700 !important;
 }
 
-.mini-card>div{
+.mini-card>div {
     padding: 10px !important;
     gap: 5% !important;
-    width: 80% !important;
+    width: 60% !important;
     margin: auto !important;
     max-width: 100% !important;
 }
@@ -197,21 +204,25 @@
     box-shadow: 0 9px 15px 5px #e6e6e6;
 }
 
-.mini-card>div>div>div>div:first-child{
-    width: 22%;
+.mini-card>div>div>div>div:first-child {
+    width: 25%;
 }
 
-.mini-card>div>div>div>div:nth-child(2){
+.mini-card>div>div>div>div:nth-child(2) {
     width: 200px !important;
-    padding: 0px 0 0 4%!important;
+    padding: 0px 0 0 4% !important;
     border: none !important;
 }
 
 @media screen and (max-width:2000px) {
     .wrapperforCreatorTool>div {
-        width: 80% !important;
+        width: 60% !important;
         margin: auto !important;
         overflow: hidden;
+    }
+
+    .explore>div>div {
+        width: 100% !important;
     }
 }
 
@@ -242,8 +253,12 @@
         margin: 10% auto !important;
     }
 
-    .mini-card>div>div>div>div:first-child{
+    .mini-card>div>div>div>div:first-child {
         width: 32% !important;
+    }
+
+    .explore>div>div>div {
+        width: 100% !important;
     }
 
 }
@@ -294,16 +309,17 @@
     }
 
     .mini-card>div {
-        max-width:97% !important;
+        max-width: 97% !important;
         grid-template-columns: repeat(3, 1fr) !important;
         margin: auto !important;
     }
 
-    .mini-card>div>div>div , .mini-card>div{
+    .mini-card>div>div>div,
+    .mini-card>div {
         width: 100% !important;
     }
 
-    .mini-card>div>div>div>div:nth-child(2){
+    .mini-card>div>div>div>div:nth-child(2) {
         width: 100px !important;
     }
 }
@@ -376,13 +392,20 @@
     }
 
     .wrapperforCreatorTool>div {
-
-        width: 80% !important;
+        width: 75% !important;
         margin: auto !important;
         overflow: hidden;
     }
 
-    .mini-card>div>div>div>div:first-child{
+    .explore>div>div {
+        width: 100% !important;
+    }
+
+    .explore>div>div>div {
+        width: 50% !important;
+    }
+
+    .mini-card>div>div>div>div:first-child {
         width: 32% !important;
     }
 }
