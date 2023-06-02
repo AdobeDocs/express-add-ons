@@ -61,13 +61,13 @@ Use HTML, CSS, JavaScript/TypeScript, and [Spectrum](https://spectrum.adobe.com/
 
 Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
-![Inspire confident creators](images/Explore_Image_2.png)
+![Abstract illustration of services being connected in a secure manner](images/Explore_Image_2.png)
 
 - [Learn more](https://adobe.io)
 
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
-![Forge the path to customer success](images/Explore_Image_3.png)
+![Illustration of dragging and dropping an asset into Adobe Express](images/Explore_Image_3.png)
 
 ### Import from anywhere.
 
@@ -81,13 +81,13 @@ Enable users to drag and drop any image or video asset to a document.
 
 Export renditions of your users' work to a variety of formats.
 
-![Inspire confident creators](images/Explore_Image_4.png)
+![Illustration showing the ability to export assets to other surfaces from Adobe Express](images/Explore_Image_4.png)
 
 - [Learn more](https://adobe.io)
 
 <TextBlock slots="image, heading,text" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
-![Forge the path to customer success](images/Explore_Image_5.png)
+![Illustration showing that new APIs are coming soon.](images/Explore_Image_5.png)
 
 ### More in the works.
 
@@ -109,15 +109,15 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 <MiniResourceCard slots="image,heading" repeat="3" theme="lightest" inRow="3" className="mini-card" />
 
-![Blog](images/LogoSDK.jpg)
+![Adobe Express logo over a gradient background](images/LogoSDK.jpg)
 
 ### Blog
 
-![Code samples](images/code.jpg)
+![Icon showing a code block](images/code.jpg)
 
 ### Code samples
 
-![Changelog](images/change_log.jpg)
+![Icon showing a changelog](images/change_log.jpg)
 
 ### Changelog
 
@@ -128,4 +128,4 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 View our developer quickstart guide to start building add-ons in Adobe Express.
 
 - [View the guide](https://adobe.io)
-- [Try an add-on](https://adobe.io)
+- [Try an add-on](https://new.express.adobe.com/new?category=addOns&addOnId=)
