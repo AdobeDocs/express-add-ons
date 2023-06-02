@@ -13,11 +13,15 @@
 module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/express-add-ons/',
   siteMetadata: {
+    "home": {
+      "title": "Adobe Express",
+      "path": "https://new.express.adobe.com"
+    },
     pages: [
-      {
-        title: 'Adobe Express',
-        path: 'https://new.express.adobe.com'
-      },
+      // {
+      //   title: 'Adobe Express',
+      //   path: 'https://new.express.adobe.com'
+      // },
       {
         title: 'Add-ons',
         path: '/'
@@ -31,7 +35,7 @@ module.exports = {
         menu: [
           {
             title: 'Add-ons',
-            path: 'https://developer.adobe.com/express-add-ons/docs/guides'
+            path: 'https://developer-stage.adobe.com/express-add-ons/docs/guides/'
           },
           {
             title: 'Embed SDK',
