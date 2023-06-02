@@ -65,7 +65,7 @@
 }
 
 .developerTool {
-   padding: 0% 0 8% 0 !important;
+    padding: 0% 0 8% 0 !important;
 }
 
 .creatorToolBox>div>p:first-child,
@@ -141,11 +141,11 @@
     justify-content: center !important;
 }
 
-.viewAddOn p.teaserBlockCustomHeading{
+.viewAddOn p.teaserBlockCustomHeading {
     color: white !important;
     font-size: 22pt;
     font-weight: bold;
- }
+}
 
 .viewAddOn p {
     color: #E2CAF1 !important;
@@ -198,7 +198,7 @@
 }
 
 .mini-card h3 {
-    font-size: x-large !important;
+    font-size: large !important;
     font-weight: 700 !important;
 }
 
@@ -233,7 +233,7 @@
 
 @media screen and (max-width:2000px) {
     .wrapperforCreatorTool>div {
-        width: 60% !important;
+        width: 63% !important;
         margin: auto !important;
         overflow: hidden;
     }
@@ -281,10 +281,6 @@
 }
 
 @media screen and (min-width:768px) and (max-width:1024px) {
-
-    .mini-card h3 {
-        font-size: large !important;
-    }
 
     .announcement>div {
         padding: 6% 0 0 0 !important;
@@ -398,10 +394,6 @@
 }
 
 @media screen and (min-width:1024px) and (max-width:1500px) {
-
-    .mini-card h3 {
-        font-size: large !important;
-    }
 
     .homeheroAssertImage {
         width: 600px !important;
