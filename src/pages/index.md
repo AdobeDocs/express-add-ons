@@ -63,7 +63,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 ![Abstract illustration of services being connected in a secure manner](images/Explore_Image_2.png)
 
-- [Learn more](https://developer.adobe.com/express-add-ons/docs/guides/develop/#authenticating-with-oauth-20)
+- [Learn more](https://developer.adobe.com/express-add-ons/docs/guides/develop/#authorization-with-oauth-20)
 
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
@@ -133,5 +133,5 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 View our developer quickstart guide to start building add-ons in Adobe Express.
 
-- [View the guide](https://developer.adobe.com/express-add-ons/docs/guides/getting_started/)
+- [View the guide](https://developer.adobe.com/express-add-ons/docs/guides/getting_started/quickstart/)
 - [Try an add-on](https://new.express.adobe.com/new?category=addOns&addOnId=)
