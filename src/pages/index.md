@@ -24,7 +24,7 @@ import bgImg from "./images/Summary_BgImage.jpg"
 
 Give users new ways to create and share by building add-ons in <a href="https://new.express.adobe.com">Adobe Express</a>.
 
-- [Get started](https://developer-stage.adobe.com/express-add-ons/docs/guides)
+- [Get started](https://developer.adobe.com/express-add-ons/docs/guides)
 - [Explore add-ons](https://new.express.adobe.com/new?category=addOns&addOnId=)
 
 homeheroAssertImage
@@ -51,9 +51,9 @@ homeheroAssertImage
 
 ### Leverage familiar web technologies.
 
-Use HTML, CSS, JavaScript/TypeScript, and [Spectrum](https://developer-stage.adobe.com/express-add-ons/docs/guides/design/) to build native-feeling user experiences for your add-on.
+Use HTML, CSS, JavaScript/TypeScript, and [Spectrum](https://developer.adobe.com/express-add-ons/docs/guides/design/) to build native-feeling user experiences for your add-on.
 
-- [Learn more](https://developer-stage.adobe.com/express-add-ons/docs/guides/develop/frameworks-libraries-bundling/)
+- [Learn more](https://developer.adobe.com/express-add-ons/docs/guides/develop/frameworks-libraries-bundling/)
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left" />
 
@@ -63,7 +63,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 ![Abstract illustration of services being connected in a secure manner](images/Explore_Image_2.png)
 
-- [Learn more](https://developer-stage.adobe.com/express-add-ons/docs/guides/develop/#authenticating-with-oauth-20)
+- [Learn more](https://developer.adobe.com/express-add-ons/docs/guides/develop/#authenticating-with-oauth-20)
 
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
@@ -73,7 +73,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 Enable users to drag and drop any image or video asset to a document.
 
-- [Learn more](https://developer-stage.adobe.com/express-add-ons/docs/guides/develop/#importing-content)
+- [Learn more](https://developer.adobe.com/express-add-ons/docs/guides/develop/#importing-content)
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left"/>
 
@@ -83,7 +83,7 @@ Export renditions of your users' work to a variety of formats.
 
 ![Illustration showing the ability to export assets to other surfaces from Adobe Express](images/Explore_Image_4.png)
 
-- [Learn more](https://developer-stage.adobe.com/express-add-ons/docs/guides/develop/#exporting-content)
+- [Learn more](https://developer.adobe.com/express-add-ons/docs/guides/develop/#exporting-content)
 
 <TextBlock slots="image, heading,text" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
@@ -107,19 +107,25 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### We've got your resources covered.
 
-<MiniResourceCard slots="image,heading" repeat="3" theme="lightest" inRow="3" className="mini-card" />
+<MiniResourceCard slots="image,heading,link" repeat="3" theme="lightest" inRow="3" className="mini-card" />
 
 ![Adobe Express logo over a gradient background](images/LogoSDK.jpg)
 
 ### Blog
 
+[Link to blog post](adobe.ly/expressaddons)
+
 ![Icon showing a code block](images/code.jpg)
 
 ### Code samples
 
+[Link to code samples](https://developer.adobe.com/express-add-ons/docs/samples/)
+
 ![Icon showing a changelog](images/change_log.jpg)
 
 ### Changelog
+
+[Link to changelog](https://developer.adobe.com/express-add-ons/docs/references/changelog//)
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 
@@ -127,5 +133,5 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 View our developer quickstart guide to start building add-ons in Adobe Express.
 
-- [View the guide](https://developer-stage.adobe.com/express-add-ons/docs/guides/getting_started/)
+- [View the guide](https://developer.adobe.com/express-add-ons/docs/guides/getting_started/)
 - [Try an add-on](https://new.express.adobe.com/new?category=addOns&addOnId=)

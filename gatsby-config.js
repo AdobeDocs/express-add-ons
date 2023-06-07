@@ -35,7 +35,7 @@ module.exports = {
         menu: [
           {
             title: 'Add-ons',
-            path: 'https://developer-stage.adobe.com/express-add-ons/docs/guides/'
+            path: 'https://developer.adobe.com/express-add-ons/docs/guides/'
           },
           {
             title: 'Embed SDK',
