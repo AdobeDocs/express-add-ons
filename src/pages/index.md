@@ -113,7 +113,7 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### Blog
 
-[Link to blog post](adobe.ly/expressaddons)
+[Link to blog post](https://adobe.ly/expressaddons)
 
 ![Icon showing a code block](images/code.jpg)
 
