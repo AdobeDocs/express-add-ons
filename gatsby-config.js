@@ -14,13 +14,13 @@ module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/express-add-ons/',
   siteMetadata: {
     "home": {
-      "title": "Adobe Express",
-      "path": "https://new.express.adobe.com"
+      "title": "Products",
+      "path": "https://developer.adobe.com/apis"
     },
     pages: [
       // {
       //   title: 'Adobe Express',
-      //   path: 'https://new.express.adobe.com'
+      //   path: 'https://developer-stage.adobe.com/express'
       // },
       {
         title: 'Add-ons',
