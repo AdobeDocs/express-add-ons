@@ -15,6 +15,7 @@ keywords:
 import './styles/main.css'
 import CreatorToolBox from "./add-ons/creatorToolBox.md"
 import DeveloperToolBox from "./add-ons/developerTool.md"
+import SpaceContent from './add-ons/spaceAbility.md'
 import LearnMoreBtn from "./add-ons/learnmore.md"
 import bgImg from "./images/Summary_BgImage.jpg"
 
@@ -40,6 +41,16 @@ homeheroAssertImage
 <WrapperComponent slots="content" repeat="1" theme="light" className="learnMoreWrapper"/>
 
 <LearnMoreBtn />
+
+<TextBlock slots="heading" className="announcement" theme="lightest"/>
+
+### Check out our add-ons.
+
+<SpaceContent />
+
+<TeaserBlock  slots="buttons" className="secondaryBtn"/>
+
+- [Explore more](https://new.express.adobe.com/new?category=addOns)
 
 <TextBlock slots="heading" className="announcement exploreCapabilities" theme="lightest"/>
 
@@ -107,7 +118,7 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### We've got your resources covered.
 
-<MiniResourceCard slots="image,heading,link" repeat="3" theme="lightest" inRow="3" className="mini-card" />
+<MiniResourceCard slots="image,heading,link" repeat="3" theme="lightest" inRow="3" className="mini-card support-tools" />
 
 ![Adobe Express logo over a gradient background](images/LogoSDK.jpg)
 
