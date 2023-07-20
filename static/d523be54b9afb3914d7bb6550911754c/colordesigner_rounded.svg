@@ -1,0 +1,15 @@
+<svg id="color_design_icon___rounded_corners" data-name="color design icon _ rounded corners" xmlns="http://www.w3.org/2000/svg" width="102" height="102" viewBox="0 0 102 102">
+  <rect id="Rectangle_779404" data-name="Rectangle 779404" width="102" height="102" fill="#fff"/>
+  <rect id="Rectangle_779405" data-name="Rectangle 779405" width="102" height="102" rx="8" fill="#18181a"/>
+  <g id="Group_467830" data-name="Group 467830" transform="translate(8.976 14.688)">
+    <g id="Group_467827" data-name="Group 467827" transform="translate(15.995)">
+      <path id="Path_1037221" data-name="Path 1037221" d="M77.293,104.275,103.317,89.25l26.024,15.025L103.317,119.3Z" transform="translate(-77.293 -89.25)" fill="#dc3522" fill-rule="evenodd"/>
+    </g>
+    <g id="Group_467828" data-name="Group 467828" transform="matrix(0.5, -0.866, 0.866, 0.5, 31.979, 57.738)">
+      <path id="Path_1037222" data-name="Path 1037222" d="M0,15.025,26.024,0,52.048,15.025,26.024,30.05Z" fill="#283593" fill-rule="evenodd"/>
+    </g>
+    <g id="Group_467829" data-name="Group 467829" transform="matrix(0.5, 0.866, -0.866, 0.5, 26.024, 12.668)">
+      <path id="Path_1037223" data-name="Path 1037223" d="M0,15.025,26.024,0,52.048,15.025,26.024,30.05Z" fill="#f9a825" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
