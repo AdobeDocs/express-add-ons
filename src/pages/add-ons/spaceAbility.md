@@ -1,19 +1,19 @@
-<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inColumn" />
+<MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inRow" />
 
-![Color Designer](../images/colordesigner_rounded.png)
+![3D Illustrations](../images/3D_rounded.png)
 
-## Color Designer
+## 3D Illustrations
 
-Make generative background patterns using geometric shapes and tiling styles.
+Enhance your projects with 3D icons, illustrations, and animated shapes.
 
-![OneDrive](../images/OneDrive_rounded.png)
+![Attention Insight](../images/attentioninsight_rounded.png)
 
-## OneDrive
+## Attention Insight
 
-Bring assets to and from OneDrive to fuel your Adobe Express projects.
+Instantly predict where users will look when engaging with your design.
 
-![Spacefill](../images/spacefill_rounded.png)
+![Bueno NFT](../images/buenonft_rounded.png)
 
-## Spacefill
+## Bueno NFT
 
-Make generative background patterns using geometric shapes and tiling styles.
+Effortlessly transform artboards into NFT drops.
