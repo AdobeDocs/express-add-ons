@@ -44,7 +44,7 @@ homeheroAssertImage
 
 <TextBlock slots="heading" className="announcement" theme="lightest"/>
 
-### Check out our add-ons.
+### Built by our community.
 
 <SpaceContent />
 
