@@ -136,7 +136,7 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### Changelog
 
-[Link to changelog](https://developer.adobe.com/express/add-ons/docs/references/changelog//)
+[Link to changelog](https://developer.adobe.com/express/add-ons/docs/references/changelog/)
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 
