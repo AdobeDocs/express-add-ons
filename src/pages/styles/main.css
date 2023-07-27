@@ -224,6 +224,7 @@
 .mini-card h3 {
     font-size: large !important;
     font-weight: 700 !important;
+    white-space: nowrap !important;
 }
 
 .mini-card>div {
@@ -235,13 +236,14 @@
 }
 
 .mini-card>div>div {
-    justify-content: center !important;
-}
-
-.mini-card>div>div>div {
     width: 100% !important;
     margin: 0 !important;
-    box-shadow: 0 9px 15px 5px #e6e6e6;
+    box-shadow: 0 9px 15px 5px #e6e6e6 !important;
+}
+
+.mini-card a>div:last-child{
+    border: none !important;
+    height: 67px !important;
 }
 
 .mini-card>div>a>div>div:first-child {
@@ -343,6 +345,10 @@
 
     .explore>div>div>div {
         width: 100% !important;
+    }
+
+    .mini-card a>div:last-child{
+        height:60px !important;
     }
 
 }
