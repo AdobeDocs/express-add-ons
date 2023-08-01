@@ -12,7 +12,6 @@
 
 module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/express/add-ons/',
-  // pathPrefix: process.env.PATH_PREFIX || '/express-add-ons/',
   siteMetadata: {
     "home": {
       "title": "Products",
@@ -21,7 +20,7 @@ module.exports = {
     pages: [
       {
         title: 'Adobe Express',
-        path: 'https://developer-stage.adobe.com/express'
+        path: 'https://developer.adobe.com/express'
       },
       {
         title: 'Add-ons',
@@ -29,18 +28,18 @@ module.exports = {
       },
       {
         title: 'Embed SDK',
-        path: 'https://developer-stage.adobe.com/express/embed-sdk'
+        path: 'https://developer.adobe.com/express/embed-sdk'
       },
       {
         title: 'Documentation',
         menu: [
           {
             title: 'Add-ons',
-            path: 'https://developer-stage.adobe.com/express/add-ons/docs/guides/'
+            path: 'https://developer.adobe.com/express/add-ons/docs/guides/'
           },
           {
             title: 'Embed SDK',
-            path: 'https://developer-stage.adobe.com/express/embed-sdk/docs/'
+            path: 'https://developer.adobe.com/express/embed-sdk/docs/'
           },
         ]
       }
