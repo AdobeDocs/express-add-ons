@@ -30,7 +30,7 @@ import bgImg from "./images/Summary_BgImage.jpg"
 
 homeheroAssertImage
 
-<TextBlock slots="heading" className="announcement" theme="light"/>
+<TextBlock slots="heading" className="announcement" theme="lightest"/>
 
 ### Expand the creator toolbox.
 
@@ -45,6 +45,7 @@ homeheroAssertImage
 <TextBlock slots="heading" className="announcement" theme="lightest"/>
 
 ### Built by our community.
+
 
 <SpaceContent />
 

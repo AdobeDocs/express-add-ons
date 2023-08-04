@@ -45,6 +45,94 @@ module.exports = {
         ]
       }
     ],
+    credentialsConfig: {
+      signIn: {
+        title: "Get credentials",
+        description: "Create unique credentials that you will use to call the Adobe Express Embed SDK from your application.",
+        buttons: [
+          {
+            label: "Sign in to create credentials",
+            link: "https://account.adobe.com/",
+            variant: "primary"
+          }
+        ]
+      },
+      createCredentials: {
+        title: "Get credentials",
+        description: "Create unique credentials that you will use to call the Adobe Express Embed SDK from your application.",
+        fields: [
+          {
+            type: "textBox",
+            label: "Credential name*",
+            letters: 45,
+            helperText: "Credential name must be unique and between 3 and 45 character long."
+          },
+          {
+            type: "textArea",
+            label: "Allowed domains(up to 5)*",
+            letters: 45,
+            helperText: "Use wildcards to enter multiple subdomains (*my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greayer than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains."
+          },
+          {
+            type: "checkbox",
+            label: "Download a personalized code sample "
+          },
+          {
+            type: "selectbox",
+            label: "Language*",
+            options: ["Node Js", "Python"],
+            placeholder: "Select language for your code sample"
+          },
+          {
+            type: "checkbox",
+            label: "By checking this box, you agree to <a href='https://www.adobe.com/'>Adobe Developer Terms of Use.</a>"
+          },
+          {
+            type: "button",
+            label: "Create credentials"
+          },
+        ]
+      },
+      apiKeyCredential: {
+        title: "API KEY CREDENTIAL",
+        description: "Submitting this form creates an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.",
+        learnMore: {
+          title: "LEARN MORE",
+          description: [
+            {
+              type: "text",
+              label: "<a href=''>Authentication documentation</a>"
+            },
+            {
+              type: "text",
+              label: "<a href=''>Adobe Express Embed SDK documentation</a>"
+            }
+          ]
+        }
+      },
+      myNewCredential: {
+        title: "Your credential is ready to use",
+        description: "Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine.",
+        developerConsole: "Manage on Developer Console",
+        apiKeyCredential: {
+          title: "API KEY CREDENTIAL",
+          description: "An API Key credential was created. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.",
+          learnMore: {
+            title: "LEARN MORE",
+            description: [
+              {
+                type: "text",
+                label: "<a href=''>Authentication documentation</a>"
+              },
+              {
+                type: "text",
+                label: "<a href=''>Adobe Express Embed SDK documentation</a>"
+              }
+            ]
+          }
+        },
+      }
+    }
   },
-  plugins: [`@adobe/gatsby-theme-aio`]
+  plugins: [`@adobe/gatsby-theme-aio`],
 };
