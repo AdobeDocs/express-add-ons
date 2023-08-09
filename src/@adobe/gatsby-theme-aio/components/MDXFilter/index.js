@@ -233,8 +233,6 @@ export default ({ children, pageContext, query }) => {
       diff.push(SIDENAV_WIDTH);
     }
 
-    console.log('credentialsConfig', credentialsConfig)
-
     return (
       <MDXProvider components={{ ...MDXComponents, ...MDXBlocks }}>
         <main

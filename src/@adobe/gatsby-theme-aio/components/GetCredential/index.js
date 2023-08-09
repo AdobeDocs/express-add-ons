@@ -6,10 +6,8 @@ const GetCredential = ({
   credentials
 }) => {
 
-  const { signIn, } = credentials;
+  const { signIn } = credentials;
   const [createCredential, setCreateCredential] = useState(false);
-
-  console.log('createCredential', createCredential)
 
   return (
     <section
@@ -40,6 +38,7 @@ const GetCredential = ({
               className="spectrum-Body spectrum-Body--sizeL"
               css={css`
                 width: 50%;
+                color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
                 @media screen and (min-width:320px) and (max-width:1024px) {
                   width: 100% ;
                 }

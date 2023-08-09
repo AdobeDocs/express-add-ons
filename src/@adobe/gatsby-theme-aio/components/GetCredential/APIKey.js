@@ -2,32 +2,61 @@ import React from 'react';
 import { css } from "@emotion/react";
 
 const APIKey = ({ apiKeyCredential }) => {
-  const { title, description, learnMore } = apiKeyCredential;
+
   return (
     <>
       <div>
-        {title && <h4 class="spectrum-Heading spectrum-Heading--sizeXS" css={css`letter-spacing: 1px;`}>{title}</h4>}
-        {description && <p class="spectrum-Body spectrum-Body--sizeM">{description}</p>}
-        {learnMore &&
-          <div
-            css={css`
+        <div
+          css={css`
+            display:flex;
+            gap:16px;
+            flex-direction:column;
+          `}
+        >
+          {apiKeyCredential?.title &&
+            <h3
+              className="spectrum-Heading spectrum-Heading--sizeS"
+              css={css`
+              color:var(--spectrum-global-color-gray-900);
+            `}>{apiKeyCredential?.title}</h3>}
+          {apiKeyCredential?.description && <p class="spectrum-Body spectrum-Body--sizeM">{apiKeyCredential?.description}</p>}
+        </div>
+        <div
+          css={css`
+            margin-top:32px;
+          `}
+        >
+          {apiKeyCredential?.learnMore &&
+            <div
+              css={css`
               display : flex;
               flex-direction: column;
-              gap:20px;
+              gap:16px;
               `}
-          >
-            <h4 class="spectrum-Heading spectrum-Heading--sizeXS" css={css`letter-spacing: 1px;margin-bottom: 0;`}>{learnMore?.title}</h4>
-            {learnMore?.description &&
-              learnMore?.description.map(({ type, label }) => {
-                if (type === "text") {
+            >
+              <h3
+                className="spectrum-Heading spectrum-Heading--sizeS"
+                css={css`
+                  color:var(--spectrum-global-color-gray-900);
+                `}>{apiKeyCredential?.learnMore?.title}</h3>
+              {apiKeyCredential?.learnMore?.description &&
+                apiKeyCredential?.learnMore?.description.map(({ link, label }) => {
                   return (
-                    <div dangerouslySetInnerHTML={{ __html: label }} />
+                    <a
+                      css={css`
+                      
+                      &:hover {
+                        color: rgb(2, 101, 220);
+                      }
+                      color:	rgb(0, 84, 182);
+                      `}
+                      href={link}>{label}</a>
                   )
-                }
-              })
-            }
-          </div>
-        }
+                })
+              }
+            </div>
+          }
+        </div>
       </div>
     </>
   )

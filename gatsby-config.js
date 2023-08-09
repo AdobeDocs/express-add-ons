@@ -57,6 +57,20 @@ module.exports = {
           }
         ]
       },
+      betaProgram: {
+        title: "Get credentials",
+        description: `To create credentials, you need developer role permission for the <b>[Adobe Express Embed SDK].</b>`,
+        link: "<a href>How do I get developer permissions for the [Adobe Express Embed SDK]?</a>",
+        info: `You're currently signed in as <b>[samcook@orgname.com]</b>`,
+        instruction: `Have a personal account? Try to log in with that account to access your personal developer organization.`,
+        buttons: [
+          {
+            label: "Sign in as a different user",
+            link: "https://account.adobe.com/",
+            variant: "primary"
+          }
+        ]
+      },
       createCredentials: {
         title: "Get credentials",
         description: "Create unique credentials that you will use to call the Adobe Express Embed SDK from your application.",
@@ -64,13 +78,13 @@ module.exports = {
           {
             type: "textBox",
             label: "Credential name*",
-            letters: 45,
+            letters: 30,
             helperText: "Credential name must be unique and between 3 and 45 character long."
           },
           {
             type: "textArea",
             label: "Allowed domains(up to 5)*",
-            letters: 45,
+            letters: 30,
             helperText: "Use wildcards to enter multiple subdomains (*my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greayer than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains."
           },
           {
@@ -94,18 +108,18 @@ module.exports = {
         ]
       },
       apiKeyCredential: {
-        title: "API KEY CREDENTIAL",
+        title: "API key credential",
         description: "Submitting this form creates an API Key credential. The API key credential identifies your application to Adobe servers and can help accept or reject requests originating from certain domains.",
         learnMore: {
-          title: "LEARN MORE",
+          title: "Learn more",
           description: [
             {
-              type: "text",
-              label: "<a href=''>Authentication documentation</a>"
+              label: "Authentication documentation",
+              link: "",
             },
             {
-              type: "text",
-              label: "<a href=''>Adobe Express Embed SDK documentation</a>"
+              label: "Adobe Express Embed SDK documentation",
+              link: "",
             }
           ]
         }
@@ -113,6 +127,7 @@ module.exports = {
       myNewCredential: {
         title: "Your credential is ready to use",
         description: "Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine.",
+        nextStep: "Next Steps",
         developerConsole: "Manage on Developer Console",
         apiKeyCredential: {
           title: "API KEY CREDENTIAL",
@@ -121,16 +136,20 @@ module.exports = {
             title: "LEARN MORE",
             description: [
               {
-                type: "text",
-                label: "<a href=''>Authentication documentation</a>"
+                label: "Authentication documentation",
+                link: "",
               },
               {
-                type: "text",
-                label: "<a href=''>Adobe Express Embed SDK documentation</a>"
+                label: "Adobe Express Embed SDK documentation",
+                link: "",
               }
             ]
           }
-        },
+        }
+      },
+      error: {
+        label: "Get Help",
+        link: ""
       }
     }
   },

@@ -10,7 +10,7 @@ const Loading = ({ credentials }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setShowMyCredential(true);
-    }, 5000);
+    }, 1000);
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -19,15 +19,16 @@ const Loading = ({ credentials }) => {
       {!showMyCredential &&
         <div
           css={css`
-        width: 75%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+          width: 75%;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
 
-        @media screen and (min-width:320px) and (max-width:1024px) {
-          width: 90% ;
-        }`}>
+          @media screen and (min-width:320px) and (max-width:1024px) {
+            width: 90% ;
+          }
+        `}>
           {createCredentials?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{createCredentials?.title}</h3>}
           <div css={css`
           padding: 7%;
@@ -56,12 +57,12 @@ const Loading = ({ credentials }) => {
               css={css`
             font-style: italic;
             font-family: 'adobe-clean';
-            color: #5C5C5C;
+            color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
           `}
             >Creating credentials...</div>
             <div
               css={css`
-              color: #5C5C5C;
+              color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
             `}
             >This process may take a few moments. Once complete, you download will start.</div>
           </div>

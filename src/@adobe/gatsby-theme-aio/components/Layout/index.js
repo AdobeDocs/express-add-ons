@@ -261,6 +261,18 @@ export default ({ children, pageContext, location }) => {
                     variant
                   }
                 }
+                betaProgram {
+                  title
+                  description
+                  info
+                  link
+                  instruction
+                  buttons {
+                    label
+                    link
+                    variant
+                  }
+                }
                 createCredentials{
                     title
                     description
@@ -279,23 +291,28 @@ export default ({ children, pageContext, location }) => {
                   learnMore{
                     title
                     description{
-                      type
                       label
+                      link
                     }
                   }
+                }
+                error{
+                  label
+                  link
                 }
                 myNewCredential{
                   title
                   description
+                  nextStep
                   developerConsole
-                  apiKeyCredential{
+                  apiKeyCredential {
                     title
                     description
                     learnMore{
                       title
-                      description{
-                        type
+                      description {
                         label
+                        link
                       }
                     }
                   }
@@ -359,8 +376,6 @@ export default ({ children, pageContext, location }) => {
   const { allMdx, allSitePage, site, allGithub, allGithubContributors } = data;
   const { siteMetadata, pathPrefix } = site;
   const { home, versions, pages, subPages, docs, credentialsConfig } = siteMetadata;
-
-  console.log('credentialsConfig', credentialsConfig)
 
   const [showSearch, setShowSearch] = useState(false);
   const [showSideNav, setShowSideNav] = useState(false);
