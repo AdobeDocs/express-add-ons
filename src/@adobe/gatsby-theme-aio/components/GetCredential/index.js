@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { css } from "@emotion/react";
 import { CreateCredential } from './CreateCredential';
+import PropTypes from 'prop-types';
+import Context from '@adobe/gatsby-theme-aio/src/components/Context';
 
-const GetCredential = ({
-  credentials
-}) => {
+const GetCredential = ({ credentials }) => {
 
+  const { ims } = useContext(Context);
   const { signIn } = credentials;
-  const [createCredential, setCreateCredential] = useState(false);
+
+  if (window.adobeIMS?.isSignedInUser()) {
+    return <CreateCredential credentials={credentials} />
+  }
 
   return (
     <section
@@ -17,7 +21,7 @@ const GetCredential = ({
         padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;`
       }
     >
-      {signIn && !createCredential &&
+      {signIn &&
         <div
           css={css`
             width: 75%;
@@ -49,23 +53,23 @@ const GetCredential = ({
           {signIn?.buttons &&
             signIn?.buttons.map((button) => {
               return (
-                // <a href={button?.link}>
                 <button
                   className={`spectrum-Button spectrum-Button--outline spectrum-Button--${button?.variant} spectrum-Button--sizeM`}
                   css={css`width:fit-content;margin-top:10px`}
-                  onClick={() => setCreateCredential(true)}>
+                  onClick={() => ims?.signIn()}>
                   <span className="spectrum-Button-label">{button?.label}</span>
                 </button>
-                // </a>
               )
             })
           }
         </div>
       }
-
-      {createCredential && <CreateCredential credentials={credentials} />}
     </section>
   )
+};
+
+GetCredential.propTypes = {
+  credentialType: PropTypes.string,
 }
 
-export { GetCredential }
+export { GetCredential };

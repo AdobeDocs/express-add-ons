@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import MyNewCredential from './MyNewCredential';
 
-const Loading = ({ credentials }) => {
+const Loading = ({ credentials, clientId, apiKey }) => {
 
   const { createCredentials } = credentials;
   const [showMyCredential, setShowMyCredential] = useState(false);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    if (apiKey !== null) {
       setShowMyCredential(true);
-    }, 1000);
-    return () => clearTimeout(timeoutId);
-  }, []);
+    }
+  }, [apiKey]);
 
   return (
     <>
@@ -68,7 +67,7 @@ const Loading = ({ credentials }) => {
           </div>
         </div>
       }
-      {showMyCredential && <MyNewCredential credentials={credentials} />}
+      {showMyCredential && <MyNewCredential credentials={credentials} clientId={clientId} apiKey={apiKey} />}
     </>
   )
 }

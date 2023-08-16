@@ -15,8 +15,10 @@ const CreateCredential = ({ credentials }) => {
   const [disable, setDisable] = useState(false);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [toastVisible, setToastVisible] = useState(false);
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
+  const [inputData, setInputData] = useState([]);
+  const [clientId, setClientId] = useState(null);
+  const [apiKey, setAPIKey] = useState(null)
 
   const openDialog = () => {
     setModalOpen(true);
@@ -28,11 +30,56 @@ const CreateCredential = ({ credentials }) => {
   };
 
   const handleSave = () => {
-    setToastVisible(true);
+  };
+
+  const createCredential = async () => {
+    const token = window.adobeIMS?.getTokenFromStorage()?.token;
+    if (token) {
+      const data = {
+        name: Date.now().toString(),
+        platform: 'apiKey',
+        description: 'created for get credential'
+      };
+      const response = await fetch("/console/api/organizations/220657/integrations/adobeid", {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token,
+          "x-api-key": "UDPWeb1"
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.status === 200) {
+        const result = await response.json();
+        setClientId(() => { return result.id });
+        setAPIKey(() => { return result.apiKey });
+      }
+    }
+    else {
+      console.log('User not logged in');
+    }
+  }
+
+  const handleCredential = () => {
+    setLoading(true);
+    createCredential(setClientId, setAPIKey);
+  }
+
+  const handleInputChange = (index, value) => {
+    const updatedInputData = [...inputData];
+    updatedInputData[index] = value;
+    setInputData(updatedInputData);
   };
 
   return (
-    <>
+    <section
+      css={css`
+      position: relative;
+      background: var(--spectrum-global-color-gray-100); 
+      padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;`
+      }
+    >
       {createCredentials && !isLoading && !error &&
         <div
           css={css`
@@ -99,6 +146,7 @@ const CreateCredential = ({ credentials }) => {
               >
                 {createCredentials?.fields &&
                   createCredentials?.fields.map(({ type, label, letters, helperText, options, placeholder }, index) => {
+                    const isRedText = inputData[index]?.length > 3 || inputData[index] === undefined;
                     return (
                       <>
 
@@ -120,24 +168,31 @@ const CreateCredential = ({ credentials }) => {
                                 {label}
                               </label>
 
-                              <span id="character-count-2" className="spectrum-Textfield-characterCount"
-                                css={css`
+                              {type === "textBox" &&
+                                <span id="character-count-2" className="spectrum-Textfield-characterCount"
+                                  css={css`
                                   color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700))
                                 `}>
-                                {letters}
-                              </span>
+                                  {letters - (inputData[index] || '').length}
+                                </span>
+                              }
 
                             </div>
 
                             {type === "textBox" &&
-                              <input type="text"
-                                css={css`
+                              <>
+                                <input type="text"
+                                  css={css`
                                   width:90%;
                                   padding: 7px;
                                   border-radius: 3px;
-                                  border: 1px solid #D0D0D0 !important;
+                                  border: 1px solid ${!isRedText ? "var(--spectrum-global-color-red-400)" : "#D0D0D0"}!important;
                                 `}
-                              />
+                                  maxLength={letters}
+                                  value={inputData[index] || ''}
+                                  onChange={(e) => handleInputChange(index, e.target.value)}
+                                />
+                              </>
                             }
 
                             {type === "textArea" &&
@@ -174,7 +229,7 @@ const CreateCredential = ({ credentials }) => {
                               <p className="spectrum-Body spectrum-Body--sizeXS"
                                 css={css`
                                   width: 90%;
-                                  color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700))
+                                  color: ${isRedText ? "var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700))" : "var(--spectrum-global-color-red-400)"}
                                `}>{helperText}</p>
                             </div>
                           </div>
@@ -245,7 +300,7 @@ const CreateCredential = ({ credentials }) => {
                         {type === "button" &&
                           <button
                             className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`} disabled={disable}
-                            css={css`width:fit-content;margin-top:10px`} onClick={() => { setLoading(true) }}>
+                            css={css`width:fit-content;margin-top:10px`} onClick={() => handleCredential()}>
                             <span className="spectrum-Button-label">{label}</span>
                           </button>
                         }
@@ -289,10 +344,10 @@ const CreateCredential = ({ credentials }) => {
         </div>
       }
 
-      {isLoading && <Loading credentials={credentials} />}
+      {isLoading && <Loading credentials={credentials} clientId={clientId} apiKey={apiKey} />}
       {modalOpen && <ChangeOrganization onClose={closeDialog} onSave={handleSave} />}
       {error && <Tryagain credentials={credentials} />}
-    </>
+    </section>
   )
 }
 

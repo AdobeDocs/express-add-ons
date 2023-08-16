@@ -30,12 +30,12 @@ const CopyIcon = () => {
   )
 }
 
-const MyNewCredential = ({ credentials }) => {
+const MyNewCredential = ({ credentials, clientId, apiKey }) => {
 
   const { myNewCredential } = credentials;
   const [isTooltipOpen, setTooltipOpen] = useState(null);
 
-  const domains = [{ key: "API Key", value: "20fdf910ffe949549a63e2ca6d517376" }, { key: "Allowed domains", value: "*.my-domain.com" }];
+  const domains = [{ key: "API Key", value: apiKey }, { key: "Allowed domains", value: "*.my-domain.com" }];
   const handleOpen = (index) => {
     setTooltipOpen(index)
   }
