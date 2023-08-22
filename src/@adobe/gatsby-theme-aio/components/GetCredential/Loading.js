@@ -1,0 +1,49 @@
+import React from 'react';
+import { css } from "@emotion/react";
+
+const Loading = ({
+  credentials
+}) => {
+  return (
+    <>
+      {credentials?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.title}</h3>}
+      <div css={css`
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          flex-direction:column;
+          gap:10px;
+        `}>
+        <div className="spectrum-ProgressCircle spectrum-ProgressCircle--indeterminate spectrum-ProgressCircle--large">
+          <div className="spectrum-ProgressCircle-track"></div>
+          <div className="spectrum-ProgressCircle-fills">
+            <div className="spectrum-ProgressCircle-fillMask1">
+              <div className="spectrum-ProgressCircle-fillSubMask1">
+                <div className="spectrum-ProgressCircle-fill"></div>
+              </div>
+            </div>
+            <div className="spectrum-ProgressCircle-fillMask2">
+              <div className="spectrum-ProgressCircle-fillSubMask2">
+                <div className="spectrum-ProgressCircle-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          css={css`
+            font-style: italic;
+            font-family: 'adobe-clean';
+            color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
+          `}
+        >Creating credentials...</div>
+        <div
+          css={css`
+              color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600));
+            `}
+        >This process may take a few moments. Once complete, you download will start.</div>
+      </div>
+    </>
+  )
+}
+
+export { Loading }

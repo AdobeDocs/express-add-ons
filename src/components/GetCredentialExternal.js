@@ -5,7 +5,6 @@ import { css } from "@emotion/react";
 const GetCredentialExternal = ({ }) => {
   return (
     <>
-      <div>
         <div
           css={css`
             display:flex;
@@ -67,8 +66,6 @@ const GetCredentialExternal = ({ }) => {
             >Adobe Express Embed SDK documentation</a>
           </div>
         </div>
-      </div>
-      
     </>
   )
 }

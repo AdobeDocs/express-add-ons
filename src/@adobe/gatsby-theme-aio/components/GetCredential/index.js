@@ -4,16 +4,26 @@ import PropTypes from 'prop-types';
 import { SignIn } from './Signin';
 import { CreateCredential } from './CreateCredential';
 
-const GetCredential = ({ signIn, credentialForm, side, unKnown, credentialType, }) => {
+const MIN_MOBILE_WIDTH = "320px";
+const MAX_MOBILE_WIDTH = "767px";
+const MAX_TABLET_SCREEN_WIDTH = "1024px"
 
-  const credentialItems = { signIn, credentialForm, side, unKnown, credentialType };
+const GetCredential = ({ signIn, credentialForm, card, unKnown, credentialType, }) => {
+
+  const credentialItems = { signIn, credentialForm, card, unKnown, credentialType };
 
   return (
     <>
       <section
         css={css`
           position: relative;
-          padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;`
+          padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;
+                    
+          @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
+            padding: var(--spectrum-global-dimension-size-300);
+          }
+
+          `
         }
       >
         <div
@@ -25,8 +35,9 @@ const GetCredential = ({ signIn, credentialForm, side, unKnown, credentialType, 
             gap: 15px;
             text-align:initial;
 
-            @media screen and (min-width:320px) and (max-width:1024px) {
+            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
               width: 90% ;
+              overflow:hidden;
             }
 
           `}

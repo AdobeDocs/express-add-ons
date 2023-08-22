@@ -19,6 +19,7 @@ import SpaceContent from './add-ons/spaceAbility.md'
 import LearnMoreBtn from "./add-ons/learnmore.md"
 import bgImg from "./images/Summary_BgImage.jpg"
 import { GetCredentialExternal } from "../components/GetCredentialExternal.js";
+import FormJson from "../components/i18.json";
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
@@ -31,23 +32,19 @@ import { GetCredentialExternal } from "../components/GetCredentialExternal.js";
 
 homeheroAssertImage
 
-<GetCredential slots="signIn,credentialForm,unKnown" credentialType="apiKey" />
+<GetCredential slots="signIn,credentialForm,card,unKnown" credentialType="apiKey" />
 
 <SignIn title="Get Credentials"  paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application."  buttonText="Sign in to create credentials" />
 
-<CreateCredential title="Get Credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." 
-formBuilder={[
-{label : "Credential name" , description:"Credential name must be unique and between 3 and 45 character long." , contextHelp:{title : "Create unique credentials" } , type:"textBox" , range:30},
-{label : "Allowed domains(up to 5)*" , description:"Use wildcards to enter multiple subdomains (*my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greayer than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains." , type:"textArea" , contextHelp:{title : "What are allowed domains" , paragraph : "To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." , link : "https://www.adobe.com/" , labelForLink : "Learn more in our documentation" }},
-{label : "Download a personalized code sample" , type : "checkbox"},
-{label: "Language*", options: ["Node Js", "Python"], placeholder:"Select language for your code sample" , type:"selectbox"},
-{label: "By checking this box, you agree to <a href='https://www.adobe.com/'>Adobe Developer Terms of Use.</a>", type: "checkbox" },
-{label: "Create credential" , type : "button"}
-]}>
-    <Side title="side" ><GetCredentialExternal/></Side>
+<CreateCredential title="Get Credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." formBuilder={FormJson} changeOrganization="You're creating this credential in [<b>Org Name, Inc</b>]. <a href=''> Change Organization</a> " developerConsole="Have existing credentials?<a href=''>Go to Developer Console</a>" >
+  <Side title="side" ><GetCredentialExternal/></Side>
 </CreateCredential>
 
-<UnknownError helpLink="https://some_help_link" helpLinkText="Get Help" />
+<Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on developer console" devConsoleDirection="project_overview|api_overview|credential_overview">
+  <Side title="side" ><GetCredentialExternal/></Side>
+</Card>
+
+<UnknownError helpLink="https://some_help_link" helpLinkText="Get Help" />
 
 <WrapperComponent slots="content" repeat="1" theme="light" className="wrapperforCreatorTool"/>
 
@@ -160,4 +157,4 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 View our developer quickstart guide to start building add-ons in Adobe Express.
 
 - [View the guide](https://developer.adobe.com/express/add-ons/docs/guides/getting_started/quickstart/)
-- [Try an add-on](https://new.express.adobe.com/new?category=addOns&addOnId=)
+- [Try an add-on](https://new.express.adobe.com/new?category=addOns&addOnId=) -->

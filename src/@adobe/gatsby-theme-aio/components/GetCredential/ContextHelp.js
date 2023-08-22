@@ -4,8 +4,6 @@ import classNames from 'classnames';
 
 export const ContextHelp = ({ content, index, formValue }) => {
 
-  console.log('formValue', formValue)
-
   const [open, setOpen] = useState(formValue?.map(() => false));
   const toggleOpen = (index) => {
     const updatedStates = [...open];
