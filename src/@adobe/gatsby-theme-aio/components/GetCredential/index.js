@@ -3,26 +3,35 @@ import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
 import { SignIn } from './Signin';
 import { CreateCredential } from './CreateCredential';
+import classNames from "classnames";
 
 const MIN_MOBILE_WIDTH = "320px";
 const MAX_MOBILE_WIDTH = "767px";
 const MAX_TABLET_SCREEN_WIDTH = "1024px"
 
-const GetCredential = ({ signIn, credentialForm, card, unKnown, credentialType, }) => {
+const GetCredential = ({
+  signIn,
+  credentialForm,
+  card,
+  unKnown,
+  credentialType,
+  theme = "light",
+  className }
+) => {
 
   const credentialItems = { signIn, credentialForm, card, unKnown, credentialType };
 
   return (
     <>
       <section
+        className={classNames(className, `spectrum--${theme}`)}
         css={css`
           position: relative;
           padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;
                     
           @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
-            padding: var(--spectrum-global-dimension-size-300);
+            padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
           }
-
           `
         }
       >

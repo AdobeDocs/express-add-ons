@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
 import Context from '@adobe/gatsby-theme-aio/src/components/Context';
 import { css } from "@emotion/react";
+import classNames from "classnames";
 
 const SignIn = ({ signIn }) => {
 
   const { ims } = useContext(Context);
 
   return (
-    <>
+    <div className={classNames(signIn?.className)}
+      css={css`
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      `}
+    >
       {signIn?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signIn?.title}</h3>}
       {signIn?.paragraph &&
         <p
@@ -30,7 +37,7 @@ const SignIn = ({ signIn }) => {
           <span className="spectrum-Button-label">{signIn?.buttonText}</span>
         </button>
       }
-    </>
+    </div>
   )
 }
 

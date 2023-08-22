@@ -3,7 +3,9 @@ import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { ContextHelp } from './ContextHelp';
 import { Loading } from "./Loading"
+import classNames from "classnames";
 import { MyCredential } from './MyCredential';
+
 const MIN_MOBILE_WIDTH = "320px";
 const MAX_TABLET_SCREEN_WIDTH = "1024px";
 
@@ -52,8 +54,6 @@ const CreateCredential = ({
     }
   }
 
-  console.log('response', response)
-
   useEffect(() => {
     if (response) {
       setLoading(false);
@@ -64,7 +64,14 @@ const CreateCredential = ({
   return (
     <>
       {!loading && !showCredential &&
-        <>
+        <div
+          className={classNames(credentials?.className)}
+          css={css`
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          `}
+        >
           {credentials?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.title}</h3>}
           {credentials?.paragraph &&
             <p
@@ -127,11 +134,11 @@ const CreateCredential = ({
                 `}
               >
                 {formValue &&
-                  formValue?.map(({ type, label, range, description, options, placeholder, contextHelp, buttonLabel }, index) => {
+                  formValue?.map(({ type, label, range, description, options, placeholder, contextHelp, buttonLabel, classname }, index) => {
                     return (
                       <>
                         {type !== "checkbox" && type !== "radio" ?
-                          <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`}>
+                          <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} className={classNames(classname)}>
                             <div className="spectrum-Textfield spectrum-Textfield--sizeM"
                               css={css`
                                 display:flex;
@@ -245,7 +252,7 @@ const CreateCredential = ({
                           </div>
                           :
                           <>
-                            <div css={css`
+                            <div className={classNames(classname)} css={css`
                             display: flex;
                             gap: 10px;
                             align-items: center;
@@ -332,7 +339,7 @@ const CreateCredential = ({
             
             `}
           />
-        </>
+        </div>
       }
       {loading && <Loading credentials={credentials} />}
       {!loading && showCredential && <MyCredential credentialItems={credentialItems} response={response} />}

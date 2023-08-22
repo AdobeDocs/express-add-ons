@@ -32,15 +32,15 @@ import FormJson from "../components/i18.json";
 
 homeheroAssertImage
 
-<GetCredential slots="signIn,credentialForm,card,unKnown" credentialType="apiKey" />
+<GetCredential slots="signIn,credentialForm,card,unKnown" credentialType="apiKey" theme="light" className="credential" />
 
-<SignIn title="Get Credentials"  paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application."  buttonText="Sign in to create credentials" />
+<SignIn title="Get Credentials"  paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application."  buttonText="Sign in to create credentials"  className="signin"/>
 
-<CreateCredential title="Get Credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." formBuilder={FormJson} changeOrganization="You're creating this credential in [<b>Org Name, Inc</b>]. <a href=''> Change Organization</a> " developerConsole="Have existing credentials?<a href=''>Go to Developer Console</a>" >
+<CreateCredential title="Get Credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." formBuilder={FormJson} changeOrganization="You're creating this credential in [<b>Org Name, Inc</b>]. <a href=''> Change Organization</a> " developerConsole="Have existing credentials?<a href=''>Go to Developer Console</a>" className="createCredential" >
   <Side title="side" ><GetCredentialExternal/></Side>
 </CreateCredential>
 
-<Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on developer console" devConsoleDirection="project_overview|api_overview|credential_overview">
+<Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on developer console" devConsoleDirection="project_overview|api_overview|credential_overview" className="card_developer_console" >
   <Side title="side" ><GetCredentialExternal/></Side>
 </Card>
 
