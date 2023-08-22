@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@adobe/gatsby-theme-aio": "^4.10.1",
+    "@spectrum-css/contextualhelp": "^2.0.28",
     "@spectrum-css/link": "^4.0.40",
     "gatsby": "4.22.0",
     "http-proxy-middleware": "^2.0.6",
