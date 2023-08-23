@@ -15,7 +15,6 @@ const GetCredential = ({
   card,
   unKnown,
   credentialType,
-  theme = "light",
   className }
 ) => {
 
@@ -24,8 +23,9 @@ const GetCredential = ({
   return (
     <>
       <section
-        className={classNames(className, `spectrum--${theme}`)}
+        className={classNames(className)}
         css={css`
+          background: #f8f8f8;
           position: relative;
           padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;
                     

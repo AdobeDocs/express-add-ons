@@ -34,17 +34,17 @@ homeheroAssertImage
 
 <GetCredential slots="signIn,credentialForm,card,unKnown" credentialType="apiKey" theme="light" className="credential" />
 
-<SignIn title="Get Credentials"  paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application."  buttonText="Sign in to create credentials"  className="signin"/>
+<SignInCredential heading="Get Credentials" text="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." buttonText="Sign in to create credentials" className="signin"/>
 
-<CreateCredential title="Get Credentials" paragraph="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." formBuilder={FormJson} changeOrganization="You're creating this credential in [<b>Org Name, Inc</b>]. <a href=''> Change Organization</a> " developerConsole="Have existing credentials?<a href=''>Go to Developer Console</a>" className="createCredential" >
-  <Side title="side" ><GetCredentialExternal/></Side>
+<CreateCredential heading="Get Credentials" text="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." formBuilder={FormJson} isOrganization={true}>
+  <SideCredential><GetCredentialExternal/></SideCredential>
 </CreateCredential>
 
-<Card title="Your credential is ready to use" paragraph="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine." nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on developer console" devConsoleDirection="project_overview|api_overview|credential_overview" className="card_developer_console" >
-  <Side title="side" ><GetCredentialExternal/></Side>
-</Card>
+<CardCredential heading="Your credential is ready to use" text="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on developer console" devConsoleDirection="project_overview|api_overview|credential_overview" className="card_developer_console" >
+  <SideCredential><GetCredentialExternal/></SideCredential>
+</CardCredential>
 
-<UnknownError helpLink="https://some_help_link" helpLinkText="Get Help" />
+<UnknownCredential heading="UnKnown Error" text1="An error has occured when you tried to create a new credential." text2="Please try to submit the form again" helpLink="https://some_help_link" helpLinkText="Get Help" buttonLabel="Try Again" className="unKnownError" />
 
 <WrapperComponent slots="content" repeat="1" theme="light" className="wrapperforCreatorTool"/>
 

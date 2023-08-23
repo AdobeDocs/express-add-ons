@@ -6,7 +6,7 @@ const Loading = ({
 }) => {
   return (
     <>
-      {credentials?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.title}</h3>}
+      {credentials?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.heading}</h3>}
       <div css={css`
           display:flex;
           justify-content:center;

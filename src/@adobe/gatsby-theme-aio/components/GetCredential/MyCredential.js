@@ -71,8 +71,8 @@ const MyCredential = ({
         gap: 16px;
       `}
     >
-      {card?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{card?.title}</h3>}
-      {card?.paragraph &&
+      {card?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{card?.heading}</h3>}
+      {card?.text &&
         <p
           className="spectrum-Body spectrum-Body--sizeL"
           css={css`
@@ -81,7 +81,7 @@ const MyCredential = ({
               width: 100% ;
             }
           `}>
-          {card?.paragraph}
+          {card?.text}
         </p>
       }
       <p className="spectrum-Body spectrum-Body--sizeS">Download not working?<a href=""

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { ContextHelp } from './ContextHelp';
 import { Loading } from "./Loading"
 import classNames from "classnames";
 import { MyCredential } from './MyCredential';
+import { IllustratedMessage } from './IllustratedMessage';
 
 const MIN_MOBILE_WIDTH = "320px";
 const MAX_TABLET_SCREEN_WIDTH = "1024px";
@@ -14,21 +15,21 @@ const CreateCredential = ({
 }) => {
 
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState();
-  const [showCredential, setShowCredential] = useState(false)
+  const [isError, setIsError] = useState(false);
+  const [response, setResponse] = useState({});
+  // check the localstorage if you already have previous credentials and then choose what need to select
+  const [showCreateForm, setShowCreateForm] = useState(true);
+  const [showCredential, setShowCredential] = useState(false);
 
   const credentials = credentialItems?.credentialForm?.props;
   const formValue = credentials?.formBuilder;
   const isFormValue = formValue?.filter(data => data.contextHelp);
 
-  const handleCreate = () => {
-    setLoading(true);
-    createCredential();
-  }
-
   const createCredential = async () => {
     const token = window.adobeIMS?.getTokenFromStorage()?.token;
     if (token) {
+      setLoading(true);
+      setShowCreateForm(false);
       const data = {
         name: Date.now().toString(),
         platform: 'apiKey',
@@ -47,23 +48,62 @@ const CreateCredential = ({
       if (response.status === 200) {
         const result = await response.json();
         setResponse(result)
+        setShowCredential(true)
+      } else {
+        setIsError(true);
       }
+      setLoading(false);
     }
     else {
+      // do some alert
       console.log('User not logged in');
     }
   }
 
   useEffect(() => {
-    if (response) {
-      setLoading(false);
-      setShowCredential(true)
+    if (showCreateForm) setIsError(false)
+  }, [showCreateForm])
+
+  const [inputData, setInputData] = useState([]);
+  const [allFieldsFilled, setAllFieldsFilled] = useState(false);
+
+  const handleInputChange = (index, value, validation) => {
+
+    const updatedInputData = [...inputData];
+
+    let error;
+    if (validation) {
+      if (validation?.specialCharacter) {
+        const containsSpecialCharacters = /[^a-zA-Z0-9]/.test(value);
+        error = containsSpecialCharacters;
+      }
+
+      if (!error) {
+        if (validation?.minlength && value?.length <= validation?.minlength) {
+          error = true;
+        } else if (validation?.maxlength && value?.length > validation?.maxlength) {
+          error = true;
+        }
+      }
     }
-  }, [response])
+
+    updatedInputData[index] = error ? { value, error } : { value };
+    setInputData(updatedInputData);
+
+    const areAllFieldsFilled = updatedInputData.every(value => {
+      if (!value?.error) {
+        return value !== "" && formValue.length - 1 === inputData.length;
+      }
+    });
+    setAllFieldsFilled(areAllFieldsFilled);
+
+  };
+
+  console.log('inputData', inputData)
 
   return (
     <>
-      {!loading && !showCredential &&
+      {showCreateForm &&
         <div
           className={classNames(credentials?.className)}
           css={css`
@@ -72,8 +112,8 @@ const CreateCredential = ({
             gap: 16px;
           `}
         >
-          {credentials?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.title}</h3>}
-          {credentials?.paragraph &&
+          {credentials?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.heading}</h3>}
+          {credentials?.text &&
             <p
               className="spectrum-Body spectrum-Body--sizeL"
               css={css`
@@ -82,25 +122,21 @@ const CreateCredential = ({
                   width: 100% ;
                 }
               `}>
-              {credentials?.paragraph}
+              {credentials?.text}
             </p>
           }
-          <p className="spectrum-Body spectrum-Body--sizeS"
-            dangerouslySetInnerHTML={{ __html: credentials?.changeOrganization }}
-            css={css`
-              color:(--spectrum-global-color-gray-800);
-
-              & > a{
+          {credentials?.isOrganization &&
+            <p className="spectrum-Body spectrum-Body--sizeS">You're creating this credential in [<b>Org Name, Inc</b>].
+              <span
+                css={css`
+                margin-left :10px;
+                text-decoration:underline;
                 color: var(--spectrum-global-color-gray-800);
-                margin-left:10px;
-              }
-              
-              & > a:hover {
-                color: var(--spectrum-global-color-gray-900);
-              }
-            
-            `}
-          />
+                cursor:pointer;`
+                } >
+                Change organization?
+              </span>
+            </p>}
           <div
             css={css`
               display:flex;
@@ -134,17 +170,17 @@ const CreateCredential = ({
                 `}
               >
                 {formValue &&
-                  formValue?.map(({ type, label, range, description, options, placeholder, contextHelp, buttonLabel, classname }, index) => {
+                  formValue?.map(({ type, label, range, text, options, placeholder, contextHelp, buttonLabel, className, validation }, index) => {
                     return (
                       <>
-                        {type !== "checkbox" && type !== "radio" ?
-                          <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} className={classNames(classname)}>
+                        {!["checkbox", "radio"].includes(type) ?
+                          <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} className={classNames(className)}>
                             <div className="spectrum-Textfield spectrum-Textfield--sizeM"
                               css={css`
-                                display:flex;
-                                justify-content:space-between;
-                                position:relative;
-                                width: ${isFormValue.length ? "95%" : "100%"};  
+                                  display:flex;
+                                  justify-content:space-between;
+                                  position:relative;
+                                  width: ${isFormValue.length ? "95%" : "100%"};  
                                 `
                               }>
 
@@ -177,7 +213,14 @@ const CreateCredential = ({
                                       border-radius: 3px;
                                       width:100%;
                                       border: 1px solid #D0D0D0 !important;
+                                      &::placeholder {
+                                        font-style: italic; 
+                                        color: var(--spectrum-global-color-gray-400); 
+                                      }
                                     `}
+                                    placeholder={placeholder}
+                                    value={inputData[index]?.value || ''}
+                                    onChange={(e) => handleInputChange(index, e.target.value, validation)}
                                     maxLength={range}
                                   />
                                 }
@@ -191,7 +234,15 @@ const CreateCredential = ({
                                       border: 1px solid #D0D0D0 !important;
                                       resize: none; 
                                       width: 90%;
+                                      &::placeholder {
+                                        font-style: italic; 
+                                        color: var(--spectrum-global-color-gray-400); 
+                                      }
                                     `}
+                                    placeholder={placeholder}
+                                    value={inputData[index]?.value || ''}
+                                    onChange={(e) => handleInputChange(index, e.target.value)}
+
                                   ></textarea>
                                 }
                                 {type === "selectbox" &&
@@ -205,7 +256,9 @@ const CreateCredential = ({
                                       width: 100%;
                                       border: 1px solid #D0D0D0 !important;
                                     `}
-                                    value=""
+
+                                    onChange={(e) => handleInputChange(index, e.target.value)}
+                                    value={inputData[index]?.value || ''}
                                   >
                                     <option value="" disabled hidden>
                                       {placeholder}
@@ -229,13 +282,13 @@ const CreateCredential = ({
 
                               </div>
                             }
-                            {description && <div className="spectrum-HelpText spectrum-HelpText--sizeM spectrum-HelpText--neutral">
+                            {text && <div className="spectrum-HelpText spectrum-HelpText--sizeM spectrum-HelpText--neutral">
                               <p className="spectrum-Body spectrum-Body--sizeXS"
                                 css={css`
                                   color:  var(--spectrum-global-color-gray-700);
                                   width: ${isFormValue.length ? "95%" : "100%"};
                                 `}>
-                                {description}
+                                {text}
                               </p>
                             </div>
                             }
@@ -243,7 +296,8 @@ const CreateCredential = ({
                               <button
                                 className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`}
                                 css={css`width:fit-content;margin-top:10px`}
-                                onClick={handleCreate}
+                                onClick={createCredential}
+                                disabled={!allFieldsFilled}
                               >
                                 <span className="spectrum-Button-label">{buttonLabel}</span>
                               </button>
@@ -252,7 +306,7 @@ const CreateCredential = ({
                           </div>
                           :
                           <>
-                            <div className={classNames(classname)} css={css`
+                            <div className={classNames(className)} css={css`
                             display: flex;
                             gap: 10px;
                             align-items: center;
@@ -261,8 +315,8 @@ const CreateCredential = ({
                               {label.map((data, inx) => {
                                 return (
                                   <div css={css`display: flex; gap: 10px;`}>
-                                    {type === "checkbox" && <input type="checkbox" id={inx}></input>}
-                                    {type === "radio" && <input type="radio" id={inx} name="radio_btn"></input>}
+                                    {type === "checkbox" && <input type="checkbox" id={inx} onChange={(e) => handleInputChange(index, e.target.checked)} />}
+                                    {type === "radio" && <input type="radio" value={data} id={inx} name="radio_btn" onChange={(e) => handleInputChange(index, e.target.value)} />}
                                     <div
                                       dangerouslySetInnerHTML={{ __html: data }}
                                       css={css`
@@ -324,25 +378,29 @@ const CreateCredential = ({
             </div>
           </div>
           <p className="spectrum-Body spectrum-Body--sizeS"
-            dangerouslySetInnerHTML={{ __html: credentials?.developerConsole }}
             css={css`
-              color:(--spectrum-global-color-gray-800);
-
-              & > a{
-                color: var(--spectrum-global-color-gray-800);
-                margin-left:10px;
-              }
-              
-              & > a:hover {
-                color: var(--spectrum-global-color-gray-900);
-              }
-            
+              color:var(--spectrum-global-color-gray-800);
             `}
-          />
+          >
+            Have existing credentials?
+            <a href=""
+              css={css`
+              margin-left : 10px;
+              color:var(--spectrum-global-color-gray-800);
+
+              &:hover {
+                color:var(--spectrum-global-color-gray-900);
+              }
+
+            `}>
+              Go to Developer Console
+            </a>
+          </p>
         </div>
       }
       {loading && <Loading credentials={credentials} />}
-      {!loading && showCredential && <MyCredential credentialItems={credentialItems} response={response} />}
+      {isError && <IllustratedMessage credentialItems={credentialItems} setShowCreateForm={setShowCreateForm} />}
+      {showCredential && <MyCredential credentialItems={credentialItems} response={response} />}
     </>
   )
 }

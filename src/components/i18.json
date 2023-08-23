@@ -1,51 +1,58 @@
 [
   {
     "label": "Credential name",
-    "description": "Credential name must be unique and between 3 and 45 character long.",
+    "text": "Credential name must be unique and between 3 and 45 character long.",
     "contextHelp": {
-      "title": "Create unique credentials"
+      "heading": "Create unique credentials"
     },
     "type": "textBox",
     "range": 30,
-    "classname": "textbox1"
+    "className": "textbox1",
+    "validation": {
+      "minlength": 3,
+      "maxlength": 30,
+      "specialCharacter": true
+    },
+    "placeholder": "Credential Name"
   },
   {
     "label": "Allowed domains(up to 5)*",
-    "description": "Use wildcards to enter multiple subdomains (*my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greayer than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains.",
+    "text": "Use wildcards to enter multiple subdomains (*my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greayer than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains.",
     "type": "textArea",
-    "classname": "textArea1",
+    "className": "textArea1",
+    "placeholder": "Example: www.domain-1.com, www.domain-2.com, *.my-domain.com, localhost:5000",
     "contextHelp": {
-      "title": "What are allowed domains",
-      "paragraph": "To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize.",
+      "heading": "What are allowed domains",
+      "text": "To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize.",
       "link": "https://www.adobe.com/",
       "labelForLink": "Learn more in our documentation"
     }
   },
   {
     "type": "checkbox",
-    "classname": "checkbox1",
+    "className": "checkbox1",
     "label": [
       "By checking this box, you agree to <a href='https://www.adobe.com/'>Adobe Developer Terms of Use.</a>"
     ],
     "contextHelp": {
-      "paragraph": "Create unique credentials"
+      "text": "Create unique credentials"
     }
   },
   {
     "type": "radio",
-    "classname": "radio1",
+    "className": "radio1",
     "label": [
       "Java",
       ".Net",
       "Python"
     ],
     "contextHelp": {
-      "paragraph": "Create unique credentials"
+      "text": "Create unique credentials"
     }
   },
   {
     "type": "selectbox",
-    "classname": "selectbox1",
+    "className": "selectbox1",
     "label": "Language*",
     "options": [
       "Node Js",
@@ -53,13 +60,13 @@
     ],
     "placeholder": "Select language for your code sample",
     "contextHelp": {
-      "paragraph": "Create unique credentials"
+      "text": "Create unique credentials"
     }
   },
   {
     "label": "Credential name",
-    "classname": "textbox2",
-    "description": "Credential name must be unique and between 3 and 45 character long.",
+    "className": "textbox2",
+    "text": "Credential name must be unique and between 3 and 45 character long.",
     "type": "textBox",
     "range": 30
   },

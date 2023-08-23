@@ -15,18 +15,18 @@ const SignIn = ({ signIn }) => {
         gap: 16px;
       `}
     >
-      {signIn?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signIn?.title}</h3>}
-      {signIn?.paragraph &&
+      {signIn?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signIn?.heading}</h3>}
+      {signIn?.text &&
         <p
           className="spectrum-Body spectrum-Body--sizeL"
           css={css`
-                width: 50%;
-                color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
-                @media screen and (min-width:320px) and (max-width:1024px) {
-                  width: 100% ;
-                }
-              `}>
-          {signIn?.paragraph}
+            width: 50%;
+            color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
+            @media screen and (min-width:320px) and (max-width:1024px) {
+              width: 100% ;
+            }
+          `}>
+          {signIn?.text}
         </p>
       }
       {signIn?.buttonText &&
