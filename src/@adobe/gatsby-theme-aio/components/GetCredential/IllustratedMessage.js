@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 const IllustratedMessage = ({ credentialItems, setShowCreateForm }) => {
 
-  const illustratedMessage = credentialItems?.unKnown?.props;
+  const illustratedMessage = credentialItems?.UnknownCredential;
   const textArray = Object.keys(illustratedMessage)?.filter(key => key?.startsWith('text'));
 
   return (

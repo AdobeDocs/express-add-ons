@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
 import { SignIn } from './Signin';
@@ -10,15 +10,19 @@ const MAX_MOBILE_WIDTH = "767px";
 const MAX_TABLET_SCREEN_WIDTH = "1024px"
 
 const GetCredential = ({
-  signIn,
-  credentialForm,
-  card,
-  unKnown,
   credentialType,
-  className }
+  className,
+  children
+}
 ) => {
-
-  const credentialItems = { signIn, credentialForm, card, unKnown, credentialType };
+  const credentialItems = useMemo(() => {
+    const items = {};
+    children.forEach((child) => {
+      const { mdxType, ...props } = child?.props;
+      items[mdxType] = props;
+    });
+    return items;
+  }, [children]);
 
   return (
     <>
@@ -51,7 +55,7 @@ const GetCredential = ({
 
           `}
         >
-          {!window.adobeIMS?.isSignedInUser() ? <SignIn signIn={signIn?.props} /> : <CreateCredential credentialItems={credentialItems} />}
+          {!window.adobeIMS?.isSignedInUser() ? <SignIn signIn={credentialItems?.SignInCredential} /> : <CreateCredential credentialItems={credentialItems} />}
         </div>
       </section>
     </>

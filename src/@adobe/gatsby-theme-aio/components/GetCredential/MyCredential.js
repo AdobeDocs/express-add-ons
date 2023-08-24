@@ -50,7 +50,7 @@ const MyCredential = ({
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
 
-  const card = credentialItems?.card?.props;
+  const card = credentialItems?.CardCredential;
   const domains = [{ key: "API Key", value: response?.apiKey }, { key: "Allowed domains", value: "*.my-domain.com" }];
 
   const handleOpen = (index) => {

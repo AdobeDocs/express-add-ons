@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import '@spectrum-css/contextualhelp/dist/index-vars.css';
 import { ContextHelp } from './ContextHelp';
@@ -21,9 +21,16 @@ const CreateCredential = ({
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [showCredential, setShowCredential] = useState(false);
 
-  const credentials = credentialItems?.credentialForm?.props;
+  const credentials = credentialItems?.CreateCredential;
   const formValue = credentials?.formBuilder;
   const isFormValue = formValue?.filter(data => data.contextHelp);
+
+  let sideComponent = credentials?.children?.filter(item => {
+    if (typeof item === 'string') {
+      return item.trim().length > 0;
+    }
+    return item !== null && item !== undefined;
+  });
 
   const createCredential = async () => {
     const token = window.adobeIMS?.getTokenFromStorage()?.token;
@@ -67,39 +74,37 @@ const CreateCredential = ({
   const [inputData, setInputData] = useState([]);
   const [allFieldsFilled, setAllFieldsFilled] = useState(false);
 
-  const handleInputChange = (index, value, validation) => {
-
+  const handleInputChange = (index, value, validation, type) => {
     const updatedInputData = [...inputData];
-
-    let error;
-    if (validation) {
+    let error; if (validation) {
       if (validation?.specialCharacter) {
-        const containsSpecialCharacters = /[^a-zA-Z0-9]/.test(value);
-        error = containsSpecialCharacters;
+        const containsSpecialCharacters = /[[0-9A-Za-z ]+]/.test(value); error = containsSpecialCharacters;
       }
-
-      if (!error) {
-        if (validation?.minlength && value?.length <= validation?.minlength) {
+      if (validation?.required) {
+        if (type === "checkbox" && !value) {
           error = true;
-        } else if (validation?.maxlength && value?.length > validation?.maxlength) {
+        }
+        if (value === '') {
           error = true;
         }
       }
-    }
-
-    updatedInputData[index] = error ? { value, error } : { value };
+      if (!error) {
+        if (validation?.minlength && value?.length <= validation?.minlength) {
+          error = true;
+        }
+        else if (validation?.maxlength && value?.length > validation?.maxlength) {
+          error = true;
+        }
+      }
+    } updatedInputData[index] = error ? { value, error } : { value };
     setInputData(updatedInputData);
-
     const areAllFieldsFilled = updatedInputData.every(value => {
       if (!value?.error) {
         return value !== "" && formValue.length - 1 === inputData.length;
       }
     });
     setAllFieldsFilled(areAllFieldsFilled);
-
   };
-
-  console.log('inputData', inputData)
 
   return (
     <>
@@ -241,8 +246,7 @@ const CreateCredential = ({
                                     `}
                                     placeholder={placeholder}
                                     value={inputData[index]?.value || ''}
-                                    onChange={(e) => handleInputChange(index, e.target.value)}
-
+                                    onChange={(e) => handleInputChange(index, e.target.value, validation)}
                                   ></textarea>
                                 }
                                 {type === "selectbox" &&
@@ -315,8 +319,8 @@ const CreateCredential = ({
                               {label.map((data, inx) => {
                                 return (
                                   <div css={css`display: flex; gap: 10px;`}>
-                                    {type === "checkbox" && <input type="checkbox" id={inx} onChange={(e) => handleInputChange(index, e.target.checked)} />}
-                                    {type === "radio" && <input type="radio" value={data} id={inx} name="radio_btn" onChange={(e) => handleInputChange(index, e.target.value)} />}
+                                    {type === "checkbox" && <input type="checkbox" id={inx} onChange={(e) => handleInputChange(index, e.target.checked, validation, type)} />}
+                                    {type === "radio" && <input type="radio" value={data} id={inx} name="radio_btn" onChange={(e) => handleInputChange(index, e.target.value, validation)} />}
                                     <div
                                       dangerouslySetInnerHTML={{ __html: data }}
                                       css={css`
@@ -374,7 +378,7 @@ const CreateCredential = ({
                 }
                 
               `}>
-              <Side side={credentials?.children?.props} />
+              <Side side={sideComponent[0]?.props} />
             </div>
           </div>
           <p className="spectrum-Body spectrum-Body--sizeS"

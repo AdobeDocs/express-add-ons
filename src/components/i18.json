@@ -11,7 +11,8 @@
     "validation": {
       "minlength": 3,
       "maxlength": 30,
-      "specialCharacter": true
+      "specialCharacter": true,
+      "required": true
     },
     "placeholder": "Credential Name"
   },
@@ -26,6 +27,9 @@
       "text": "To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize.",
       "link": "https://www.adobe.com/",
       "labelForLink": "Learn more in our documentation"
+    },
+    "validation": {
+      "domain": true
     }
   },
   {
@@ -36,6 +40,9 @@
     ],
     "contextHelp": {
       "text": "Create unique credentials"
+    },
+    "validation": {
+      "required": true
     }
   },
   {
@@ -68,7 +75,10 @@
     "className": "textbox2",
     "text": "Credential name must be unique and between 3 and 45 character long.",
     "type": "textBox",
-    "range": 30
+    "range": 30,
+    "validation": {
+      "email": true
+    }
   },
   {
     "buttonLabel": "Create credentials"
