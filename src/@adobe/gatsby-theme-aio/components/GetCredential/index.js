@@ -1,28 +1,27 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import { SignIn } from "./SignIn"
 import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
-import { SignIn } from './Signin';
 import { CreateCredential } from './CreateCredential';
 import classNames from "classnames";
+import { IllustratedMessage } from './IllustratedMessage';
+import { MyCredential } from './MyCredential';
 
 const MIN_MOBILE_WIDTH = "320px";
 const MAX_MOBILE_WIDTH = "767px";
 const MAX_TABLET_SCREEN_WIDTH = "1024px"
 
-const GetCredential = ({
-  credentialType,
-  className,
-  children
-}
-) => {
-  const credentialItems = useMemo(() => {
-    const items = {};
-    children.forEach((child) => {
-      const { mdxType, ...props } = child?.props;
-      items[mdxType] = props;
-    });
-    return items;
-  }, [children]);
+const GetCredential = ({ credentialType, children, className }) => {
+
+  let getCredentialData = {};
+  React.Children.forEach(children, (child) => {
+    if (!React.isValidElement(child)) return;
+    if (child.props) {
+      getCredentialData[child.type?.name] = child.props;
+    }
+  });
+
+  window.getCredentialData = Object.keys(getCredentialData).length !== 0 && getCredentialData;
 
   return (
     <>
@@ -36,7 +35,7 @@ const GetCredential = ({
           @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
             padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);
           }
-          `
+        `
         }
       >
         <div
@@ -55,16 +54,22 @@ const GetCredential = ({
 
           `}
         >
-          {!window.adobeIMS?.isSignedInUser() ? <SignIn signIn={credentialItems?.SignInCredential} /> : <CreateCredential credentialItems={credentialItems} />}
+          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn /> : <GetCredential.Form />}
         </div>
       </section>
     </>
-  );
+  )
+
 };
 
 GetCredential.propTypes = {
   credentialType: PropTypes.string
-};
+}
+
+GetCredential.SignIn = SignIn;
+GetCredential.Form = CreateCredential;
+GetCredential.UnknownError = IllustratedMessage;
+GetCredential.Card = MyCredential;
 
 export { GetCredential };
 

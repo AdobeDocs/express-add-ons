@@ -44,13 +44,13 @@ const LinkOut = () => {
 }
 
 const MyCredential = ({
-  credentialItems,
+  credentialName,
   response
 }) => {
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
 
-  const card = credentialItems?.CardCredential;
+  const card = window.getCredentialData?.MyCredential;
   const domains = [{ key: "API Key", value: response?.apiKey }, { key: "Allowed domains", value: "*.my-domain.com" }];
 
   const handleOpen = (index) => {
@@ -150,7 +150,7 @@ const MyCredential = ({
                 <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 18 18" width="32" fill="var(--spectrum-global-color-gray-700)">
                   <rect id="Canvas" fill="var(--spectrum-global-color-gray-700)" opacity="0" width="18" height="18" /><path class="fill" d="M17.761,4.3875,14.53,1.156a.75.75,0,0,0-1.06066-.00034L13.469,1.156,6.5885,8.0365A4.45,4.45,0,0,0,4.5,7.5,4.5,4.5,0,1,0,9,12a4.45,4.45,0,0,0-.5245-2.0665l3.363-3.363,1.87,1.87a.375.375,0,0,0,.53033.00017L14.239,8.4405l1.672-1.672L13.776,4.633l.6155-.6155,2.135,2.1355L17.761,4.918A.37543.37543,0,0,0,17.761,4.3875ZM3.75,14.25a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,3.75,14.25Z" />
                 </svg>
-                <h3 className="spectrum-Heading spectrum-Heading--sizeM">MyNewCredential</h3>
+                <h3 className="spectrum-Heading spectrum-Heading--sizeM">{credentialName}</h3>
               </div>
               <hr
                 css={css`
@@ -283,31 +283,35 @@ const MyCredential = ({
             `}
           >
             <h4 className="spectrum-Heading spectrum-Heading--sizeXS" >Need another credential</h4>
-            <p className="spectrum-Body spectrum-Body--sizeS"><a href="" css={css`color:black;`}>Restart and create a new credential</a></p>
+            <p className="spectrum-Body spectrum-Body--sizeS"><a href="" css={css`color:var(--spectrum-global-color-gray-800);`}>Restart and create a new credential</a></p>
           </div>
         </div>
+        {card?.children &&
+          <>
+            <div
+              css={css`
+              width: 2px; 
+              background-color: #D0D0D0; 
 
-        <div
-          css={css`
-            width: 2px; 
-            background-color: #D0D0D0; 
+              @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                display:none;
+              }
 
-            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-              display:none;
-            }
-
-          `}
-        ></div>
-        <div
-          css={css`
-            width:50%;
-
-            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-              width:100%;
-            }
-          `}>
-          <Side side={card?.children?.props} />
-        </div>
+            `}
+            ></div>
+            <div
+              css={css`
+              width:50%;
+              
+              @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
+                width:100%;
+              }
+              
+            `}>
+              <Side side={card?.children?.props?.children}></Side>
+            </div>
+          </>
+        }
       </div>
     </div>
   )

@@ -2,9 +2,9 @@ import React from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 
-const IllustratedMessage = ({ credentialItems, setShowCreateForm }) => {
+const IllustratedMessage = ({  setShowCreateForm }) => {
 
-  const illustratedMessage = credentialItems?.UnknownCredential;
+  const illustratedMessage = window.getCredentialData?.IllustratedMessage;
   const textArray = Object.keys(illustratedMessage)?.filter(key => key?.startsWith('text'));
 
   return (

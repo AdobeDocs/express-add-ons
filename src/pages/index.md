@@ -32,21 +32,7 @@ import FormJson from "../components/i18.json";
 
 homeheroAssertImage
 
-<GetCredential  credentialType="apiKey" theme="light" className="credential">
-
-  <SignInCredential heading="Get Credentials" text="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." buttonText="Sign in to create credentials" className="signin"/>
-
-  <CreateCredential heading="Get Credentials" text="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." formBuilder={FormJson} isOrganization={true}> 
-    <SideCredential><GetCredentialExternal/></SideCredential>
-  </CreateCredential>
-  
-  <CardCredential heading="Your credential is ready to use" text="Check the downloads section of your browser for the ZIP file, or find it where you save downloads on your machine" nextStepsLabel="Next steps" nextStepsHref="/credentials/nextsteps" developerConsoleManage="Manage on developer console" devConsoleDirection="project_overview|api_overview|credential_overview" className="card_developer_console" >
-    <SideCredential><GetCredentialExternal/></SideCredential>
-  </CardCredential>
-  
-  <UnknownCredential heading="UnKnown Error" text1="An error has occured when you tried to create a new credential." text2="Please try to submit the form again" helpLink="https://some_help_link" helpLinkText="Get Help" buttonLabel="Try Again" className="unKnownError" />
-
-</GetCredential>
+<GetCredentialExternal />
 
 <WrapperComponent slots="content" repeat="1" theme="light" className="wrapperforCreatorTool"/>
 
