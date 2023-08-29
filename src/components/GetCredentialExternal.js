@@ -92,6 +92,7 @@ const GetCredentialExternal = ({ }) => {
           </div>
         </GetCredential.Side>
       </GetCredential.Card>
+      <GetCredential.NoBetaAccessError betaProgramLink="https://some_help_link" betaProgramLinkText="Join Beta program" heading="Get Credentials" text="Join Beta program to get access to the Adobe Express Embed SDK and start creating unique credentials that you will use in your application." />
     </GetCredential>
   )
 }

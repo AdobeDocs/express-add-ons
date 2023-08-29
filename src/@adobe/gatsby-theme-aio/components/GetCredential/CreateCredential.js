@@ -6,6 +6,8 @@ import classNames from "classnames";
 import { MyCredential } from './MyCredential';
 import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
+import { ChangeOrganization } from './ChangeOrganization';
+import { JoinBetaProgram } from './JoinBetaProgram';
 
 const MIN_MOBILE_WIDTH = "320px";
 const MAX_TABLET_SCREEN_WIDTH = "1024px";
@@ -46,8 +48,10 @@ const CreateCredential = () => {
   // check the localstorage if you already have previous credentials and then choose what need to select
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [showCredential, setShowCredential] = useState(false);
-  const [formField, setFormValue] = useState([])
-  const [formData, setFormData] = useState(initialState)
+  const [formField, setFormValue] = useState([]);
+  const [formData, setFormData] = useState(initialState);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [redirectToBeta, setRedirectBetaProgram] = useState(false);
 
   const formValue = credentials?.children;
 
@@ -148,7 +152,7 @@ const CreateCredential = () => {
 
   return (
     <>
-      {showCreateForm &&
+      {!redirectToBeta && showCreateForm &&
         <div
           className={classNames(credentials?.className)}
           css={css`
@@ -177,7 +181,9 @@ const CreateCredential = () => {
                 text-decoration:underline;
                 color: var(--spectrum-global-color-gray-800);
                 cursor:pointer;`
-              } >
+              }
+              onClick={() => setModalOpen(true)}
+            >
               Change organization?
             </span>
           </p>
@@ -255,7 +261,7 @@ const CreateCredential = () => {
                                     css={css`
                                       padding: 7px;
                                       border-radius: 3px;
-                                      width: 100%;
+                                      width: 97%;
                                       border: 1px solid;
                                       &::placeholder {
                                         font-style: italic; 
@@ -432,8 +438,10 @@ const CreateCredential = () => {
       }
 
       {loading && <Loading credentials={credentials} />}
+      {modalOpen && <ChangeOrganization setModalOpen={setModalOpen} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} />}
       {isError && <IllustratedMessage setShowCreateForm={setShowCreateForm} />}
       {showCredential && <MyCredential response={response} credentialName={formData['credentialName']} />}
+      {redirectToBeta && <JoinBetaProgram />}
 
     </>
   )

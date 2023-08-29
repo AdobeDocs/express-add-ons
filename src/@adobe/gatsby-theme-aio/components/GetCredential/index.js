@@ -6,6 +6,7 @@ import { CreateCredential } from './CreateCredential';
 import classNames from "classnames";
 import { IllustratedMessage } from './IllustratedMessage';
 import { MyCredential } from './MyCredential';
+import { JoinBetaProgram } from './JoinBetaProgram';
 
 const MIN_MOBILE_WIDTH = "320px";
 const MAX_MOBILE_WIDTH = "767px";
@@ -70,6 +71,7 @@ GetCredential.SignIn = SignIn;
 GetCredential.Form = CreateCredential;
 GetCredential.UnknownError = IllustratedMessage;
 GetCredential.Card = MyCredential;
+GetCredential.NoBetaAccessError = JoinBetaProgram;
 
 export { GetCredential };
 

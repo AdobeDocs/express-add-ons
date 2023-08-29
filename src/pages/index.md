@@ -19,7 +19,6 @@ import SpaceContent from './add-ons/spaceAbility.md'
 import LearnMoreBtn from "./add-ons/learnmore.md"
 import bgImg from "./images/Summary_BgImage.jpg"
 import { GetCredentialExternal } from "../components/GetCredentialExternal.js";
-import FormJson from "../components/i18.json";
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
