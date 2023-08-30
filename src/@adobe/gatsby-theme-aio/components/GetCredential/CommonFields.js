@@ -27,7 +27,7 @@ export const CommonFields = ({ isFormValue, fields, children, formData, index })
             css={css`
               color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700))
             `}>
-            {range}
+            {range - formData['CredentialName'].length}
           </span>}
         </div>
         <div css={css`
