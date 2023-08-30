@@ -1,18 +1,15 @@
 import React from 'react';
 import { ContextHelp } from './ContextHelp';
 import { css } from "@emotion/react";
+import classNames from "classnames";
 
 export const CommonFields = ({ isFormValue, fields, children, formData, index }) => {
 
-  console.log('index', index)
-
-  console.log('formData', formData)
-
-  const { label, range, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading, description } = fields;
+  const { label, range, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading, description, className } = fields;
 
   return (
     <>
-      <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} /* className={classNames(className)} */>
+      <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} className={classNames(className)} >
         <div className="spectrum-Textfield spectrum-Textfield--sizeM"
           css={css`
             display:flex;

@@ -53,7 +53,6 @@ const CredentialForm = ({ formProps }) => {
       } else {
         fields.push({ [child.type?.name]: child.props });
       }
-      setFormData({ [child.type?.name]: '' })
     });
 
     downloadObj.selectOptions.length && fields.push({ Download: downloadObj });
@@ -61,7 +60,6 @@ const CredentialForm = ({ formProps }) => {
     setFormField(fields)
 
   }, []);
-
 
   useEffect(() => {
     const { CredentialName, AllowedOrigin, Downloads, Download, Agree } = formData;
