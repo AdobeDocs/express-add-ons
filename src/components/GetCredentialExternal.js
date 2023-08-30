@@ -7,14 +7,14 @@ const GetCredentialExternal = ({ }) => {
     <GetCredential credentialType="apiKey">
       <GetCredential.SignIn heading="Get Credentials" text="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application." buttonText="Sign in to create credentials" />
       <GetCredential.Form heading="Get Credentials" text="Create unique credentials that you will use to call the Adobe Express Embed SDK from your application.">
-        <GetCredential.Form.CredentialName type="credentialName" label="Credential name" description="Credential name must be unique and between 3 and 45 character long." range="30" />
-        <GetCredential.Form.AllowedOrigins type="allowedOrigin" label="Allowed Origins" contextHelp={true} contextHelpHeading="What are allowed domains" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greayer than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains." />
-        <GetCredential.Form.SelectLanguage type="language" label="Download a personalized code samples" contextHelp={true} contextHelpHeading="Select Language" />
-        <GetCredential.Form.Download type="download" name="Java" link="https://some_link" />
-        <GetCredential.Form.Download type="download" name=".Net" link="https://some_link" />
-        <GetCredential.Form.Download type="download" name="Python" link="/python.zip" />
-        <GetCredential.Form.Download type="download" name="Ruby" link="/python.zip" />
-        <GetCredential.Form.Side type="side">
+        <GetCredential.Form.CredentialName label="Credential name" description="Credential name must be unique and between 3 and 45 character long." range="30" />
+        <GetCredential.Form.AllowedOrigins label="Allowed Origins" contextHelp={true} contextHelpHeading="What are allowed domains" contextHelpText="To prevent a third party from using your client ID on their own website, the use of your client ID is restricted to a list of domains that you specifically authorize." contextHelpLink="https://www.adobe.com/" contextHelpLabelForLink="Learn more in our documentation" description="Use wildcards to enter multiple subdomains (*my-domains.com) or commas to separete multiple domains (www.domain-1.com,www.domain-2.com). During local development, you can include post greayer than 1023 with localhost (e.g. localhost:3000). Standard ports(80,443) will be used for non-localhost domains." />
+        <GetCredential.Form.Downloads label="Download a personalized code samples" contextHelp={true} contextHelpHeading="Select Language" />
+        <GetCredential.Form.Download name="Java" link="https://some_link" />
+        <GetCredential.Form.Download name=".Net" link="https://some_link" />
+        <GetCredential.Form.Download name="Python" link="/python.zip" />
+        <GetCredential.Form.Download name="Ruby" link="/python.zip" />
+        <GetCredential.Form.Side >
           <div
             css={css`
             display:flex;

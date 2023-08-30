@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { css } from "@emotion/react";
-import { Side } from './CreateCredential';
 import classNames from "classnames";
+import { SideContent } from './CredentialForm';
 
 const MIN_MOBILE_WIDTH = "320px";
 const MAX_TABLET_SCREEN_WIDTH = "1024px"
@@ -44,13 +44,14 @@ const LinkOut = () => {
 }
 
 const MyCredential = ({
+  credentialProps,
   credentialName,
   response
 }) => {
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
 
-  const card = window.getCredentialData?.MyCredential;
+  const card = credentialProps.MyCredential;
   const domains = [{ key: "API Key", value: response?.apiKey }, { key: "Allowed domains", value: "*.my-domain.com" }];
 
   const handleOpen = (index) => {
@@ -286,32 +287,7 @@ const MyCredential = ({
             <p className="spectrum-Body spectrum-Body--sizeS"><a href="" css={css`color:var(--spectrum-global-color-gray-800);`}>Restart and create a new credential</a></p>
           </div>
         </div>
-        {card?.children &&
-          <>
-            <div
-              css={css`
-              width: 2px; 
-              background-color: #D0D0D0; 
-
-              @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-                display:none;
-              }
-
-            `}
-            ></div>
-            <div
-              css={css`
-              width:50%;
-              
-              @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
-                width:100%;
-              }
-              
-            `}>
-              <Side side={card?.children?.props?.children}></Side>
-            </div>
-          </>
-        }
+        {card?.children ? <SideContent sideContent={card?.children?.props?.children} /> : null}
       </div>
     </div>
   )

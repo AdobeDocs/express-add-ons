@@ -2,7 +2,7 @@ import React from 'react';
 import { SignIn } from "./SignIn"
 import { css } from "@emotion/react";
 import PropTypes from 'prop-types';
-import { CreateCredential } from './CreateCredential';
+import { AllowedOrigins, CredentialForm, CredentialName, Download, Downloads, Side } from './CredentialForm';
 import classNames from "classnames";
 import { IllustratedMessage } from './IllustratedMessage';
 import { MyCredential } from './MyCredential';
@@ -21,9 +21,7 @@ const GetCredential = ({ credentialType, children, className }) => {
       getCredentialData[child.type?.name] = child.props;
     }
   });
-
-  window.getCredentialData = Object.keys(getCredentialData).length !== 0 && getCredentialData;
-
+  
   return (
     <>
       <section
@@ -55,7 +53,7 @@ const GetCredential = ({ credentialType, children, className }) => {
 
           `}
         >
-          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn /> : <GetCredential.Form />}
+          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.SignIn} /> : <GetCredential.Form formProps={getCredentialData} />}
         </div>
       </section>
     </>
@@ -68,7 +66,12 @@ GetCredential.propTypes = {
 }
 
 GetCredential.SignIn = SignIn;
-GetCredential.Form = CreateCredential;
+GetCredential.Form = CredentialForm;
+GetCredential.Form.CredentialName = CredentialName;
+GetCredential.Form.AllowedOrigins = AllowedOrigins;
+GetCredential.Form.Side = Side;
+GetCredential.Form.Downloads = Downloads;
+GetCredential.Form.Download = Download;
 GetCredential.UnknownError = IllustratedMessage;
 GetCredential.Card = MyCredential;
 GetCredential.NoBetaAccessError = JoinBetaProgram;

@@ -3,22 +3,21 @@ import Context from '@adobe/gatsby-theme-aio/src/components/Context';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 
-const SignIn = () => {
+const SignIn = ({ signInProps }) => {
 
-  const signIn = window?.getCredentialData?.SignIn;
   const { ims } = useContext(Context);
 
   return (
     <>
-      <div className={classNames(signIn?.className)}
+      <div className={classNames(signInProps?.className)}
         css={css`
           display: flex;
           flex-direction: column;
           gap: 16px;
         `}
       >
-        {signIn?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signIn?.heading}</h3>}
-        {signIn?.text &&
+        {signInProps?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signInProps?.heading}</h3>}
+        {signInProps?.text &&
           <p
             className="spectrum-Body spectrum-Body--sizeL"
             css={css`
@@ -28,15 +27,15 @@ const SignIn = () => {
                   width: 100% ;
                 }
               `}>
-            {signIn?.text}
+            {signInProps?.text}
           </p>
         }
-        {signIn?.buttonText &&
+        {signInProps?.buttonText &&
           <button
             className={`spectrum-Button spectrum-Button--outline spectrum-Button--primary spectrum-Button--sizeM`}
             css={css`width:fit-content;margin-top:10px`}
             onClick={() => ims?.signIn()}>
-            <span className="spectrum-Button-label">{signIn?.buttonText}</span>
+            <span className="spectrum-Button-label">{signInProps?.buttonText}</span>
           </button>
         }
       </div>

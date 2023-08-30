@@ -2,9 +2,7 @@ import React from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 
-const JoinBetaProgram = () => {
-
-  const joinBeta = window.getCredentialData?.JoinBetaProgram;
+const JoinBetaProgram = ({ joinBeta }) => {
 
   return (
     <>
