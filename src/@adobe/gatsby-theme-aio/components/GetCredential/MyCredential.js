@@ -2,66 +2,30 @@ import React, { useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 import { SideContent } from './CredentialForm';
-
-const MIN_MOBILE_WIDTH = "320px";
-const MAX_TABLET_SCREEN_WIDTH = "1024px"
-
-const CopyIcon = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
-      <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /><rect class="fill" height="1" rx="0.25" width="1" x="16" y="11" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="9" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="7" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="5" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="3" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="1" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="14" y="1" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="12" y="1" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="10" y="1" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="8" y="1" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="1" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="3" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="5" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="7" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="9" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="11" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="8" y="11" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="10" y="11" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="12" y="11" />
-      <rect class="fill" height="1" rx="0.25" width="1" x="14" y="11" />
-      <path class="fill" d="M5,6H1.5a.5.5,0,0,0-.5.5v10a.5.5,0,0,0,.5.5h10a.5.5,0,0,0,.5-.5V13H5.5a.5.5,0,0,1-.5-.5Z" />
-    </svg>
-  )
-}
-
-const LinkOut = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
-      <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /><path class="fill" d="M16.5,9h-1a.5.5,0,0,0-.5.5V15H3V3H8.5A.5.5,0,0,0,9,2.5v-1A.5.5,0,0,0,8.5,1h-7a.5.5,0,0,0-.5.5v15a.5.5,0,0,0,.5.5h15a.5.5,0,0,0,.5-.5v-7A.5.5,0,0,0,16.5,9Z" />
-      <path class="fill" d="M16.75,1H11.377A.4.4,0,0,0,11,1.4a.392.392,0,0,0,.1175.28l1.893,1.895L9.4895,7.096a.5.5,0,0,0-.00039.70711l.00039.00039.707.707a.5.5,0,0,0,.707,0l3.5215-3.521L16.318,6.882A.39051.39051,0,0,0,16.6,7a.4.4,0,0,0,.4-.377V1.25A.25.25,0,0,0,16.75,1Z" />
-    </svg>
-  )
-}
+import { CopyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const MyCredential = ({
   credentialProps,
   credentialName,
-  response
+  response,
+  setShowCreateForm
 }) => {
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
 
+  console.log('credentialName', credentialName)
+
   const card = credentialProps.MyCredential;
   const domains = [{ key: "API Key", value: response?.apiKey }, { key: "Allowed domains", value: "*.my-domain.com" }];
-
-  const handleOpen = (index) => {
-    setTooltipOpen(index)
-  }
 
   const handleCopy = (value) => {
     navigator.clipboard.writeText(value);
     setTooltipOpen(null);
   };
+
+  const handleRestart = () => {
+    setShowCreateForm(true)
+  }
 
   return (
     <div
@@ -72,17 +36,17 @@ const MyCredential = ({
         gap: 16px;
       `}
     >
-      {card?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{card?.heading}</h3>}
-      {card?.text &&
+      {card?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{card?.title}</h3>}
+      {card?.paragraph &&
         <p
           className="spectrum-Body spectrum-Body--sizeL"
           css={css`
             width: 50%;
-            @media screen and (min-width:320px) and (max-width:1024px) {
+            @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
               width: 100% ;
             }
           `}>
-          {card?.text}
+          {card?.paragraph}
         </p>
       }
       <p className="spectrum-Body spectrum-Body--sizeS">Download not working?<a href=""
@@ -186,12 +150,14 @@ const MyCredential = ({
                           css={css`
                           letter-spacing: 1px;
                           font-family: monospace;
+                          white-space: normal;
+                          overflow-wrap: anywhere;
                         `}
                         >{value}</p>
 
                         <div css={css`position:relative;`}>
                           <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
-                            onMouseEnter={() => handleOpen(index)}
+                            onMouseEnter={() => setTooltipOpen(index)}
                             onMouseLeave={() => setTooltipOpen(null)}
                             onClick={() => handleCopy(value)}
                             css={css`
@@ -284,7 +250,16 @@ const MyCredential = ({
             `}
           >
             <h4 className="spectrum-Heading spectrum-Heading--sizeXS" >Need another credential</h4>
-            <p className="spectrum-Body spectrum-Body--sizeS"><a href="" css={css`color:var(--spectrum-global-color-gray-800);`}>Restart and create a new credential</a></p>
+            <p className="spectrum-Body spectrum-Body--sizeS">
+              <span onClick={handleRestart}
+                css={css`
+                  color:var(--spectrum-global-color-gray-800);
+                  text-decoration:underline;
+                  cursor:pointer;`
+                }>
+                Restart and create a new credential
+              </span>
+            </p>
           </div>
         </div>
         {card?.children ? <SideContent sideContent={card?.children?.props?.children} /> : null}

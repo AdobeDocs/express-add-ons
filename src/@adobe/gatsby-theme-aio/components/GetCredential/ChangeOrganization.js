@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { css } from "@emotion/react";
+import { MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram }) => {
 
-  const [selectedOrganization, setSelectedOrganization] = useState('Org Name Inc.')
+  const [selectedOrganization, setSelectedOrganization] = useState('Org Name Inc.');
 
   const organization = ["Org Name Inc.", "developer-org-name"];
 
@@ -12,13 +13,14 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
       setRedirectBetaProgram(true);
     }
     else {
-      handleModal()
+      handleModal();
     }
-  }
+  };
+
   const handleModal = () => {
     setRedirectBetaProgram(false)
     setModalOpen(false);
-  }
+  };
 
   return (
     <>
@@ -33,9 +35,15 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
         >
           <div className="spectrum-Modal is-open" data-testid="modal">
             <section className="spectrum-Dialog spectrum-Dialog--medium spectrum-Dialog--confirmation" role="alertdialog" tabIndex="-1" aria-modal="true"
-              css={css`
-                width: calc(var(--spectrum-dialog-confirm-large-width) - 60px);
-              `}
+              css={
+                css`
+                 width: calc(var(--spectrum-dialog-confirm-large-width) - 60px);
+
+                 @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
+                  width: 100px;
+                }
+
+                `}
             >
               <div className="spectrum-Dialog-grid">
                 <h1 className="spectrum-Dialog-heading spectrum-Dialog-heading--noHeader">Change organization</h1>
@@ -51,17 +59,10 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                     <div>
                       An organization is the entity that functions like a log-in company that spans all Adobe products and applications. Most often, an organization is your company name.However, a company can have many organizations. Change the organization here.
                     </div>
-                    <div
-                      css={css`
-                        display : flex;
-                        flex-direction:column;
-                      `}
-                    >
+                    <div css={css` display : flex; flex-direction:column;`}>
                       <div className="spectrum-Textfield spectrum-Textfield--sizeM">
                         <label for="textfield-m" className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
-                          css={css`
-                            color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600))
-                          `}>Organization</label>
+                          css={css` color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-600)) `}>Organization</label>
                       </div>
                       <select
                         css={css`
@@ -74,7 +75,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                         onChange={(e) => setSelectedOrganization(e.target.value)}
                       >
                         {organization.map((organs, index) => {
-                          return <option value={organs} > {organs}</option>
+                          return <option value={organs} key={index}> {organs}</option>
                         })}
                       </select>
                     </div>
@@ -90,11 +91,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                     </div>
                   </div>
                 </section>
-                <div className="spectrum-ButtonGroup spectrum-Dialog-buttonGroup spectrum-Dialog-buttonGroup--noFooter"
-                  css={css`
-                    gap: 20px;
-                  `}
-                >
+                <div className="spectrum-ButtonGroup spectrum-Dialog-buttonGroup spectrum-Dialog-buttonGroup--noFooter" css={css` gap: 20px; `} >
                   <button className="spectrum-Button spectrum-Button--sizeM spectrum-Button--outline spectrum-Button--secondary spectrum-ButtonGroup-item" type="button" onClick={handleModal} >
                     <span className="spectrum-Button-label">Cancel</span>
                   </button>
@@ -111,4 +108,5 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
   )
 }
 
-export { ChangeOrganization }
+export { ChangeOrganization };
+

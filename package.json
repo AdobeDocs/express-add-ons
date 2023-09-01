@@ -15,8 +15,11 @@
     "@adobe/gatsby-theme-aio": "^4.10.1",
     "@spectrum-css/contextualhelp": "^2.0.28",
     "@spectrum-css/link": "^4.0.40",
+    "file-saver": "^2.0.5",
     "gatsby": "4.22.0",
     "http-proxy-middleware": "^2.0.6",
+    "jszip": "^3.10.1",
+    "jszip-utils": "^0.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

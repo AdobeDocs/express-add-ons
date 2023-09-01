@@ -1,11 +1,11 @@
 import React from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const JoinBetaProgram = ({ joinBeta }) => {
 
   return (
-    <>
       <div className={classNames(joinBeta?.className)}
         css={css`
           display: flex;
@@ -19,7 +19,7 @@ const JoinBetaProgram = ({ joinBeta }) => {
           css={css`
           width: 50%;
           color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
-          @media screen and (min-width:320px) and (max-width:1024px) {
+          @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
             width: 100% ;
           }
         `}
@@ -32,7 +32,6 @@ const JoinBetaProgram = ({ joinBeta }) => {
           </button>
         </a>
       </div>
-    </>
   )
 }
 

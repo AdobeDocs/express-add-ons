@@ -5,56 +5,56 @@ import classNames from "classnames";
 
 export const CommonFields = ({ isFormValue, fields, children, formData, index }) => {
 
-  const { label, range, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading, description, className } = fields;
+  const { label, range, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading, description, className, required } = fields;
 
   return (
-    <>
-      <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} className={classNames(className)} >
-        <div className="spectrum-Textfield spectrum-Textfield--sizeM"
-          css={css`
+    <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} className={classNames(className)} >
+      <div className="spectrum-Textfield spectrum-Textfield--sizeM"
+        css={css`
             display:flex;
             justify-content:space-between;
             position:relative;
             width: ${isFormValue?.length ? "95%" : "100%"};  
-          `
-          }>
-          <label for="textfield-m" className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
+          `}
+      >
+        <div css={css` display:flex; gap:3px; `} >
+          {label && <label for="textfield-m" className="spectrum-FieldLabel spectrum-FieldLabel--sizeM"
             css={css` color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700)) `}
           >
             {label}
-          </label>
-          {range && <span id="character-count-2" className="spectrum-Textfield-characterCount"
-            css={css`
-              color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700))
-            `}>
-            {range - formData['CredentialName'].length}
-          </span>}
+          </label>}
+          {required && <span css={css`font-size: 1.2rem;`}>*</span>}
         </div>
-        <div css={css`
+        {range && <span id="character-count-2" className="spectrum-Textfield-characterCount"
+          css={css` color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-700)) `}>
+          {formData['CredentialName'] ? range - formData['CredentialName']?.length : range}
+        </span>}
+      </div>
+      <div
+        css={css`
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap:10px;
         `}>
-          {children}
-          {isFormValue?.length ?
-            <div css={css` cursor:pointer; width:20px; height:20px; `} >
-              {contextHelp && <ContextHelp heading={contextHelpHeading} text={contextHelpText} link={contextHelpLink} label={contextHelpLabelForLink} />}
-            </div> : null
-          }
-        </div>
-        {description && <div className="spectrum-HelpText spectrum-HelpText--sizeM spectrum-HelpText--neutral">
-          <p className="spectrum-Body spectrum-Body--sizeXS"
-            css={css`
-              color : ${formData["CredentialName"].length < 3 && formData["CredentialName"].length !== 0 && index === 0 ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-700)"};
-              width: ${isFormValue?.length ? "95%" : "100%"};
-            `}>
-            {description}
-          </p>
-        </div>
+        {children}
+        {isFormValue?.length ?
+          <div css={css` cursor:pointer; width:20px; height:20px; `} >
+            {contextHelp && <ContextHelp heading={contextHelpHeading} text={contextHelpText} link={contextHelpLink} label={contextHelpLabelForLink} />}
+          </div> : null
         }
       </div>
-    </>
+      {description && <div className="spectrum-HelpText spectrum-HelpText--sizeM spectrum-HelpText--neutral">
+        <p className="spectrum-Body spectrum-Body--sizeXS"
+          css={css`
+              color : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 && index === 0 ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-700)"};
+              width: ${isFormValue?.length ? "95%" : "100%"};
+            `}>
+          {description}
+        </p>
+      </div>
+      }
+    </div>
   )
 }
 
@@ -77,3 +77,46 @@ export const AlertIcon = () => {
     </svg>
   )
 }
+
+export const MIN_MOBILE_WIDTH = "320px";
+export const MAX_MOBILE_WIDTH = "767px";
+export const MAX_TABLET_SCREEN_WIDTH = "1024px";
+
+export const CopyIcon = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+      <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /><rect class="fill" height="1" rx="0.25" width="1" x="16" y="11" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="9" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="7" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="5" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="3" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="16" y="1" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="14" y="1" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="12" y="1" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="10" y="1" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="8" y="1" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="1" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="3" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="5" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="7" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="9" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="6" y="11" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="8" y="11" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="10" y="11" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="12" y="11" />
+      <rect class="fill" height="1" rx="0.25" width="1" x="14" y="11" />
+      <path class="fill" d="M5,6H1.5a.5.5,0,0,0-.5.5v10a.5.5,0,0,0,.5.5h10a.5.5,0,0,0,.5-.5V13H5.5a.5.5,0,0,1-.5-.5Z" />
+    </svg>
+  )
+};
+
+export const LinkOut = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+      <rect id="Canvas" fill="#ff13dc" opacity="0" width="18" height="18" /><path class="fill" d="M16.5,9h-1a.5.5,0,0,0-.5.5V15H3V3H8.5A.5.5,0,0,0,9,2.5v-1A.5.5,0,0,0,8.5,1h-7a.5.5,0,0,0-.5.5v15a.5.5,0,0,0,.5.5h15a.5.5,0,0,0,.5-.5v-7A.5.5,0,0,0,16.5,9Z" />
+      <path class="fill" d="M16.75,1H11.377A.4.4,0,0,0,11,1.4a.392.392,0,0,0,.1175.28l1.893,1.895L9.4895,7.096a.5.5,0,0,0-.00039.70711l.00039.00039.707.707a.5.5,0,0,0,.707,0l3.5215-3.521L16.318,6.882A.39051.39051,0,0,0,16.6,7a.4.4,0,0,0,.4-.377V1.25A.25.25,0,0,0,16.75,1Z" />
+    </svg>
+  )
+};
+
+

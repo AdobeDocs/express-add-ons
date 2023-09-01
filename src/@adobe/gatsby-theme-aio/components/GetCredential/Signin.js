@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Context from '@adobe/gatsby-theme-aio/src/components/Context';
 import { css } from "@emotion/react";
 import classNames from "classnames";
+import { MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const SignIn = ({ signInProps }) => {
 
@@ -16,18 +17,18 @@ const SignIn = ({ signInProps }) => {
           gap: 16px;
         `}
       >
-        {signInProps?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signInProps?.heading}</h3>}
-        {signInProps?.text &&
+        {signInProps?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signInProps?.title}</h3>}
+        {signInProps?.paragraph &&
           <p
             className="spectrum-Body spectrum-Body--sizeL"
             css={css`
                 width: 50%;
                 color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
-                @media screen and (min-width:320px) and (max-width:1024px) {
+                @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
                   width: 100% ;
                 }
               `}>
-            {signInProps?.text}
+            {signInProps?.paragraph}
           </p>
         }
         {signInProps?.buttonText &&
@@ -43,4 +44,4 @@ const SignIn = ({ signInProps }) => {
   )
 }
 
-export { SignIn }
+export { SignIn };

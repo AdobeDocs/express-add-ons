@@ -7,10 +7,7 @@ import classNames from "classnames";
 import { IllustratedMessage } from './IllustratedMessage';
 import { MyCredential } from './MyCredential';
 import { JoinBetaProgram } from './JoinBetaProgram';
-
-const MIN_MOBILE_WIDTH = "320px";
-const MAX_MOBILE_WIDTH = "767px";
-const MAX_TABLET_SCREEN_WIDTH = "1024px"
+import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const GetCredential = ({ credentialType, children, className }) => {
 
@@ -21,7 +18,7 @@ const GetCredential = ({ credentialType, children, className }) => {
       getCredentialData[child.type?.name] = child.props;
     }
   });
-  
+
   return (
     <>
       <section
@@ -62,7 +59,8 @@ const GetCredential = ({ credentialType, children, className }) => {
 };
 
 GetCredential.propTypes = {
-  credentialType: PropTypes.string
+  credentialType: PropTypes.string,
+  className: PropTypes.string,
 }
 
 GetCredential.SignIn = SignIn;
@@ -77,4 +75,5 @@ GetCredential.Card = MyCredential;
 GetCredential.NoBetaAccessError = JoinBetaProgram;
 
 export { GetCredential };
+
 

@@ -9,6 +9,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = {
   pathPrefix: process.env.PATH_PREFIX || '/express/add-ons/',
@@ -47,4 +48,14 @@ module.exports = {
     ],
   },
   plugins: [`@adobe/gatsby-theme-aio`],
+  developMiddleware: app => {
+    app.use(
+      "/console/api",
+      createProxyMiddleware({
+        target: "https://developer-stage.adobe.com",
+        secure: false,
+        changeOrigin: true,
+      })
+    )
+  },
 };
