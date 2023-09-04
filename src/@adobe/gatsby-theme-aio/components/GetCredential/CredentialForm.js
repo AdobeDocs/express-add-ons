@@ -9,6 +9,7 @@ import { ChangeOrganization } from './ChangeOrganization';
 import { JoinBetaProgram } from './JoinBetaProgram';
 import { AlertIcon, CommonFields, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 import { ContextHelp } from './ContextHelp';
+import { Toast } from './Toast';
 // import JSZip from 'jszip';
 // import JSZipUtils from 'jszip-utils';
 // import saveAs from 'jszip/vendor/FileSaver';
@@ -26,6 +27,8 @@ const CredentialForm = ({ formProps }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [redirectToBeta, setRedirectBetaProgram] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const [alertShow, setAlertShow] = useState(false);
+  const [organizationChange, setOrganization] = useState(false)
 
   const credentialForm = formProps?.CredentialForm;
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
@@ -81,6 +84,10 @@ const CredentialForm = ({ formProps }) => {
 
   }, [formData]);
 
+  useEffect(() => {
+    setTimeout(() => { setAlertShow(false) }, 8000);
+  }, [alertShow])
+
   const handleChange = (e, type) => {
     const value = (type === "Downloads" || type === "Agree") ? e.target.checked : e.target.value;
     setFormData(prevData => ({ ...prevData, [type]: value }));
@@ -109,6 +116,7 @@ const CredentialForm = ({ formProps }) => {
         const result = await response.json();
         setResponse(result);
         setShowCredential(true)
+        setAlertShow(true)
         // const data = await JSZipUtils.getBinaryContent("https://www.nimh.nih.gov/site-info/zip");
         // const zip = await JSZip.loadAsync(data);
         // zip.remove("credential.json");
@@ -118,6 +126,7 @@ const CredentialForm = ({ formProps }) => {
       }
       else {
         setIsError(true);
+        setAlertShow(true)
       }
       setLoading(false);
     }
@@ -165,6 +174,7 @@ const CredentialForm = ({ formProps }) => {
               Change organization?
             </span>
           </p>
+          {organizationChange && <Toast alertShow={alertShow} setAlertShow={setAlertShow} message="Organization Changed" />}
           <div
             css={css`
               display:flex;
@@ -250,8 +260,32 @@ const CredentialForm = ({ formProps }) => {
         </div>
       }
 
+
+      {alertShow &&
+        <>
+          {!organizationChange ? (
+            <Toast
+              alertShow={alertShow}
+              setAlertShow={setAlertShow}
+              message={isError && !showCredential ? `Unable to create credential. Error <code>:<error text>. Please try to submit the form again` : !isError && showCredential && `Your credentials were created successfully.`}
+              error={isError}
+            />) :
+            <Toast alertShow={alertShow} setAlertShow={setAlertShow} message={"Organization changed"} />
+          }
+        </>
+      }
       {loading && !showCredential && <Loading credentials={credentialForm} />}
-      {modalOpen && <ChangeOrganization setModalOpen={setModalOpen} redirectToBeta={redirectToBeta} setRedirectBetaProgram={setRedirectBetaProgram} />}
+      {modalOpen && (
+        <ChangeOrganization
+          setModalOpen={setModalOpen}
+          redirectToBeta={redirectToBeta}
+          setRedirectBetaProgram={setRedirectBetaProgram}
+          setAlertShow={setAlertShow}
+          alertShow={alertShow}
+          organizationChange={organizationChange}
+          setOrganization={setOrganization}
+        />
+      )}
       {isError && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.IllustratedMessage} />}
       {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} credentialName={formData['CredentialName']} setShowCreateForm={setShowCreateForm} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.JoinBetaProgram} />}

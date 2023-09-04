@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { css } from "@emotion/react";
 import { MAX_MOBILE_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
-const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram }) => {
+const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgram, setAlertShow, setOrganization }) => {
 
   const [selectedOrganization, setSelectedOrganization] = useState('Org Name Inc.');
 
   const organization = ["Org Name Inc.", "developer-org-name"];
 
   const handleRedirect = () => {
+    setAlertShow(true)
     if (selectedOrganization == "developer-org-name") {
       setRedirectBetaProgram(true);
     }
@@ -20,6 +21,15 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
   const handleModal = () => {
     setRedirectBetaProgram(false)
     setModalOpen(false);
+  };
+
+  const handleChange = (e) => {
+    if (selectedOrganization === e.target.value) {
+      setOrganization(false);
+    } else {
+      setOrganization(true);
+      setSelectedOrganization(e.target.value);
+    }
   };
 
   return (
@@ -72,7 +82,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
                           border-radius: 3px;
                           border: 1px solid #D0D0D0 !important;
                         `}
-                        onChange={(e) => setSelectedOrganization(e.target.value)}
+                        onChange={(e) => handleChange(e)}
                       >
                         {organization.map((organs, index) => {
                           return <option value={organs} key={index}> {organs}</option>
