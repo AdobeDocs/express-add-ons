@@ -47,7 +47,12 @@ const CredentialForm = ({ formProps }) => {
         }
         props.children.forEach(({ props: { title, href } }) => downloadObj.selectOptions.push({ title, href }));
       }
-      fields.push({ [type?.name]: props });
+      if (type?.name === "CredentialName") {
+        fields.push({ [type?.name]: { ...props, required: true } });
+      }
+      else {
+        fields.push({ [type?.name]: props });
+      }
     });
 
     downloadObj.selectOptions.length && fields.push({ Download: downloadObj });
@@ -71,13 +76,13 @@ const CredentialForm = ({ formProps }) => {
     const selectedOption = formField.flatMap(({ Download }) => Download?.selectOptions || []).find(option => option?.title === formData['Download']);
     selectedOption && setPickedOption(selectedOption);
 
-    const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required).map(child => child.type.name);
+    const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.required || child.type.name === "CredentialName").map(child => child.type.name);
 
     if (requiredFields.includes("Downloads") || formData['Downloads']) {
       requiredFields.push("Download");
     };
 
-    const isValidCredentialName = requiredFields.includes("CredentialName") ? /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/.test(formData.CredentialName) : true;
+    const isValidCredentialName = /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/.test(formData.CredentialName);
     const isAllowedOriginsValid = formData['AllowedOrigins'] ? /^(localhost:\d{1,5}|(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)$/.test(formData['AllowedOrigins']) : true;
 
     const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && formData.Agree === true && isAllowedOriginsValid;
@@ -133,6 +138,8 @@ const CredentialForm = ({ formProps }) => {
   };
 
   const sideObject = formField.find(item => 'Side' in item);
+
+  console.log('formField', formField)
 
   return (
     <>
@@ -214,7 +221,7 @@ const CredentialForm = ({ formProps }) => {
                         <>
                           {!download ?
                             <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`}>
-                              {name && <CredentialName nameProps={name} isFormValue={isFormValue} formData={formData} handleChange={handleChange} index={index} />}
+                              {name && <CredentialName nameProps={name} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
                               {origins && <AllowedOrigins originsProps={origins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
                               {downloads && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
                             </div> :
@@ -305,9 +312,9 @@ const CredentialForm = ({ formProps }) => {
 const Side = ({ side }) => (side);
 
 const CredentialName = ({ nameProps, isFormValue, formData, handleChange, index }) => {
-  const isRed = formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)";
+  const isRed = formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0;
   return (
-    <CommonFields isFormValue={isFormValue} fields={nameProps} formData={formData} index={index} >
+    <CommonFields isFormValue={isFormValue} fields={nameProps} formData={formData} isRed={isRed}>
       <div css={css`position:relative; display:inline-block; width: 100%`}>
         <input
           type="text"
@@ -315,14 +322,14 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange, index 
             padding: 7px;
             border-radius: 3px;
             width: 97%;
-            border: 1px solid ${isRed};
+            border: 1px solid ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
              &::placeholder {
                font-style: italic; 
                color: var(--spectrum-global-color-gray-400); 
               }
              &:focus {
               outline: none;
-              border-color: ${isRed};
+              border-color: ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
             }
           `}
           value={formData["CredentialName"]}
@@ -336,16 +343,17 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange, index 
   )
 }
 
-const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange }) => {
+const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange, index }) => {
+  const isRed = formData["AllowedOrigins"] !== undefined && !/^(localhost:\d{1,5}|(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)$/.test(formData['AllowedOrigins']) && formData["AllowedOrigins"]?.length !== 0;
   return (
-    <CommonFields isFormValue={isFormValue} fields={originsProps} type={type} formData={formData} >
+    <CommonFields isFormValue={isFormValue} fields={originsProps} type={type} formData={formData} isRed={isRed} >
       <textarea
         css={css`
           flex: 1;
           padding: 7px;
           height: 50px;
           border-radius: 3px;
-          border: 1px solid #D0D0D0 !important;
+          border: 1px solid ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
           resize: none; 
           width: 90%;
           color: #4b4b4b;
@@ -353,6 +361,10 @@ const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChang
           &::placeholder {
             color:var(--spectrum-global-color-gray-600);
             font-style: italic;
+          }
+          &:focus {
+            outline: none;
+            border-color: ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-400)"};
           }
           &:hover {
             &::placeholder {

@@ -4,9 +4,9 @@ import { css } from "@emotion/react";
 import classNames from "classnames";
 import JSZip from 'jszip';
 import JSZipUtils from 'jszip-utils';
-import saveAs from 'jszip/vendor/FileSaver';
+import { saveAs } from 'file-saver';
 
-export const CommonFields = ({ isFormValue, fields, children, formData, index }) => {
+export const CommonFields = ({ isFormValue, fields, children, formData, isRed }) => {
 
   const { label, range, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading, description, className, required } = fields;
 
@@ -50,7 +50,7 @@ export const CommonFields = ({ isFormValue, fields, children, formData, index })
       {description && <div className="spectrum-HelpText spectrum-HelpText--sizeM spectrum-HelpText--neutral">
         <p className="spectrum-Body spectrum-Body--sizeXS"
           css={css`
-              color : ${formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0 && index === 0 ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-700)"};
+              color : ${isRed ? "rgb(211, 21, 16)" : "var(--spectrum-global-color-gray-700)"};
               width: ${isFormValue?.length ? "95%" : "100%"};
             `}>
           {description}
