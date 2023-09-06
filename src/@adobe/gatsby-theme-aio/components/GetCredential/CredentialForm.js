@@ -7,12 +7,9 @@ import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
 import { ChangeOrganization } from './ChangeOrganization';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { AlertIcon, CommonFields, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { AlertIcon, CommonFields, downloadAndModifyZip, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 import { ContextHelp } from './ContextHelp';
 import { Toast } from './Toast';
-// import JSZip from 'jszip';
-// import JSZipUtils from 'jszip-utils';
-// import saveAs from 'jszip/vendor/FileSaver';
 
 const CredentialForm = ({ formProps }) => {
 
@@ -28,7 +25,8 @@ const CredentialForm = ({ formProps }) => {
   const [redirectToBeta, setRedirectBetaProgram] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
-  const [organizationChange, setOrganization] = useState(false)
+  const [organizationChange, setOrganization] = useState(false);
+  const [pickData, setPickedOption] = useState('');
 
   const credentialForm = formProps?.CredentialForm;
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
@@ -69,14 +67,18 @@ const CredentialForm = ({ formProps }) => {
   }, [isError, showCreateForm])
 
   useEffect(() => {
+
+    const selectedOption = formField.flatMap(({ Download }) => Download?.selectOptions || []).find(option => option?.title === formData['Download']);
+    selectedOption && setPickedOption(selectedOption);
+
     const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required).map(child => child.type.name);
 
     if (requiredFields.includes("Downloads") || formData['Downloads']) {
       requiredFields.push("Download");
     };
 
-    let isValidCredentialName = requiredFields.includes("CredentialName") ? /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/.test(formData.CredentialName) : true;
-    let isAllowedOriginsValid = formData['AllowedOrigins'] ? /^(localhost:\d{1,5}|(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)$/.test(formData['AllowedOrigins']) : true;
+    const isValidCredentialName = requiredFields.includes("CredentialName") ? /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/.test(formData.CredentialName) : true;
+    const isAllowedOriginsValid = formData['AllowedOrigins'] ? /^(localhost:\d{1,5}|(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)$/.test(formData['AllowedOrigins']) : true;
 
     const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && formData.Agree === true && isAllowedOriginsValid;
 
@@ -115,14 +117,9 @@ const CredentialForm = ({ formProps }) => {
       if (response.status === 200) {
         const result = await response.json();
         setResponse(result);
-        setShowCredential(true)
-        setAlertShow(true)
-        // const data = await JSZipUtils.getBinaryContent("https://www.nimh.nih.gov/site-info/zip");
-        // const zip = await JSZip.loadAsync(data);
-        // zip.remove("credential.json");
-        // zip.file("credential.json", JSON.stringify(result));
-        // const blob = await zip.generateAsync({ type: "blob" });
-        // saveAs(blob, 'sample.zip');
+        setShowCredential(true);
+        setAlertShow(true);
+        pickData && downloadAndModifyZip(pickData['href'], result);
       }
       else {
         setIsError(true);
@@ -161,7 +158,10 @@ const CredentialForm = ({ formProps }) => {
               {credentialForm?.paragraph}
             </p>
           }
-          <p className="spectrum-Body spectrum-Body--sizeS">You're creating this credential in [<b>Org Name, Inc</b>].
+          <p
+            className="spectrum-Body spectrum-Body--sizeS"
+            css={css`color:var(--spectrum-global-color-gray-800);`}
+          >You're creating this credential in [<b>Org Name, Inc</b>].
             <span
               css={css`
                 margin-left :10px;
@@ -228,7 +228,16 @@ const CredentialForm = ({ formProps }) => {
                 }
                 <div css={css`display: flex; gap: 10px;`}>
                   <input type="checkbox" onChange={(e) => handleChange(e, 'Agree')} />
-                  <p css={css`color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));margin:0;`} > By checking this box, you agree to <a href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf" target="_blank"> Adobe Developer Terms of Use</a>.
+                  <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >{`By checking this box, you agree to `}
+                    <a
+                      href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf"
+                      css={css`
+                        color:rgb(0, 84, 182);
+                        &:hover {
+                          color: rgb(2, 101, 220);
+                        }
+                      `}
+                      target="_blank">  Adobe Developer Terms of Use</a>.
                   </p>
                 </div>
                 <button
@@ -243,7 +252,7 @@ const CredentialForm = ({ formProps }) => {
           </div>
           <p className="spectrum-Body spectrum-Body--sizeS" css={css` color:var(--spectrum-global-color-gray-800); `} >
             Have existing credentials?
-            <a href=""
+            <a href="https://developer.adobe.com/console/"
               css={css`
                 margin-left : 10px;
                 color:var(--spectrum-global-color-gray-800);
@@ -287,7 +296,7 @@ const CredentialForm = ({ formProps }) => {
         />
       )}
       {isError && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.IllustratedMessage} />}
-      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} credentialName={formData['CredentialName']} setShowCreateForm={setShowCreateForm} />}
+      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} credentialName={formData['CredentialName']} allowedOrigins={formData['AllowedOrigins']} setShowCreateForm={setShowCreateForm} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.JoinBetaProgram} />}
     </>
   )
@@ -339,11 +348,19 @@ const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChang
           border: 1px solid #D0D0D0 !important;
           resize: none; 
           width: 90%;
+          color: #4b4b4b;
+          font-family: adobe-clean, Helvetica, Arial, sans-serif;
           &::placeholder {
-            font-style: italic; 
-            color: var(--spectrum-global-color-gray-400); 
+            color:var(--spectrum-global-color-gray-600);
+            font-style: italic;
+          }
+          &:hover {
+            &::placeholder {
+              color:var(--spectrum-global-color-gray-800);
+            }
           }
         `}
+        placeholder={originsProps?.placeholder}
         onChange={(e) => handleChange(e, "AllowedOrigins")}
       ></textarea>
     </CommonFields>
@@ -381,7 +398,7 @@ const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
         value={formData['Download']}
         onChange={(e) => handleChange(e, "Download")}
       >
-        <option value="" hidden>Select language for your code sample</option>
+        <option value="" hidden>Select language for your code pickData</option>
         {downloadProp?.selectOptions?.map((option, index) => (
           <option key={index} data-link={option.href} value={option.title} >{option.title}</option>
         ))}

@@ -2,29 +2,34 @@ import React, { useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 import { SideContent } from './CredentialForm';
-import { CopyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { CopyIcon, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const MyCredential = ({
   credentialProps,
   credentialName,
   response,
+  allowedOrigins,
   setShowCreateForm
 }) => {
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
-
-  console.log('credentialName', credentialName)
+  const [isCopied, setIsCopied] = useState(false);
 
   const card = credentialProps.MyCredential;
-  const domains = [{ key: "API Key", value: response?.apiKey }, { key: "Allowed domains", value: "*.my-domain.com" }];
+  const domains = [{ key: "API Key", value: response?.apiKey }, { key: "Allowed domains", value: allowedOrigins }];
 
   const handleCopy = (value) => {
+    setIsCopied(true);
     navigator.clipboard.writeText(value);
-    setTooltipOpen(null);
   };
 
   const handleRestart = () => {
-    setShowCreateForm(true)
+    setShowCreateForm(true);
+  }
+
+  const handleLeave = () => {
+    setTooltipOpen(null);
+    setIsCopied(false)
   }
 
   return (
@@ -36,12 +41,20 @@ const MyCredential = ({
         gap: 16px;
       `}
     >
-      {card?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{card?.title}</h3>}
+      {card?.title &&
+        <h2
+          className="spectrum-Heading spectrum-Heading--sizeL"
+          css={css`
+            font-weight:700;
+            color:var(--spectrum-global-color-gray-900);
+          `}
+        >{card?.title}</h2>}
       {card?.paragraph &&
         <p
           className="spectrum-Body spectrum-Body--sizeL"
           css={css`
             width: 50%;
+            color:var(--spectrum-global-color-gray-900);
             @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
               width: 100% ;
             }
@@ -49,7 +62,12 @@ const MyCredential = ({
           {card?.paragraph}
         </p>
       }
-      <p className="spectrum-Body spectrum-Body--sizeS">Download not working?<a href=""
+      <p
+        className="spectrum-Body spectrum-Body--sizeS"
+        css={css`
+          color:var(--spectrum-global-color-gray-900);
+        `}
+      >Download not working?<a href=""
         css={css`
           margin-left: 10px;
           color:rgb(0, 84, 182);
@@ -112,9 +130,7 @@ const MyCredential = ({
                   align-items:center;
                 `}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 18 18" width="32" fill="var(--spectrum-global-color-gray-700)">
-                  <rect id="Canvas" fill="var(--spectrum-global-color-gray-700)" opacity="0" width="18" height="18" /><path class="fill" d="M17.761,4.3875,14.53,1.156a.75.75,0,0,0-1.06066-.00034L13.469,1.156,6.5885,8.0365A4.45,4.45,0,0,0,4.5,7.5,4.5,4.5,0,1,0,9,12a4.45,4.45,0,0,0-.5245-2.0665l3.363-3.363,1.87,1.87a.375.375,0,0,0,.53033.00017L14.239,8.4405l1.672-1.672L13.776,4.633l.6155-.6155,2.135,2.1355L17.761,4.918A.37543.37543,0,0,0,17.761,4.3875ZM3.75,14.25a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,3.75,14.25Z" />
-                </svg>
+                <KeyIcon />
                 <h3 className="spectrum-Heading spectrum-Heading--sizeM">{credentialName}</h3>
               </div>
               <hr
@@ -133,59 +149,64 @@ const MyCredential = ({
               >
                 {domains.map(({ key, value }, index) => {
                   return (
-                    <div
-                      css={css`
-                        display:flex;
-                        flex-direction:column;
-                        gap:8px;
-                      `}
-                    >
-                      <h4 className="spectrum-Heading spectrum-Heading--sizeS">{key}</h4>
-                      <div
-                        css={css` 
+                    <>
+                      {value &&
+                        <>
+                          <div
+                            css={css`
+                              display:flex;
+                              flex-direction:column;
+                              gap:8px;
+                            `}
+                          >
+                            <h4 className="spectrum-Heading spectrum-Heading--sizeS">{key}</h4>
+                            <div
+                              css={css` 
                         display:flex;
                         align-items: center;
                         gap: 24px; `}>
-                        <p className="spectrum-Body spectrum-Body--sizeS"
-                          css={css`
-                          letter-spacing: 1px;
-                          font-family: monospace;
-                          white-space: normal;
-                          overflow-wrap: anywhere;
-                        `}
-                        >{value}</p>
+                              <p className="spectrum-Body spectrum-Body--sizeS"
+                                css={css`
+                                  font-family: Source Code Pro,Monaco,monospace;
+                                  white-space: normal;
+                                  overflow-wrap: anywhere;
+                                `}
+                              >{value}</p>
 
-                        <div css={css`position:relative;`}>
-                          <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
-                            onMouseEnter={() => setTooltipOpen(index)}
-                            onMouseLeave={() => setTooltipOpen(null)}
-                            onClick={() => handleCopy(value)}
-                            css={css`
-                              border: 1px solid var(--spectrum-global-color-gray-400);
-                              border-radius: 3px;
-                              padding: 3px 6px;
-                            `}
-                          >
-                            <span className="spectrum-ActionButton-label"><CopyIcon /></span>
-                          </button>
+                              <div css={css`position:relative;`}>
+                                <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
+                                  onMouseEnter={() => setTooltipOpen(index)}
+                                  onMouseLeave={handleLeave}
+                                  onClick={() => handleCopy(value)}
+                                  css={css`
+                                    border: 1px solid var(--spectrum-global-color-gray-400);
+                                    border-radius: 3px;
+                                    padding: 3px 6px;
+                                  `}
+                                >
+                                  <span className="spectrum-ActionButton-label"><CopyIcon /></span>
+                                </button>
 
-                          {isTooltipOpen === index && (
-                            <span
-                              className="spectrum-Tooltip spectrum-Tooltip--top is-open"
-                              css={css`
-                                position: absolute;
-                                bottom: 25px;
-                                top: unset;
-                                white-space: nowrap;
-                              `}
-                            >
-                              <span className="spectrum-Tooltip-label">Copy</span>
-                              <span className="spectrum-Tooltip-tip"></span>
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                                {isTooltipOpen === index && (
+                                  <span
+                                    className="spectrum-Tooltip spectrum-Tooltip--top is-open"
+                                    css={css`
+                                      position: absolute;
+                                      bottom: 25px;
+                                      top: unset;
+                                      white-space: nowrap;
+                                    `}
+                                  >
+                                    <span className="spectrum-Tooltip-label">{isCopied ? "Copied" : "Copy"}</span>
+                                    <span className="spectrum-Tooltip-tip"></span>
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      }
+                    </>
                   )
                 })}
                 <div
@@ -249,13 +270,22 @@ const MyCredential = ({
               width: 80%;
             `}
           >
-            <h4 className="spectrum-Heading spectrum-Heading--sizeXS" >Need another credential</h4>
+            <h4 className="spectrum-Heading spectrum-Heading--sizeXS"
+              css={css`
+                font-weight:700;
+                color:var(--spectrum-global-color-gray-900);
+              `}
+            >Need another credential</h4>
             <p className="spectrum-Body spectrum-Body--sizeS">
               <span onClick={handleRestart}
                 css={css`
                   color:var(--spectrum-global-color-gray-800);
                   text-decoration:underline;
-                  cursor:pointer;`
+                  cursor:pointer;
+                  &:hover {
+                    color:var(--spectrum-global-color-gray-900)
+                  }
+                `
                 }>
                 Restart and create a new credential
               </span>

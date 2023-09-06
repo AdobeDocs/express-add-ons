@@ -25,7 +25,7 @@ const GetCredential = ({ credentialType, children, className }) => {
         className={classNames(className)}
         css={css`
           background: #f8f8f8;
-          padding: var(--spectrum-global-dimension-size-600) 0 var(--spectrum-global-dimension-size-600) 0;
+          padding: var(--spectrum-global-dimension-size-800) 0 var(--spectrum-global-dimension-size-800) 0;
                     
           @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_MOBILE_WIDTH}){
             padding: var(--spectrum-global-dimension-size-300) var(--spectrum-global-dimension-size-100);

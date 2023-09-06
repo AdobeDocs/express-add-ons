@@ -17,13 +17,19 @@ const SignIn = ({ signInProps }) => {
           gap: 16px;
         `}
       >
-        {signInProps?.title && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{signInProps?.title}</h3>}
+        {signInProps?.title &&
+          <h2 className="spectrum-Heading spectrum-Heading--sizeL"
+            css={css`
+              color:var(--spectrum-global-color-gray-900);
+              font-weight:700;
+            `}
+          >{signInProps?.title}</h2>}
         {signInProps?.paragraph &&
           <p
             className="spectrum-Body spectrum-Body--sizeL"
             css={css`
                 width: 50%;
-                color: var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));
+                color:var(--spectrum-global-color-gray-800);
                 @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}) {
                   width: 100% ;
                 }
