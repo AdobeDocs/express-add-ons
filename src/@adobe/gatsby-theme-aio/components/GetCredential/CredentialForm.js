@@ -16,6 +16,7 @@ const CredentialForm = ({ formProps }) => {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [response, setResponse] = useState({});
+  const [errResp, setErrorResp] = useState("`Unable to create credential. Error <code>:<error text>. Please try to submit the form again`");
   // check the localstorage if you already have previous credentials and then choose what need to select
   const [showCreateForm, setShowCreateForm] = useState(true);
   const [showCredential, setShowCredential] = useState(false);
@@ -106,9 +107,15 @@ const CredentialForm = ({ formProps }) => {
       setLoading(true);
       setShowCreateForm(false);
       const data = {
-        name: Date.now().toString(),
+        name: formData["CredentialName"],
         platform: 'apiKey',
-        description: 'created for get credential'
+        description: 'created for get credential',
+        domain:formData["AllowedOrigins"],
+        "services": [
+            {
+                "sdkCode": "CCEmbedCompanionAPI"
+            }
+        ]
       };
       const response = await fetch("/console/api/organizations/220657/integrations/adobeid", {
         method: "POST",
@@ -117,16 +124,18 @@ const CredentialForm = ({ formProps }) => {
           "Authorization": "Bearer " + token,
           "x-api-key": "UDPWeb1"
         },
+
         body: JSON.stringify(data),
       });
+      const resResp = await response.json();
       if (response.status === 200) {
-        const result = await response.json();
-        setResponse(result);
+        setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
-        pickData && downloadAndModifyZip(pickData['href'], result);
+        pickData && downloadAndModifyZip(pickData['href'], resResp);
       }
       else {
+        setErrorResp(resResp?.messages[0]?.message)
         setIsError(true);
         setAlertShow(true)
       }
@@ -138,8 +147,6 @@ const CredentialForm = ({ formProps }) => {
   };
 
   const sideObject = formField.find(item => 'Side' in item);
-
-  console.log('formField', formField)
 
   return (
     <>
@@ -283,7 +290,7 @@ const CredentialForm = ({ formProps }) => {
             <Toast
               alertShow={alertShow}
               setAlertShow={setAlertShow}
-              message={isError && !showCredential ? `Unable to create credential. Error <code>:<error text>. Please try to submit the form again` : !isError && showCredential && `Your credentials were created successfully.`}
+              message={isError && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
               error={isError}
             />) :
             <Toast alertShow={alertShow} setAlertShow={setAlertShow} message={"Organization changed"} />

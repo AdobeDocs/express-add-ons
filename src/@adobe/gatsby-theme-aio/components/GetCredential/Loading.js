@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import { css } from "@emotion/react";
 
 const Loading = ({
   credentials
 }) => {
+  const divRef = useRef(null);
+  useEffect(() =>{
+    if(divRef.current){
+      divRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  }, [])
   return (
     <>
       {credentials?.heading && <h3 className="spectrum-Heading spectrum-Heading--sizeL">{credentials?.heading}</h3>}
@@ -29,7 +39,7 @@ const Loading = ({
             </div>
           </div>
         </div>
-        <div
+        <div ref={divRef}
           css={css`
             font-style: italic;
             font-family: 'adobe-clean';
