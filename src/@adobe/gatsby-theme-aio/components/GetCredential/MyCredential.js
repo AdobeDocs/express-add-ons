@@ -2,21 +2,35 @@ import React, { useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 import { SideContent } from './CredentialForm';
-import { CopyIcon, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { CopyIcon, downloadAndModifyZip, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const MyCredential = ({
   credentialProps,
-  credentialName,
-  response,
-  allowedOrigins,
-  setShowCreateForm
+  setShowCreateForm,
+  setShowCredential
 }) => {
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
   const [isCopied, setIsCopied] = useState(false);
+  const token = window.adobeIMS?.getTokenFromStorage()?.token;
+  const getCall = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token,
+      "x-api-key": "UDPWeb1"
+    },
+  };
 
   const card = credentialProps.MyCredential;
-  const domains = [{ key: "API Key", value: response?.apiKey }, { key: "Allowed domains", value: allowedOrigins }];
+  let domain;
+  const apiKey = localStorage?.getItem('apiKey');
+  if (apiKey) {
+    domain = JSON.parse(atob(apiKey));;
+  }
+
+  const { response, credentialName, Credential } = domain;
+  const organizationId = localStorage.getItem('OrgID');
 
   const handleCopy = (value) => {
     setIsCopied(true);
@@ -25,6 +39,8 @@ const MyCredential = ({
 
   const handleRestart = () => {
     setShowCreateForm(true);
+    setShowCredential(false);
+    localStorage.setItem('apiKey', null);
   }
 
   const handleLeave = () => {
@@ -67,14 +83,23 @@ const MyCredential = ({
         css={css`
           color:var(--spectrum-global-color-gray-900);
         `}
-      >Download not working?<a href=""
-        css={css`
-          margin-left: 10px;
-          color:rgb(0, 84, 182);
-          &:hover {
-            color: rgb(2, 101, 220);
-          }`
-        }>Restart download</a></p>
+      >
+        Download not working?
+        <span
+          css={css`
+            margin-left: 10px;
+            cursor:pointer;
+            text-decoration:underline;
+            color:rgb(0, 84, 182);
+            &:hover {
+              color: rgb(2, 101, 220);
+            }
+          `}
+          onClick={() => downloadAndModifyZip(`/console/api/organizations/${organizationId}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, getCall, token)}
+        >
+          Restart download
+        </span>
+      </p>
       <div
         css={css`
           display:flex;
@@ -103,12 +128,10 @@ const MyCredential = ({
             css={css`
               background: white;
               border-radius: 10px;
-              box-shadow: 0 9px 15px 5px #e6e6e6;
               width: 90%;
 
               @media screen and (min-width:${MIN_MOBILE_WIDTH}) and (max-width:${MAX_TABLET_SCREEN_WIDTH}){
                 width:100%;
-                box-shadow:unset;
               }
 
             `}
@@ -147,7 +170,7 @@ const MyCredential = ({
                   gap: 32px;
                 `}
               >
-                {domains.map(({ key, value }, index) => {
+                {Credential?.map(({ key, value }, index) => {
                   return (
                     <>
                       {value &&
@@ -162,14 +185,16 @@ const MyCredential = ({
                             <h4 className="spectrum-Heading spectrum-Heading--sizeS">{key}</h4>
                             <div
                               css={css` 
-                        display:flex;
-                        align-items: center;
-                        gap: 24px; `}>
+                                display:flex;
+                                align-items: center;
+                                gap: 24px; 
+                              `}>
                               <p className="spectrum-Body spectrum-Body--sizeS"
                                 css={css`
                                   font-family: Source Code Pro,Monaco,monospace;
                                   white-space: normal;
                                   overflow-wrap: anywhere;
+                                  max-width: 300px;
                                 `}
                               >{value}</p>
 

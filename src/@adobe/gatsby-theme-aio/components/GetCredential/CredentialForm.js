@@ -7,9 +7,9 @@ import { Loading } from "./Loading";
 import { IllustratedMessage } from "./IllustratedMessage";
 import { ChangeOrganization } from './ChangeOrganization';
 import { JoinBetaProgram } from './JoinBetaProgram';
-import { AlertIcon, CommonFields, downloadAndModifyZip, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { AlertIcon, CommonFields, downloadAndModifyZip, getOrganization, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 import { ContextHelp } from './ContextHelp';
-import { Toast } from './Toast';
+import { Toast } from '../Toast';
 
 const CredentialForm = ({ formProps }) => {
 
@@ -27,14 +27,26 @@ const CredentialForm = ({ formProps }) => {
   const [isValid, setIsValid] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
   const [organizationChange, setOrganization] = useState(false);
-  const [pickData, setPickedOption] = useState('');
 
   const credentialForm = formProps?.CredentialForm;
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
+  const organizationId = localStorage.getItem("OrgID");
+  const domains = localStorage.getItem('apiKey');
 
   useEffect(() => {
     if (showCreateForm) setIsError(false);
   }, [showCreateForm])
+
+  useEffect(() => {
+    if (!showCredential && showCreateForm) {
+      const updateForm = { ...formData };
+      for (const key in updateForm) {
+        updateForm[key] = ''
+      };
+      setFormData(updateForm);
+      setAlertShow(false);
+    }
+  }, [showCredential])
 
   useEffect(() => {
 
@@ -43,50 +55,48 @@ const CredentialForm = ({ formProps }) => {
 
     credentialForm?.children.forEach(({ type, props }) => {
       if (type?.name === "Downloads" && props?.children) {
-        if (props?.required) {
-          downloadObj.required = true
-        }
-        props.children.forEach(({ props: { title, href } }) => downloadObj.selectOptions.push({ title, href }));
+        downloadObj.required = props.required || false;
+        downloadObj.selectOptions.push(...[].concat(props.children).map(({ props: { title, href } }) => ({ title, href })));
+        setFormData(prevData => ({ ...prevData, ...(Array.isArray(props.children) ? null : { Download: props.children?.props?.title }) }));
       }
-      if (type?.name === "CredentialName") {
-        fields.push({ [type?.name]: { ...props, required: true } });
-      }
-      else {
-        fields.push({ [type?.name]: props });
-      }
+      fields.push({ [type?.name]: { ...props, required: type?.name === "CredentialName" } });
     });
 
-    downloadObj.selectOptions.length && fields.push({ Download: downloadObj });
+    if (downloadObj.selectOptions.length) {
+      fields.push({ Download: downloadObj });
+    }
+
     setFormField(fields);
-    setFormData(fields.reduce((obj, data) => ({ ...obj, [Object.keys(data)]: '' }), {}));
+    getOrganization();
+
+    if (domains) {
+      setShowCredential(true);
+      setShowCreateForm(false);
+    }
 
   }, []);
 
   useEffect(() => {
-    if (showCreateForm || isError) {
+    if (isError) {
       const updateForm = { ...formData };
       for (const key in updateForm) {
         updateForm[key] = ''
       };
       setFormData(updateForm);
     }
-  }, [isError, showCreateForm])
+  }, [isError])
 
   useEffect(() => {
 
-    const selectedOption = formField.flatMap(({ Download }) => Download?.selectOptions || []).find(option => option?.title === formData['Download']);
-    selectedOption && setPickedOption(selectedOption);
-
-    const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.required || child.type.name === "CredentialName").map(child => child.type.name);
+    const requiredFields = Array.from(credentialForm?.children || []).filter(child => child?.props?.required || child.type.name === "CredentialName")?.map(child => child.type.name);
 
     if (requiredFields.includes("Downloads") || formData['Downloads']) {
       requiredFields.push("Download");
     };
-
     const isValidCredentialName = /^(?=[A-Za-z0-9\s]{3,}$)[A-Za-z0-9\s]*$/.test(formData.CredentialName);
-    const isAllowedOriginsValid = formData['AllowedOrigins'] ? /^(localhost:\d{1,5}|(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)$/.test(formData['AllowedOrigins']) : true;
-
-    const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && formData.Agree === true && isAllowedOriginsValid;
+    const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/.test(data.trim()));
+    const isAllowedOriginsValid = requiredFields.includes("AllowedOrigins") ? validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5 : true;
+    const isValid = isValidCredentialName && requiredFields.every(field => formData[field]) && isAllowedOriginsValid;
 
     setIsValid(isValid);
 
@@ -97,52 +107,60 @@ const CredentialForm = ({ formProps }) => {
   }, [alertShow])
 
   const handleChange = (e, type) => {
-    const value = (type === "Downloads" || type === "Agree") ? e.target.checked : e.target.value;
+    const value = (type === "Downloads") ? e.target.checked : e.target.value;
     setFormData(prevData => ({ ...prevData, [type]: value }));
   };
 
   const createCredential = async () => {
     const token = window.adobeIMS?.getTokenFromStorage()?.token;
-    if (token) {
-      setLoading(true);
-      setShowCreateForm(false);
-      const data = {
-        name: formData["CredentialName"],
-        platform: 'apiKey',
-        description: 'created for get credential',
-        domain:formData["AllowedOrigins"],
-        "services": [
-            {
-                "sdkCode": "CCEmbedCompanionAPI"
-            }
-        ]
-      };
-      const response = await fetch("/console/api/organizations/220657/integrations/adobeid", {
+
+    if (!token) {
+      console.log('User not logged in');
+    }
+
+    setLoading(true);
+    setShowCreateForm(false);
+
+    const data = {
+      name: formData["CredentialName"],
+      platform: 'apiKey',
+      description: 'created for get credential',
+      domain: formData["AllowedOrigins"],
+      services: [{ sdkCode: "CCEmbedCompanionAPI" }],
+    };
+
+    try {
+      const response = await fetch(`/console/api/organizations/${organizationId}/integrations/adobeid`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + token,
-          "x-api-key": "UDPWeb1"
+          "Authorization": `Bearer ${token}`,
+          "x-api-key": "UDPWeb1",
         },
-
         body: JSON.stringify(data),
       });
+
       const resResp = await response.json();
+
       if (response.status === 200) {
         setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
-        pickData && downloadAndModifyZip(pickData['href'], resResp);
-      }
-      else {
-        setErrorResp(resResp?.messages[0]?.message)
+        const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }], credentialName: formData["CredentialName"], response: resResp };
+        localStorage.setItem("apiKey", btoa(JSON.stringify(responseValue)));
+        downloadAndModifyZip(`/console/api/organizations/${organizationId}das/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
+      } else if (response.status === 400) {
+        setAlertShow(true);
+        setIsValid(false);
+        setErrorResp(resResp?.messages[0]?.message);
+        setShowCreateForm(true);
+      } else {
         setIsError(true);
-        setAlertShow(true)
       }
+    } catch (error) {
+      setIsError(true);
+    } finally {
       setLoading(false);
-    }
-    else {
-      console.log('User not logged in');
     }
   };
 
@@ -150,7 +168,7 @@ const CredentialForm = ({ formProps }) => {
 
   return (
     <>
-      {!redirectToBeta && showCreateForm &&
+      {!redirectToBeta && showCreateForm && !loading &&
         <div
           className={classNames(credentialForm?.className)}
           css={css`
@@ -188,7 +206,6 @@ const CredentialForm = ({ formProps }) => {
               Change organization?
             </span>
           </p>
-          {organizationChange && <Toast alertShow={alertShow} setAlertShow={setAlertShow} message="Organization Changed" />}
           <div
             css={css`
               display:flex;
@@ -227,7 +244,7 @@ const CredentialForm = ({ formProps }) => {
                       {!side &&
                         <>
                           {!download ?
-                            <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`}>
+                            <div css={css`display:flex;flex-direction:column;width:100%;gap:5px;`} key={index}>
                               {name && <CredentialName nameProps={name} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
                               {origins && <AllowedOrigins originsProps={origins} isFormValue={isFormValue} formData={formData} handleChange={handleChange} />}
                               {downloads && <Downloads downloadsProp={downloads} type="Downloads" formData={formData} handleChange={handleChange} />}
@@ -240,20 +257,6 @@ const CredentialForm = ({ formProps }) => {
                   )
                 })
                 }
-                <div css={css`display: flex; gap: 10px;`}>
-                  <input type="checkbox" onChange={(e) => handleChange(e, 'Agree')} />
-                  <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >{`By checking this box, you agree to `}
-                    <a
-                      href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf"
-                      css={css`
-                        color:rgb(0, 84, 182);
-                        &:hover {
-                          color: rgb(2, 101, 220);
-                        }
-                      `}
-                      target="_blank">  Adobe Developer Terms of Use</a>.
-                  </p>
-                </div>
                 <button
                   id="credentialButton"
                   className={`spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM`}
@@ -279,21 +282,28 @@ const CredentialForm = ({ formProps }) => {
               Go to Developer Console
             </a>
           </p>
-
+          <p css={css`color:var(--spectrum-global-color-gray-800);margin:0;`} >
+            <a
+              href="https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Developer-Additional-Terms_en-US_20230822.pdf"
+              css={css`
+                color:rgb(0, 84, 182);
+                &:hover {
+                  color: rgb(2, 101, 220);
+                }
+              `}
+              target="_blank">  Adobe Developer Terms of Use</a>.
+          </p>
         </div>
       }
 
-
-      {alertShow &&
+      {alertShow && errResp &&
         <>
           {!organizationChange ? (
             <Toast
-              alertShow={alertShow}
-              setAlertShow={setAlertShow}
-              message={isError && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
-              error={isError}
+              message={showCreateForm && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
+              variant={isError || (showCreateForm && !showCredential) ? "error" : "success"}
             />) :
-            <Toast alertShow={alertShow} setAlertShow={setAlertShow} message={"Organization changed"} />
+            <Toast message="Organization Changed" variant="success" />
           }
         </>
       }
@@ -310,7 +320,7 @@ const CredentialForm = ({ formProps }) => {
         />
       )}
       {isError && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.IllustratedMessage} />}
-      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} credentialName={formData['CredentialName']} allowedOrigins={formData['AllowedOrigins']} setShowCreateForm={setShowCreateForm} />}
+      {showCredential && !showCreateForm && <MyCredential credentialProps={formProps} response={response} credentialName={formData['CredentialName']} setShowCreateForm={setShowCreateForm} setShowCredential={setShowCredential} />}
       {redirectToBeta && <JoinBetaProgram joinBeta={formProps?.JoinBetaProgram} />}
     </>
   )
@@ -318,8 +328,8 @@ const CredentialForm = ({ formProps }) => {
 
 const Side = ({ side }) => (side);
 
-const CredentialName = ({ nameProps, isFormValue, formData, handleChange, index }) => {
-  const isRed = formData["CredentialName"]?.length < 3 && formData["CredentialName"]?.length !== 0;
+const CredentialName = ({ nameProps, isFormValue, formData, handleChange }) => {
+  const isRed = formData["CredentialName"]?.length < 6 && formData["CredentialName"]?.length !== 0;
   return (
     <CommonFields isFormValue={isFormValue} fields={nameProps} formData={formData} isRed={isRed}>
       <div css={css`position:relative; display:inline-block; width: 100%`}>
@@ -350,8 +360,12 @@ const CredentialName = ({ nameProps, isFormValue, formData, handleChange, index 
   )
 }
 
-const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange, index }) => {
-  const isRed = formData["AllowedOrigins"] !== undefined && !/^(localhost:\d{1,5}|(www\.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)$/.test(formData['AllowedOrigins']) && formData["AllowedOrigins"]?.length !== 0;
+const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChange }) => {
+
+  const validateAllowedOrigins = formData['AllowedOrigins']?.split(',').map((data) => /^(localhost:\d{1,5}|(\*\.|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+)|\*|(\*\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+))$/.test(data.trim()));
+  const isAllowedOriginsValid = validateAllowedOrigins?.every((value) => value === true) && validateAllowedOrigins.length <= 5;
+  const isRed = formData["AllowedOrigins"] !== undefined && !isAllowedOriginsValid && formData["AllowedOrigins"]?.length !== 0;
+
   return (
     <CommonFields isFormValue={isFormValue} fields={originsProps} type={type} formData={formData} isRed={isRed} >
       <textarea
@@ -379,6 +393,7 @@ const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChang
             }
           }
         `}
+        value={formData["AllowedOrigins"]}
         placeholder={originsProps?.placeholder}
         onChange={(e) => handleChange(e, "AllowedOrigins")}
       ></textarea>
@@ -386,12 +401,12 @@ const AllowedOrigins = ({ originsProps, isFormValue, type, formData, handleChang
   )
 }
 
-const Downloads = ({ downloadsProp, handleChange }) => {
+const Downloads = ({ downloadsProp, handleChange, formData }) => {
   const { label, contextHelpLabelForLink, contextHelpLink, contextHelpText, contextHelp, contextHelpHeading } = downloadsProp;
 
   return (
     <div css={css` display: flex;gap: 10px;align-items: center;`}>
-      <input type="checkbox" onChange={(e) => handleChange(e, "Downloads")} />
+      <input type="checkbox" onChange={(e) => handleChange(e, "Downloads")} checked={formData['Downloads']} />
       <p css={css` color:var(--spectrum-dialog-confirm-description-text-color, var(--spectrum-global-color-gray-800));margin:0;`} > {label} </p>
       <div css={css`cursor:pointer;display: flex;justify-content: center;align-items: center;`}>
         {contextHelp && <ContextHelp heading={contextHelpHeading} text={contextHelpText} link={contextHelpLink} label={contextHelpLabelForLink} />}
@@ -417,7 +432,7 @@ const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
         value={formData['Download']}
         onChange={(e) => handleChange(e, "Download")}
       >
-        <option value="" hidden>Select language for your code pickData</option>
+        {downloadProp?.selectOptions?.length > 1 && <option value="" hidden>Select language for your code pickData</option>}
         {downloadProp?.selectOptions?.map((option, index) => (
           <option key={index} data-link={option.href} value={option.title} >{option.title}</option>
         ))}

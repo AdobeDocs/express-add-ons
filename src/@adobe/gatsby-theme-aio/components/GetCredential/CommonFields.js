@@ -124,12 +124,7 @@ export const LinkOut = () => {
 
 const zip = new JSZip();
 
-const addJsonToZip = (jsonToInject) => {
-  const jsonContent = JSON.stringify(jsonToInject, null, 2);
-  zip.file('credential.json', jsonContent);
-}
-
-const createEmptyZipAndAddJson = (jsonToInject) => {
+const createZipFile = (jsonToInject) => {
   zip.file('credential.json', JSON.stringify(jsonToInject, null, 2));
 
   zip.generateAsync({ type: 'blob' }).then(function (blob) {
@@ -137,20 +132,23 @@ const createEmptyZipAndAddJson = (jsonToInject) => {
   });
 }
 
-export const downloadAndModifyZip = (zipFileURL, jsonToInject) => {
-  JSZipUtils.getBinaryContent(zipFileURL, function (err, data) {
-    if (err) {
-      createEmptyZipAndAddJson(jsonToInject);
-    } else {
-      zip.loadAsync(data).then(function () {
-        addJsonToZip(jsonToInject);
-
-        zip.generateAsync({ type: 'blob' }).then(function (blob) {
-          saveAs(blob, 'sample.zip');
-        });
-      });
+export const downloadAndModifyZip = async (zipFileURL) => {
+  const token = window.adobeIMS?.getTokenFromStorage()?.token;
+  const getCall = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token,
+      "x-api-key": "UDPWeb1"
     }
-  });
+  };
+  const response = await fetch(zipFileURL, getCall);
+  const organization = await response.json();
+  if (response.status === 200) {
+    JSZipUtils.getBinaryContent(zipFileURL, function () {
+      createZipFile(organization);
+    });
+  }
 }
 
 export const KeyIcon = () => {
@@ -161,4 +159,18 @@ export const KeyIcon = () => {
   )
 }
 
-
+export const getOrganization = async () => {
+  const token = window.adobeIMS?.getTokenFromStorage()?.token;
+  if (token) {
+    const response = await fetch("/console/api/organizations", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token,
+        "x-api-key": "UDPWeb1"
+      }
+    });
+    const organization = await response.json();
+    localStorage.setItem('OrgID', organization[0]?.id)
+  }
+}
