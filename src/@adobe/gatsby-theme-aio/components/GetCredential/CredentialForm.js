@@ -148,7 +148,7 @@ const CredentialForm = ({ formProps }) => {
         setAlertShow(true);
         const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }], credentialName: formData["CredentialName"], response: resResp };
         localStorage.setItem("apiKey", btoa(JSON.stringify(responseValue)));
-        downloadAndModifyZip(`/console/api/organizations/${organizationId}das/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
+        downloadAndModifyZip(`/console/api/organizations/${organizationId}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
       } else if (response.status === 400) {
         setAlertShow(true);
         setIsValid(false);
