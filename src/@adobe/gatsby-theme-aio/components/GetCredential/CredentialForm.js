@@ -27,10 +27,27 @@ const CredentialForm = ({ formProps }) => {
   const [isValid, setIsValid] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
   const [organizationChange, setOrganization] = useState(false);
+  const [organization, setOrganizationValue] = useState({})
 
   const credentialForm = formProps?.CredentialForm;
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
-  const organizationId = localStorage.getItem("OrgID");
+
+  const getValueFromLocalStorage = () => {
+    const OrgID = localStorage?.getItem('OrgID');
+    if (!OrgID) {
+      getOrganization().then((data) => {
+        setOrganizationValue(data)
+      })
+    }
+    else {
+      setOrganizationValue(JSON.parse(atob(OrgID)))
+    }
+  }
+
+  useEffect(() => {
+    getValueFromLocalStorage();
+  }, [organizationChange])
+
   const domains = localStorage.getItem('apiKey');
 
   useEffect(() => {
@@ -67,7 +84,7 @@ const CredentialForm = ({ formProps }) => {
     }
 
     setFormField(fields);
-    getOrganization();
+    getValueFromLocalStorage();
 
     if (domains) {
       setShowCredential(true);
@@ -130,7 +147,7 @@ const CredentialForm = ({ formProps }) => {
     };
 
     try {
-      const response = await fetch(`/console/api/organizations/${organizationId}/integrations/adobeid`, {
+      const response = await fetch(`/console/api/organizations/${organization?.id}/integrations/adobeid`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -148,7 +165,7 @@ const CredentialForm = ({ formProps }) => {
         setAlertShow(true);
         const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }], credentialName: formData["CredentialName"], response: resResp };
         localStorage.setItem("apiKey", btoa(JSON.stringify(responseValue)));
-        downloadAndModifyZip(`/console/api/organizations/${organizationId}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
+        downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
       } else if (response.status === 400) {
         setAlertShow(true);
         setIsValid(false);
@@ -193,7 +210,7 @@ const CredentialForm = ({ formProps }) => {
           <p
             className="spectrum-Body spectrum-Body--sizeS"
             css={css`color:var(--spectrum-global-color-gray-800);`}
-          >You're creating this credential in [<b>Org Name, Inc</b>].
+          >You're creating this credential in [<b>{organization?.name}, Inc</b>].
             <span
               css={css`
                 margin-left :10px;

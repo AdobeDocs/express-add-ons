@@ -7,7 +7,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
   const [selectedOrganization, setSelectedOrganization] = useState('Org Name Inc.');
   const organization = ["Org Name Inc.", "developer-org-name"];
   const token = window.adobeIMS?.getTokenFromStorage()?.token;
-  const getCall = {
+  const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const ChangeOrganization = ({ setModalOpen, redirectToBeta, setRedirectBetaProgr
     } else {
       setOrganization(true);
       setSelectedOrganization(e.target.value);
-      getOrganization(token, getCall)
+      getOrganization(token, options)
     }
   };
 

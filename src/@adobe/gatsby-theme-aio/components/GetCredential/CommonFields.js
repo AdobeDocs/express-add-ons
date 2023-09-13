@@ -134,7 +134,7 @@ const createZipFile = (jsonToInject) => {
 
 export const downloadAndModifyZip = async (zipFileURL) => {
   const token = window.adobeIMS?.getTokenFromStorage()?.token;
-  const getCall = {
+  const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -142,8 +142,10 @@ export const downloadAndModifyZip = async (zipFileURL) => {
       "x-api-key": "UDPWeb1"
     }
   };
-  const response = await fetch(zipFileURL, getCall);
+
+  const response = await fetch(zipFileURL, options);
   const organization = await response.json();
+
   if (response.status === 200) {
     JSZipUtils.getBinaryContent(zipFileURL, function () {
       createZipFile(organization);
@@ -161,6 +163,7 @@ export const KeyIcon = () => {
 
 export const getOrganization = async () => {
   const token = window.adobeIMS?.getTokenFromStorage()?.token;
+
   if (token) {
     const response = await fetch("/console/api/organizations", {
       method: "GET",
@@ -171,6 +174,9 @@ export const getOrganization = async () => {
       }
     });
     const organization = await response.json();
-    localStorage.setItem('OrgID', organization[0]?.id)
+    localStorage.setItem('OrgID', btoa(JSON.stringify(organization[0])))
+    if (organization) {
+      return organization[0];
+    }
   }
 }

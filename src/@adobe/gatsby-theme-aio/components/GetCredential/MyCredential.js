@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from "@emotion/react";
 import classNames from "classnames";
 import { SideContent } from './CredentialForm';
-import { CopyIcon, downloadAndModifyZip, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
+import { CopyIcon, downloadAndModifyZip, getOrganization, KeyIcon, LinkOut, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
 const MyCredential = ({
   credentialProps,
@@ -12,25 +12,28 @@ const MyCredential = ({
 
   const [isTooltipOpen, setTooltipOpen] = useState(null);
   const [isCopied, setIsCopied] = useState(false);
-  const token = window.adobeIMS?.getTokenFromStorage()?.token;
-  const getCall = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token,
-      "x-api-key": "UDPWeb1"
-    },
-  };
+  const [organization, setOrganizationValue] = useState({});
+
+  useEffect(() => {
+    const OrgID = localStorage?.getItem('OrgID');
+    if (OrgID) {
+      setOrganizationValue(JSON.parse(atob(OrgID)))
+    }
+    else {
+      getOrganization().then((data) => {
+        setOrganizationValue(data)
+      })
+    }
+  }, [])
 
   const card = credentialProps.MyCredential;
   let domain;
   const apiKey = localStorage?.getItem('apiKey');
   if (apiKey) {
-    domain = JSON.parse(atob(apiKey));;
+    domain = JSON.parse(atob(apiKey));
   }
 
-  const { response, credentialName, Credential } = domain;
-  const organizationId = localStorage.getItem('OrgID');
+  const { response, credentialName, Credential } = domain || {};
 
   const handleCopy = (value) => {
     setIsCopied(true);
@@ -95,7 +98,7 @@ const MyCredential = ({
               color: rgb(2, 101, 220);
             }
           `}
-          onClick={() => downloadAndModifyZip(`/console/api/organizations/${organizationId}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`, getCall, token)}
+          onClick={() => downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${response.projectId}/workspaces/${response.workspaceId}/download`)}
         >
           Restart download
         </span>
