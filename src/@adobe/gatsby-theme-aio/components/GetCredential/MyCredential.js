@@ -29,7 +29,7 @@ const MyCredential = ({
   const card = credentialProps.MyCredential;
   let domain;
   const apiKey = localStorage?.getItem('apiKey');
-  if (apiKey) {
+  if (apiKey !== "null" || apiKey !== null) {
     domain = JSON.parse(atob(apiKey));
   }
 
