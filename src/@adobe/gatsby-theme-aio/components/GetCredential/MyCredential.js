@@ -199,7 +199,7 @@ const MyCredential = ({
                                 `}
                               >{value}</p>
 
-                              <div css={css`position:relative;`}>
+                              <div css={css`position:relative;display:${key === "Organization" ? "none" : "block"}`}>
                                 <button className="spectrum-ActionButton spectrum-ActionButton--sizeM"
                                   onMouseEnter={() => setTooltipOpen(index)}
                                   onMouseLeave={handleLeave}
