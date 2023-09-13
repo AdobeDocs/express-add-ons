@@ -11,7 +11,7 @@ import { AlertIcon, CommonFields, downloadAndModifyZip, getOrganization, MAX_TAB
 import { ContextHelp } from './ContextHelp';
 import { Toast } from '../Toast';
 
-const CredentialForm = ({ formProps }) => {
+const CredentialForm = ({ formProps, credentialType, service }) => {
 
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -27,7 +27,7 @@ const CredentialForm = ({ formProps }) => {
   const [isValid, setIsValid] = useState(false);
   const [alertShow, setAlertShow] = useState(false);
   const [organizationChange, setOrganization] = useState(false);
-  const [organization, setOrganizationValue] = useState({})
+  const [organization, setOrganizationValue] = useState({});
 
   const credentialForm = formProps?.CredentialForm;
   const isFormValue = credentialForm?.children?.filter(data => Object.keys(data.props).some(key => key.startsWith('contextHelp')));
@@ -35,9 +35,7 @@ const CredentialForm = ({ formProps }) => {
   const getValueFromLocalStorage = () => {
     const OrgID = localStorage?.getItem('OrgID');
     if (!OrgID) {
-      getOrganization().then((data) => {
-        setOrganizationValue(data)
-      })
+      getOrganization(setOrganizationValue);
     }
     else {
       setOrganizationValue(JSON.parse(atob(OrgID)))
@@ -140,10 +138,10 @@ const CredentialForm = ({ formProps }) => {
 
     const data = {
       name: formData["CredentialName"],
-      platform: 'apiKey',
+      platform: credentialType,
       description: 'created for get credential',
       domain: formData["AllowedOrigins"],
-      services: [{ sdkCode: "CCEmbedCompanionAPI" }],
+      services: [{ sdkCode: service }],
     };
 
     try {
@@ -163,7 +161,7 @@ const CredentialForm = ({ formProps }) => {
         setResponse(resResp);
         setShowCredential(true);
         setAlertShow(true);
-        const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }], credentialName: formData["CredentialName"], response: resResp };
+        const responseValue = { Credential: [{ key: "API Key", value: resResp?.apiKey }, { key: "Allowed domains", value: formData["AllowedOrigins"] }, { key: "Organization", value: organization?.name }], credentialName: formData["CredentialName"], response: resResp };
         localStorage.setItem("apiKey", btoa(JSON.stringify(responseValue)));
         downloadAndModifyZip(`/console/api/organizations/${organization?.id}/projects/${resResp.projectId}/workspaces/${resResp.workspaceId}/download`);
       } else if (response.status === 400) {
@@ -210,7 +208,7 @@ const CredentialForm = ({ formProps }) => {
           <p
             className="spectrum-Body spectrum-Body--sizeS"
             css={css`color:var(--spectrum-global-color-gray-800);`}
-          >You're creating this credential in [<b>{organization?.name}, Inc</b>].
+          >You're creating this credential in [<b>{organization?.name}</b>].
             <span
               css={css`
                 margin-left :10px;
@@ -315,6 +313,7 @@ const CredentialForm = ({ formProps }) => {
 
       {alertShow && errResp &&
         <>
+        
           {!organizationChange ? (
             <Toast
               message={showCreateForm && !showCredential ? errResp : !isError && showCredential && `Your credentials were created successfully.`}
@@ -334,6 +333,7 @@ const CredentialForm = ({ formProps }) => {
           alertShow={alertShow}
           organizationChange={organizationChange}
           setOrganization={setOrganization}
+          setOrganizationValue={setOrganizationValue}
         />
       )}
       {isError && <IllustratedMessage setShowCreateForm={setShowCreateForm} errorMessage={formProps?.IllustratedMessage} />}
@@ -446,8 +446,8 @@ const Download = ({ downloadProp, formData, isFormValue, handleChange }) => {
           width:100%;
         `}
         id="selectBox"
-        value={formData['Download']}
-        onChange={(e) => handleChange(e, "Download")}
+        value={ formData['Download'] ? formData['Download'] : downloadProp?.selectOptions[0].title }
+        onChange={(e) => handleChange(e, "Download")} 
       >
         {downloadProp?.selectOptions?.length > 1 && <option value="" hidden>Select language for your code pickData</option>}
         {downloadProp?.selectOptions?.map((option, index) => (

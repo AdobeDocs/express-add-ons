@@ -20,16 +20,14 @@ const MyCredential = ({
       setOrganizationValue(JSON.parse(atob(OrgID)))
     }
     else {
-      getOrganization().then((data) => {
-        setOrganizationValue(data)
-      })
+      getOrganization(setOrganizationValue);
     }
   }, [])
 
   const card = credentialProps.MyCredential;
   let domain;
   const apiKey = localStorage?.getItem('apiKey');
-  if (apiKey !== "null" || apiKey !== null) {
+  if (apiKey !== "null" || apiKey !== null && apiKey) {
     domain = JSON.parse(atob(apiKey));
   }
 
@@ -43,7 +41,7 @@ const MyCredential = ({
   const handleRestart = () => {
     setShowCreateForm(true);
     setShowCredential(false);
-    localStorage.setItem('apiKey', null);
+    localStorage.removeItem('apiKey');
   }
 
   const handleLeave = () => {
@@ -237,20 +235,6 @@ const MyCredential = ({
                     </>
                   )
                 })}
-                <div
-                  css={css`
-                    display:flex;
-                    flex-direction:column;
-                    gap:8px;
-                  `}
-                >
-                  <h4 className="spectrum-Heading spectrum-Heading--sizeS" >Organization</h4>
-                  <p className="spectrum-Body spectrum-Body--sizeS"
-                    css={css`
-                      letter-spacing: 1px;
-                      font-family: monospace;
-                   `}>Nike Inc.</p>
-                </div>
                 <div
                   css={css`
                     display:flex;

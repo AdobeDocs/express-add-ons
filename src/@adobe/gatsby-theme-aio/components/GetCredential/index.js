@@ -9,7 +9,7 @@ import { MyCredential } from './MyCredential';
 import { JoinBetaProgram } from './JoinBetaProgram';
 import { MAX_MOBILE_WIDTH, MAX_TABLET_SCREEN_WIDTH, MIN_MOBILE_WIDTH } from './CommonFields';
 
-const GetCredential = ({ credentialType, children, className }) => {
+const GetCredential = ({ credentialType = 'apiKey', children, className, service = "CCEmbedCompanionAPI" }) => {
 
   let getCredentialData = {};
   React.Children.forEach(children, (child) => {
@@ -49,7 +49,7 @@ const GetCredential = ({ credentialType, children, className }) => {
 
           `}
         >
-          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.SignIn} /> : <GetCredential.Form formProps={getCredentialData} />}
+          {!window.adobeIMS?.isSignedInUser() ? <GetCredential.SignIn signInProps={getCredentialData?.SignIn} /> : <GetCredential.Form formProps={getCredentialData} credentialType={credentialType} service={service} />}
         </div>
       </section>
     </>

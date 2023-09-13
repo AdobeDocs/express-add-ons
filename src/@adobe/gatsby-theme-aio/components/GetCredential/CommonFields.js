@@ -161,22 +161,29 @@ export const KeyIcon = () => {
   )
 }
 
-export const getOrganization = async () => {
-  const token = window.adobeIMS?.getTokenFromStorage()?.token;
+export const getOrganization = async (setOrganizationValue) => {
+  try {
+    const token = window.adobeIMS?.getTokenFromStorage()?.token;
 
-  if (token) {
-    const response = await fetch("/console/api/organizations", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + token,
-        "x-api-key": "UDPWeb1"
+    if (token) {
+      const response = await fetch("/console/api/organizations", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token,
+          "x-api-key": "UDPWeb1"
+        }
+      });
+      const organization = await response.json();
+
+      if (setOrganizationValue) {
+        setOrganizationValue(organization[0]);
       }
-    });
-    const organization = await response.json();
-    localStorage.setItem('OrgID', btoa(JSON.stringify(organization[0])))
-    if (organization) {
-      return organization[0];
+      localStorage.setItem('OrgID', btoa(JSON.stringify(organization[0])));
+      return organization;
     }
+
+  } catch (error) {
+    console.error('Error:', error);
   }
 }
