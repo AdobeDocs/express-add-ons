@@ -42,7 +42,11 @@ module.exports = {
             path: 'https://developer.adobe.com/express/embed-sdk/docs/'
           },
         ]
-      }
+      },
+      {
+        title: "Community",
+        path: 'https://developer.adobe.com/express/community'
+      },  
     ],
   },
   plugins: [`@adobe/gatsby-theme-aio`]
