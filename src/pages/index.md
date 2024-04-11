@@ -21,9 +21,9 @@ import bgImg from "./images/Summary_BgImage.jpg"
 
 <Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
 
-## Make building add-ons your superpower.
+## Build add-ons for a global creative community.
 
-[Adobe Express](https://adobe.com/express) is an all-in-one design, photo, and video tool to make content creation easy.  Build add-ons to extend the functionality of Adobe Express and unlock new creative workflows for users.
+[Adobe Express](https://adobe.com/express) is an AI-first all-in-one app to easily create and share standout content. Make tools and integrations for users that extend the functionality of Adobe Express.
 
 - [Get started](https://developer.adobe.com/express/add-ons/docs/guides)
 - [Explore add-ons](https://new.express.adobe.com/new?category=addOns&addOnId=)
@@ -32,7 +32,7 @@ homeheroAssertImage
 
 <TextBlock slots="heading" className="announcement" theme="light"/>
 
-### Expand the creator toolbox.
+### Create powerful solutions for millions of users.
 
 <WrapperComponent slots="content" repeat="1" theme="light" className="wrapperforCreatorTool"/>
 
@@ -96,13 +96,25 @@ Export renditions of your users' work to a variety of formats.
 
 - [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#exporting-content)
 
-<TextBlock slots="image, heading,text" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
+<TextBlock slots="image,heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
-![Illustration showing that new APIs are coming soon.](images/Explore_Image_5.png)
+![Document Authoring API](images/Embed_Templates.png)
+
+### Transform user documents.
+
+Get deep access to the active document to add rich data visualizations, generate variations from data, and more.
+
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#exporting-content)
+
+<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left"/>
 
 ### More in the works.
 
 Powerful new APIs are right around the corner.
+
+![Illustration showing that new APIs are coming soon.](images/Explore_Image_5.png)
+
+- [Join our community](https://developer.adobe.com/express/community/)
 
 <TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
 
