@@ -11,7 +11,7 @@ Meet marketers, communicators, and small business owners where they create.
 
 ![Icon showing an unlocked padlock](../images/SX_lin_StreamlineDevSupport_140@2x.png)
 
-### Streamlined developer experience
+### Streamlined developer experience.
 
 Our “in-app” developer experience is lightweight and approachable, with lots of resources to get you started right away.
 
