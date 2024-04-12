@@ -56,7 +56,7 @@
 }
 
 .announcement>div {
-    padding: 5% 0 2% 0  !important;
+    padding: 5% 0 2% 0 !important;
 }
 
 .announcement>div>div>div>h3,
@@ -79,7 +79,7 @@
 }
 
 .wrapperforCreatorTool>div {
-    width: 80% !important;
+    width: 90% !important;
     margin: auto !important;
     overflow: hidden;
 }
@@ -88,7 +88,7 @@
     background-color: #f8f8f8 !important;
 }
 
-.secondaryBtn{
+.secondaryBtn {
     background-color: #ffffff !important;
 }
 
@@ -127,7 +127,8 @@
 .explore>div {
     width: 70% !important;
     margin: auto !important;
-    padding: 1% 0 !important;;
+    padding: 1% 0 !important;
+    ;
 }
 
 .explore a {
@@ -157,6 +158,7 @@
     margin: auto !important;
     text-align: center !important;
 }
+
 .viewAddOn>div>div>div>div>div {
     margin-top: 16px !important;
 }
@@ -170,7 +172,7 @@
     color: white !important;
     font-size: 36px;
     font-weight: bold;
-} 
+}
 
 
 .viewAddOn p {
@@ -244,7 +246,7 @@
     box-shadow: 0 9px 15px 5px #e6e6e6 !important;
 }
 
-.mini-card a>div:last-child{
+.mini-card a>div:last-child {
     border: none !important;
     height: 67px !important;
 }
@@ -276,7 +278,7 @@
 .marketPlace {
     padding: 8px 0 0 0 !important;
     justify-items: center !important;
- }
+}
 
 .marketPlace h3 {
     font-size: 22px !important;
@@ -317,12 +319,15 @@
 
 .support-tools {
     justify-items: center;
- }
+}
 
+.creatorToolBox h3 {
+    white-space: nowrap !important;
+}
 
 @media screen and (max-width:2000px) {
     .wrapperforCreatorTool>div {
-        width: 63% !important;
+        width: 75% !important;
         margin: auto !important;
         overflow: hidden;
     }
@@ -333,6 +338,10 @@
 }
 
 @media screen and (min-width:320px) and (max-width:1024px) {
+
+    .add-ones-hero>div {
+        flex-direction: column !important;
+    }
 
     .wrapperforCreatorTool>div {
         margin: auto !important;
@@ -367,9 +376,13 @@
         width: 100% !important;
     }
 
-    .mini-card a>div:last-child{
-        height:60px !important;
+    .mini-card a>div:last-child {
+        height: 60px !important;
     }
+
+    /* .marketPlace>div {
+        grid-gap: 60px !important;
+    } */
 
 }
 
@@ -436,6 +449,11 @@
     .inColumn>div>div:last-child>div>div:first-child {
         margin-top: 0 !important;
     }
+
+    .marketPlace>div>div>div>div:nth-child(2) {
+        height: 100px !important;
+        justify-content: center !important;
+    }
 }
 
 @media screen and (min-width:320px) and (max-width:767px) {
@@ -456,6 +474,10 @@
 
     .add-ones-hero>div>div>div>div>div:last-child {
         margin-top: 20px !important;
+    }
+
+    .creatorToolBox h3 {
+        white-space: wrap !important;
     }
 
     .explore>div {
@@ -530,13 +552,17 @@
         max-width: calc(calc(3.2 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns))) !important;
     }
 
+    .marketPlace>div>div {
+        height: 120px !important;
+    }
+
     .marketPlace>div>div>div {
         gap: 1% !important;
     }
 
     .inColumn {
         padding: 6% 0 !important;
-     }
+    }
 
 }
 
@@ -548,7 +574,7 @@
     }
 
     .wrapperforCreatorTool>div {
-        width: 75% !important;
+        width: 90% !important;
         margin: auto !important;
         overflow: hidden;
     }
@@ -564,7 +590,7 @@
     .mini-card>div>div>div>div:first-child {
         width: 32% !important;
     }
-    
+
     .marketPlace>div {
         grid-gap: 16px;
         max-width: calc(calc(11 * var(--spectrum-global-dimension-static-grid-fixed-max-width) / var(--spectrum-global-dimension-static-grid-columns)));
