@@ -259,8 +259,12 @@
     border: none !important;
 }
 
-.marketPlace>div>div>div>div>h2>p>span>picture>img{
+.marketPlace>div>div>a>div>h2>p>span>picture>img{
     border-radius:25px;
+}
+
+.marketPlace>div>div>a>div{
+    border: none !important;
 }
 
 .marketPlace>div>div>div>div:last-child {
