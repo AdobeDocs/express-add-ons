@@ -1,19 +1,19 @@
 <MiniResourceCard slots="image,heading,text" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inRow" />
 
-![3D Illustrations](../images/3D_rounded.png)
+![Auto Icon](../images/Auto-icon.png)
 
-## 3D Illustrations
+## Auto Icon
 
-Enhance your projects with 3D icons, illustrations, and animated shapes.
+Access over 160k high quality icons.
 
-![Attention Insight](../images/attentioninsight_rounded.png)
+![GenreX Music AI](../images/GenreX_music_ai.png)
 
-## Attention Insight
+## GenreX Music AI
 
-Instantly predict where users will look when engaging with your design.
+Explore AI text-to-music generation by simply describing what you want.
 
-![Bueno NFT](../images/buenonft_rounded.png)
+![TitlePro](../images/Title-pro.png)
 
-## Bueno NFT
+## TitlePro
 
-Effortlessly transform artboards into NFT drops.
+Create animated titles with over 100 diverse templates.

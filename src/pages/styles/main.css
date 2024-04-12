@@ -259,6 +259,10 @@
     border: none !important;
 }
 
+.marketPlace>div>div>div>div>h2>p>span>picture>img{
+    border-radius:25px;
+}
+
 .marketPlace>div>div>div>div:last-child {
     border: none !important;
     justify-content: start !important;
