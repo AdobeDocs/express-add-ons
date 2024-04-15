@@ -106,16 +106,6 @@ Get deep access to the active document to add rich data visualizations, generate
 
 - [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#exporting-content)
 
-<TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left"/>
-
-### More in the works.
-
-Powerful new APIs are right around the corner.
-
-![Illustration showing that new APIs are coming soon.](images/Explore_Image_5.png)
-
-- [Join our community](https://developer.adobe.com/express/community/)
-
 <TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
 
 ### Build and share your add-on in no time.
