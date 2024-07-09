@@ -146,7 +146,7 @@ jobs:
           GATSBY_DESKTOP_FOOTER_SCREEN_WIDTH_MAX: ${{ secrets.DESKTOP_FOOTER_SCREEN_WIDTH_MAX }}
 
       - name: Deploy
-        uses: icaraps/static-website-deploy@master
+        uses: AdobeDocs/static-website-deploy@master
         with:
           enabled-static-website: 'true'
           source: 'public'
@@ -155,7 +155,7 @@ jobs:
           remove-existing-files: 'true'
           exclude-subfolder: ${{ needs.set-state.outputs.exclude_subfolder }}
       - name: Purge Fastly Cache
-        uses: icaraps/gatsby-fastly-purge-action@no-downtime
+        uses: AdobeDocs/gatsby-fastly-purge-action@no-downtime
         with:
           fastly-token: ${{ secrets.AIO_FASTLY_TOKEN }}
           fastly-url: '${{ secrets.AIO_FASTLY_DEV_URL}}${{ needs.set-state.outputs.path_prefix }}'
@@ -253,7 +253,7 @@ jobs:
           GATSBY_DESKTOP_SCREEN_WIDTH: ${{ secrets.DESKTOP_SCREEN_WIDTH }}
           GATSBY_DESKTOP_FOOTER_SCREEN_WIDTH_MAX: ${{ secrets.DESKTOP_FOOTER_SCREEN_WIDTH_MAX }}
       - name: Deploy
-        uses: icaraps/static-website-deploy@master
+        uses: AdobeDocs/static-website-deploy@master
         with:
           enabled-static-website: 'true'
           source: 'public'
@@ -265,7 +265,7 @@ jobs:
         run: sleep 60s
         shell: bash
       - name: Purge Fastly Cache
-        uses: icaraps/gatsby-fastly-purge-action@master
+        uses: AdobeDocs/gatsby-fastly-purge-action@master
         with:
           fastly-token: ${{ secrets.AIO_FASTLY_TOKEN }}
           fastly-url: '${{ secrets.AIO_FASTLY_PROD_URL }}${{ needs.set-state.outputs.path_prefix }}'
