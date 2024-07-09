@@ -155,7 +155,7 @@ jobs:
           remove-existing-files: 'true'
           exclude-subfolder: ${{ needs.set-state.outputs.exclude_subfolder }}
       - name: Purge Fastly Cache
-        uses: icaraps/gatsby-fastly-purge-action@no-downtime
+        uses: AdobeDocs/gatsby-fastly-purge-action@no-downtime
         with:
           fastly-token: ${{ secrets.AIO_FASTLY_TOKEN }}
           fastly-url: '${{ secrets.AIO_FASTLY_DEV_URL}}${{ needs.set-state.outputs.path_prefix }}'
