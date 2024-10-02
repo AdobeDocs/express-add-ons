@@ -9,7 +9,7 @@
 
 .add-ones-hero>div {
     width: 75% !important;
-    margin: 3% auto;
+    margin: 0 auto;
     gap: 2%;
     display: flex;
 }
@@ -41,6 +41,9 @@
     color: white !important;
 }
 
+.add-ones-hero>div>div:nth-child(2)>div{
+    margin:0;
+}
 
 .add-ones-hero>div>div>div>div>div:nth-child(2)>a {
     border-color: #F4DFF9 !important;
@@ -473,7 +476,7 @@
     }
 
     .add-ones-hero>div>div>div>div>div:last-child {
-        margin-top: 20px !important;
+        margin-top: 10px !important;
     }
 
     .creatorToolBox h3 {

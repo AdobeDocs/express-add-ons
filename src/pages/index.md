@@ -18,8 +18,10 @@ import DeveloperToolBox from "./add-ons/developerTool.md"
 import SpaceContent from './add-ons/spaceAbility.md'
 import LearnMoreBtn from "./add-ons/learnmore.md"
 import bgImg from "./images/Summary_BgImage.jpg"
+import heroVideo from "./videos/R2_Add-on.mp4"
 
-<Hero slots="heading, text, buttons, assetsImg" customLayout variant="halfwidth" className="add-ones-hero"/>
+<!-- <Hero slots="heading, text, buttons, assetsImg" customLayout variant="video" animationVideo={heroVideo} className="homeherobgImage Hero-Banner"/> -->
+<Hero slots="heading, text, buttons" variant="halfwidth" videoUrl={heroVideo} className="add-ones-hero" />
 
 ## Build add-ons for a global creative community.
 
@@ -27,9 +29,7 @@ import bgImg from "./images/Summary_BgImage.jpg"
 
 - [Get started](https://developer.adobe.com/express/add-ons/docs/guides)
 - [Explore add-ons](https://new.express.adobe.com/new?category=addOns&addOnId=)
-
-homeheroAssertImage
-
+  
 <TextBlock slots="heading" className="announcement" theme="light"/>
 
 ### Create powerful solutions for millions of users.
