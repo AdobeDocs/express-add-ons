@@ -28,7 +28,7 @@ import heroVideo from "./videos/R2_Add-on.mp4"
 [Adobe Express](https://adobe.com/express) is an AI-first all-in-one app to easily create and share standout content. Make tools and integrations for users that extend the functionality of Adobe Express.
 
 - [Get started](https://developer.adobe.com/express/add-ons/docs/guides)
-- [Explore add-ons](https://new.express.adobe.com/new?category=addOns&addOnId=)
+- [Explore add-ons](https://new.express.adobe.com/add-ons)
   
 <TextBlock slots="heading" className="announcement" theme="light"/>
 
@@ -50,7 +50,7 @@ import heroVideo from "./videos/R2_Add-on.mp4"
 
 <TeaserBlock  slots="buttons" className="secondaryBtn"/>
 
-- [Explore more](https://new.express.adobe.com/new?category=addOns)
+- [Explore more](https://new.express.adobe.com/add-ons)
 
 <TextBlock slots="heading" className="announcement exploreCapabilities" theme="lightest"/>
 
@@ -80,7 +80,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 ![Illustration of dragging and dropping an asset into Adobe Express](images/Explore_Image_3.png)
 
-### Import from anywhere.
+### Import content from anywhere.
 
 Enable users to drag and drop any image or video asset to a document.
 
@@ -88,7 +88,7 @@ Enable users to drag and drop any image or video asset to a document.
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left"/>
 
-### Export to everywhere.
+### Export your content everywhere.
 
 Export renditions of your users' work to a variety of formats.
 
@@ -100,7 +100,7 @@ Export renditions of your users' work to a variety of formats.
 
 ![Document Authoring API](images/Embed_Templates.png)
 
-### Transform user documents.
+### Get deep access to a user's active document to...
 
 Get deep access to the active document to add rich data visualizations, generate variations from data, and more.
 
@@ -142,9 +142,10 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 
-<p className="teaserBlockCustomHeading">It's go time.</p>
+<p className="teaserBlockCustomHeading">Try an add-on</p>
 
 View our developer quickstart guide to start building add-ons in Adobe Express.
 
 - [View the guide](https://developer.adobe.com/express/add-ons/docs/guides/getting_started/quickstart/)
-- [Try an add-on](https://new.express.adobe.com/new?category=addOns&addOnId=)
+- [Try an add-on](https://new.express.adobe.com/add-ons)
+

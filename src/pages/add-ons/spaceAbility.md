@@ -1,25 +1,25 @@
 <MiniResourceCard slots="image,heading,text,link" repeat="3" theme="lightest" inRow="3" textColor="#424242" className="marketPlace inRow" />
 
-![Auto Icon](../images/Auto-icon.png)
+![Design Buddy](../images/Auto-icon.png)
 
-## Auto Icon
+## Design Buddy
 
-Access over 160k high quality icons.
+An AI-powered assistant to review your designs
 
-https://new.express.adobe.com/new?category=addOns&launchAddOnId=w5jihnj56
+https://adobesparkpost.app.link/TR9Mb7TXFLb?addOnId=w236j7h7j
 
-![GenreX Music AI](../images/GenreX_music_ai.png)
+![AudioStock](../images/GenreX_music_ai.png)
 
-## GenreX Music AI
+## AudioStock
 
-Explore AI text-to-music generation by simply describing what you want.
+Elevate your content with royalty-free music and SFX
 
-https://new.express.adobe.com/new?category=addOns&launchAddOnId=w91620527
+https://adobesparkpost.app.link/TR9Mb7TXFLb?addOnId=w072hm543
 
-![Title Pro](../images/Title-pro.png)
+![Accessify](../images/Title-pro.png)
 
-## Title Pro
+## Accessify
 
-Create animated titles with over 100 diverse templates.
+AI-powered tool for accessible, stunning designs
 
-https://new.express.adobe.com/new?category=addOns&launchAddOnId=w24599mji
+https://adobesparkpost.app.link/TR9Mb7TXFLb?addOnId=wji52hkm6
