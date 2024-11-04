@@ -142,10 +142,8 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 
-<p className="teaserBlockCustomHeading">Try an add-on</p>
+<p className="teaserBlockCustomHeading">Apply to the Adobe Fund for Design</p>
 
-View our developer quickstart guide to start building add-ons in Adobe Express.
+Get funding to build Adobe Express add-ons.
 
-- [View the guide](https://developer.adobe.com/express/add-ons/docs/guides/getting_started/quickstart/)
-- [Try an add-on](https://new.express.adobe.com/add-ons)
-
+- [Apply now](https://developer.adobe.com/fund-for-design)
