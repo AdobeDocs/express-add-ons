@@ -3,7 +3,7 @@
 
 ![Icon showing a CLI tool being downloaded](../images/Developer_Tool_1.png)
 
-[Use the CLI](https://developer.adobe.com/express/add-ons/docs/guides/getting_started/quickstart/) to start building with templates.
+Use the [CLI](https://developer.adobe.com/express/add-ons/docs/guides/getting_started/quickstart/) to start building with templates. Or, try the [Code playground](https://developer.adobe.com/express/add-ons/docs/guides/getting_started/code_playground/) for fast prototyping to experiment without any setup.
 
 <TextBlock slots="image, text" width="33%"  theme="light" className="developerTool" />
 
