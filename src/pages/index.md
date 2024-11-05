@@ -100,9 +100,9 @@ Export renditions of your users' work to a variety of formats.
 
 ![Document Authoring API](images/Embed_Templates.png)
 
-### Get deep access to a user's active document to...
+### Transform Adobe Express user documents
 
-Get deep access to the active document to add rich data visualizations, generate variations from data, and more.
+Get deep access to a user’s active document to add rich data visualizations, generate variations from data, and more.
 
 - [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#exporting-content)
 
