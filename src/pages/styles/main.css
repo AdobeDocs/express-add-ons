@@ -319,13 +319,75 @@
     margin-left: 15%;
 }
 
-
 .support-tools {
     justify-items: center;
 }
 
 .creatorToolBox h3 {
     white-space: nowrap !important;
+}
+
+.start-up > div > div > div{
+    width: 66%;
+}
+
+.start-up > div > div > div > h3{
+    text-align: center;
+}
+
+.start-up > div > div {
+    justify-content: center;
+}
+
+.start-up > div > div > div > ul {
+    display: flex;
+    justify-content: center;
+}
+
+.start-up {
+    list-style-type: none;
+}
+
+.start-up  li::marker {
+    content: "-  "; 
+    color: black; 
+    margin-right: 8px; 
+    font-size: 18px;
+}
+
+.why-build > div > div:first-child > div a{
+    border-color: white !important;
+}
+
+.why-build > div > div:first-child > div > div > div:first-child a{
+    background-color: white !important;
+}
+
+.why-build > div > div:first-child > div > div > div:first-child a span {
+    color: black !important;
+}
+
+.why-build {
+    background: linear-gradient(180deg, #C946EB 0%, #6372F5 100%) !important;
+    height: calc(var(--spectrum-global-dimension-size-5000) + var(--spectrum-global-dimension-size-2000)) !important;
+}
+
+.why-build > div > div > h1 {
+    width: 80% !important;
+}
+
+.why-build > div > div:first-child p{
+    width: 81%;
+    font-size: 18px !important;
+    color : rgba(255, 255, 255, 1) !important;
+}
+
+.build-add-ons{
+    background: linear-gradient(180deg, #C647ED 0%, #6372F5 100%) !important;
+}
+
+.build-add-ons > div > div > div > div  p{
+    color: rgba(255, 255, 255, 1) !important;
 }
 
 @media screen and (max-width:2000px) {
@@ -344,6 +406,10 @@
 
     .add-ones-hero>div {
         flex-direction: column !important;
+    }
+
+    .add-ones-hero , .why-build , .add-ones-hero>div>div:nth-child(2){
+        height: auto !important;
     }
 
     .wrapperforCreatorTool>div {
@@ -375,7 +441,7 @@
         width: 32% !important;
     }
 
-    .explore>div>div>div {
+    .explore>div>div>div , .start-up > div > div > div {
         width: 100% !important;
     }
 
@@ -483,12 +549,13 @@
         white-space: wrap !important;
     }
 
-    .explore>div {
+    .explore>div , .start-up > div > div > div{
         width: 100% !important;
     }
 
-    .add-ones-hero {
+    .add-ones-hero , .why-build , .add-ones-hero>div>div:nth-child(2){
         margin-top: 10% !important;
+        height: auto !important;
     }
 
     .announcement>div,
