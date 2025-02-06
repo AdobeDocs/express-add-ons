@@ -1,7 +1,7 @@
 
 <TextBlock slots="image, heading, text" width="33%" theme="light"  className="creatorToolBox"/>
 
-![Familiar web technology](./images/web-technology.png)
+![Familiar web technology](./images/CodeAssist.svg)
 
 ### Familiar Web Technology
 
@@ -9,7 +9,7 @@ Use HTML, CSS, JavaScript or TypeScript combined with Adobe's design system call
 
 <TextBlock slots="image, heading, text" width="33%"  theme="light" className="creatorToolBox" />
 
-![Dedicated dev resources & tools](./images/streamline-dev-support.png)
+![Dedicated dev resources & tools](./images//AdobeExpress_EmbedSDK_Tools.svg)
 
 ### Dedicated Dev Resources & Tools
 
@@ -17,7 +17,7 @@ Get started with built-in dev tools, libraries and add-samples. Try our [Code Pl
 
 <TextBlock slots="image, heading, text" width="33%"  theme="light" className="creatorToolBox" />
 
-![Powerful capabilities](./images/powerful-capabilities.png)
+![Powerful capabilities](./images/AdobeExpress_PluginAddOn.svg)
 
 ### Powerful Capabilities
 

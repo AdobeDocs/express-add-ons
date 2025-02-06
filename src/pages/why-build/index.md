@@ -11,7 +11,7 @@ The quick and easy create-anything app. Make social posts, images, videos, flyer
 
 ![Build add-ons for Adobe Express.](./images/hero-banner.png)
 
-- [Explore add-ons](https://developer.adobe.com//express/add-ons/trending/)
+- [Explore add-ons](https://developer-stage.adobe.com/express/add-ons/trending/)
 - [Learn more](https://adobe.com/express)
 
 <TextBlock slots="heading" className="announcement" theme="light"/>
@@ -32,7 +32,7 @@ The quick and easy create-anything app. Make social posts, images, videos, flyer
 
 Unlock the potential of your ideas with the Adobe Fund for Design. We're empowering builders like you to innovate on our developer platform. With targeted use cases to explore, now’s the time to build.
 
-![Abstract illustration of services being connected in a secure manner](./images/get-your-idea.png)
+![Abstract illustration of services being connected in a secure manner](./images/Fund-for-Design.png)
 
 - [Learn more](https://developer.adobe.com/fund-for-design/)
 
@@ -42,10 +42,8 @@ Unlock the potential of your ideas with the Adobe Fund for Design. We're empower
 
 - Jhanvi Shriram, CEO at [Krikey AI Animation](https://www.krikey.ai/)
 
-<TeaserBlock  slots="heading,text,buttons" textColor="white" className="viewAddOn build-add-ons" variant="fullwidth"/>
+<TeaserBlock  slots="heading,buttons" textColor="white" className="viewAddOn build-add-ons" variant="fullwidth"/>
 
 <p className="teaserBlockCustomHeading">Build add-ons for Adobe Express</p>
 
-Lorem ipsum dolor sit amet consectetur. In posuere auctor.
-
-- [Get started](https://adobe.com/express)
+- [Get started](https://developer.adobe.com/express/add-ons/docs/guides/)

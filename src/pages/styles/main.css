@@ -355,6 +355,10 @@
     font-size: 18px;
 }
 
+.start-up h3 {
+    font-weight: 500 !important;
+}
+
 .why-build > div > div:first-child > div a{
     border-color: white !important;
 }
@@ -447,6 +451,10 @@
 
     .mini-card a>div:last-child {
         height: 60px !important;
+    }
+
+    .why-build > div > div:first-child p {
+        padding: 0 !important;
     }
 
     /* .marketPlace>div {
