@@ -78,7 +78,8 @@
 .creatorToolBox>div>p:first-child,
 .developerTool>div>p:first-child {
     height: 100px !important;
-    padding: 0 0 8% 0 !important;
+    /* padding: 0 0 8% 0 !important; */
+    margin-bottom: 24px !important;
 }
 
 .wrapperforCreatorTool>div {
@@ -136,8 +137,6 @@
 
 .explore a {
     border-color: #626262 !important;
-
-
 }
 
 .explore a>span {
@@ -342,6 +341,7 @@
 .start-up > div > div > div > ul {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .start-up {
@@ -392,6 +392,13 @@
 
 .build-add-ons > div > div > div > div  p{
     color: rgba(255, 255, 255, 1) !important;
+}
+
+.build-add-ons>div {
+    min-height: 300px;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width:2000px) {
@@ -640,6 +647,10 @@
 
     .inColumn {
         padding: 6% 0 !important;
+    }
+
+    .creatorToolBox>div {
+        padding: 48px 5% !important;
     }
 
 }
