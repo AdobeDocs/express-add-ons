@@ -653,6 +653,10 @@
         padding: 48px 5% !important;
     }
 
+    .viewAddOn>div>div>div>div>div {
+        margin: 0 !important;
+    }
+
 }
 
 @media screen and (min-width:1024px) and (max-width:1500px) {
