@@ -40,7 +40,7 @@ Unlock the potential of your ideas with the Adobe Fund for Design. We're empower
 
 ### “As a small startup, the fund’s support was very meaningful in bringing our product to a larger audience through Adobe Express. Our add-on enables the creation of AI Animated, talking 3D Avatars which can be used in lesson plans, social media posts and more.”
 
-- Jhanvi Shriram, CEO at [Krikey AI Animation](https://www.krikey.ai/)
+Jhanvi Shriram, CEO at [Krikey AI Animation](https://www.krikey.ai/)
 
 <TeaserBlock  slots="heading,buttons" textColor="white" className="viewAddOn build-add-ons" variant="fullwidth"/>
 
