@@ -388,6 +388,39 @@
     justify-content: center;
 }
 
+/* trending  */
+
+.trending-hero{
+    height: 350px !important;
+}
+
+.trending-hero h1 {
+    font-family: inherit !important;
+}
+
+.trending-hero p {
+    font-size: 18px !important;
+}
+
+.trending-cards a{
+    box-shadow: 0 9px 15px 5px #e6e6e6;
+}
+
+.trending-cards a > div:last-child {
+    border-color: transparent !important; 
+    justify-content: center !important;
+}
+
+.trending-cards a  p {
+    color: rgb(75, 75, 75) !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+}
+
+.end-cards{
+    padding-bottom: 150px !important;
+}
+
 @media screen and (max-width:2000px) {
 
     .explore>div>div {
@@ -444,6 +477,10 @@
 
     .why-build > div > div:first-child p {
         padding: 0 !important;
+    }
+
+    .trending-cards a > div:last-child{
+        height: 55px !important;
     }
 
     /* .marketPlace>div {
@@ -642,6 +679,15 @@
 
     .viewAddOn>div>div>div>div>div , .primaryBtn>div>div>div>div:nth-child(2)>div{
         margin: 0 !important;
+    }
+
+    .trending-cards {
+        width: 80%;
+        margin: auto;
+    }
+
+    .trending-hero{
+        height: 75vh !important;
     }
 
 }
