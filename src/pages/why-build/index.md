@@ -1,15 +1,14 @@
 import '../styles/main.css';
 import ToolBar from "./toolbar.md";
 import GetAnOverview from "./get-an-overview.md";
-import bgImg from "../images/Summary_BgImage.jpg"
+import bgImg from "../images/Summary_BgImage.jpg";
+import heroVideo from "../videos/R2_Add-on_why-build.mp4"
 
-<Hero slots="heading, text, image , buttons" variant="halfwidth" className="add-ones-hero why-build" />
+<Hero slots="heading, text, buttons" variant="halfwidth" className="add-ones-hero why-build" videoUrl={heroVideo} />
 
 ## Build add-ons for Adobe Express
 
 The quick and easy create-anything app. Make social posts, images, videos, flyers, and more starting from thousands of templates. Create fast with generative AI and stay on brand with one-click edits.
-
-![Build add-ons for Adobe Express.](./images/hero-banner.png)
 
 - [Explore add-ons](https://developer-stage.adobe.com/express/add-ons/trending/)
 - [Learn more](https://adobe.com/express)

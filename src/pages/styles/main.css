@@ -587,10 +587,15 @@
         width: 100% !important;
     }
 
-    .add-ones-hero , .why-build , .add-ones-hero>div>div:nth-child(2){
+    .add-ones-hero , .why-build {
         margin-top: 10% !important;
         height: auto !important;
         padding: var(--spectrum-global-dimension-size-225) !important;
+    }
+
+    .add-ones-hero>div>div:nth-child(2){
+        margin-top: 10% !important;
+        height: auto !important;
     }
 
     .why-build > div > div > h1 , .why-build > div > div > p{
