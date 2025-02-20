@@ -10,7 +10,7 @@ import heroVideo from "../videos/R2_Add-on_why-build.mp4"
 
 The quick and easy create-anything app. Make social posts, images, videos, flyers, and more starting from thousands of templates. Create fast with generative AI and stay on brand with one-click edits.
 
-- [Explore add-ons](https://developer-stage.adobe.com/express/add-ons/trending/)
+- [Explore add-ons](https://developer.adobe.com/express/add-ons/trending/)
 - [Learn more](https://adobe.com/express)
 
 <TextBlock slots="heading" className="announcement" theme="light"/>
