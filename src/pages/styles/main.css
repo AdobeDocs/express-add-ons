@@ -739,15 +739,15 @@
         width: 95% !important;
     }
 
-    #gatsby-focus-wrapper > div > div:first-child > div:nth-child(2) , 
-    #gatsby-focus-wrapper > div > div:first-child #side-menu{
-        display: none !important;
+    #gatsby-focus-wrapper > div > div:first-child > div:nth-child(2) {
+        visibility: hidden !important; 
     }
      
     #gatsby-focus-wrapper > div > div:first-child {
-        grid-template-areas: 'header header' 'main main' !important;
+        grid-template-areas:
+        'header header'
+        'main main' !important;
     }
-
 }
 
 @media screen and (min-width:1441px) and (max-width : 1500px) {
