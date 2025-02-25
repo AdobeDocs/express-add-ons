@@ -747,11 +747,8 @@
         grid-template-areas:
         'header header'
         'main main' !important;
-    } 
-   
-    #gatsby-focus-wrapper > div > div:first-child > div:nth-child(2) {
-        display: contents !important;
     }
+    
 }
 
 @media screen and (min-width:1441px) and (max-width : 1500px) {
