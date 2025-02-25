@@ -739,7 +739,7 @@
         width: 95% !important;
     }
 
-    #gatsby-focus-wrapper > div > div:first-child #side-menu {
+    #gatsby-focus-wrapper > div > div:first-child #side-menu , .side-nav-content {
         display: none !important;  
     }
   

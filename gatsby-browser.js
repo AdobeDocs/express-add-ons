@@ -6,5 +6,9 @@ export const onRouteUpdate = () => {
     if (button) {
       button.removeAttribute('target')
     }
+    const isChildNav = document.querySelector('#gatsby-focus-wrapper>div>div:first-child>div:nth-child(2)');
+    if(isChildNav){
+      isChildNav.classList.add('side-nav-content')
+    }
   }
 }
