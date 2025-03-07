@@ -29,7 +29,7 @@ import heroVideo from "./videos/R2_Add-on.mp4"
 
 - [Get started](https://developer.adobe.com/express/add-ons/docs/guides)
 - [Explore add-ons](https://new.express.adobe.com/add-ons)
-  
+
 <TextBlock slots="heading" className="announcement" theme="light"/>
 
 ### Create powerful solutions for millions of users.
@@ -74,7 +74,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 ![Abstract illustration of services being connected in a secure manner](images/Explore_Image_2.png)
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#authorization-with-oauth-20)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/oauth2/)
 
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
@@ -84,7 +84,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 Enable users to drag and drop any image or video asset to a document.
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#importing-content)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/drag_and_drop/)
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left"/>
 
@@ -94,7 +94,7 @@ Export renditions of your users' work to a variety of formats.
 
 ![Illustration showing the ability to export assets to other surfaces from Adobe Express](images/Explore_Image_4.png)
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#exporting-content)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/create_renditions/)
 
 <TextBlock slots="image,heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
@@ -104,7 +104,7 @@ Export renditions of your users' work to a variety of formats.
 
 Get deep access to a user’s active document to add rich data visualizations, generate variations from data, and more.
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#exporting-content)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/use_text/)
 
 <TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
 
