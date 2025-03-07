@@ -104,7 +104,7 @@ Export renditions of your users' work to a variety of formats.
 
 Get deep access to a user’s active document to add rich data visualizations, generate variations from data, and more.
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/#exporting-content)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/use_text/)
 
 <TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
 
