@@ -78,11 +78,12 @@
 .creatorToolBox>div>p:first-child,
 .developerTool>div>p:first-child {
     height: 100px !important;
-    padding: 0 0 8% 0 !important;
+    /* padding: 0 0 8% 0 !important; */
+    margin-bottom: 24px !important;
 }
 
 .wrapperforCreatorTool>div {
-    width: 90% !important;
+    width: 100% !important;
     margin: auto !important;
     overflow: hidden;
 }
@@ -136,8 +137,6 @@
 
 .explore a {
     border-color: #626262 !important;
-
-
 }
 
 .explore a>span {
@@ -319,7 +318,6 @@
     margin-left: 15%;
 }
 
-
 .support-tools {
     justify-items: center;
 }
@@ -328,12 +326,102 @@
     white-space: nowrap !important;
 }
 
+.start-up > div > div > div{
+    width: 66%;
+}
+
+.start-up > div > div > div{
+    text-align: center;
+}
+
+.start-up > div > div {
+    justify-content: center;
+}
+
+.start-up p{
+    font-size: 18px;
+}
+
+.start-up h3 {
+    font-weight: 500 !important;
+}
+
+.why-build > div > div:first-child > div a{
+    border-color: white !important;
+}
+
+.why-build > div > div:first-child > div > div > div:first-child a{
+    background-color: white !important;
+}
+
+.why-build > div > div:first-child > div > div > div:first-child a span {
+    color: black !important;
+}
+
+.why-build {
+    background: linear-gradient(180deg, #C946EB 0%, #6372F5 100%) !important;
+    height: calc(var(--spectrum-global-dimension-size-5000) + var(--spectrum-global-dimension-size-2000)) !important;
+}
+
+.why-build > div > div > h1 {
+    width: 80% !important;
+}
+
+.why-build > div > div:first-child p{
+    width: 81%;
+    font-size: 18px !important;
+    color : rgba(255, 255, 255, 1) !important;
+}
+
+.build-add-ons{
+    background: linear-gradient(180deg, #C647ED 0%, #6372F5 100%) !important;
+}
+
+.build-add-ons > div > div > div > div  p{
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.build-add-ons>div {
+    min-height: 300px;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+}
+
+/* trending  */
+
+.trending-hero{
+    height: 350px !important;
+}
+
+.trending-hero h1 {
+    font-family: inherit !important;
+}
+
+.trending-hero p {
+    font-size: 18px !important;
+}
+
+.trending-cards a{
+    box-shadow: 0 9px 15px 5px #e6e6e6;
+}
+
+.trending-cards a > div:last-child {
+    border-color: transparent !important; 
+    justify-content: center !important;
+}
+
+.trending-cards a  p {
+    color: rgb(75, 75, 75) !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+}
+
+.end-cards{
+    padding-bottom: 150px !important;
+}
+
 @media screen and (max-width:2000px) {
-    .wrapperforCreatorTool>div {
-        width: 75% !important;
-        margin: auto !important;
-        overflow: hidden;
-    }
 
     .explore>div>div {
         width: 100% !important;
@@ -344,6 +432,10 @@
 
     .add-ones-hero>div {
         flex-direction: column !important;
+    }
+
+    .add-ones-hero , .why-build , .add-ones-hero>div>div:nth-child(2){
+        height: auto !important;
     }
 
     .wrapperforCreatorTool>div {
@@ -375,12 +467,20 @@
         width: 32% !important;
     }
 
-    .explore>div>div>div {
+    .explore>div>div>div , .start-up > div > div > div {
         width: 100% !important;
     }
 
     .mini-card a>div:last-child {
         height: 60px !important;
+    }
+
+    .why-build > div > div:first-child p {
+        padding: 0 !important;
+    }
+
+    .trending-cards a > div:last-child{
+        height: 55px !important;
     }
 
     /* .marketPlace>div {
@@ -483,12 +583,23 @@
         white-space: wrap !important;
     }
 
-    .explore>div {
+    .explore>div , .start-up > div > div > div{
         width: 100% !important;
     }
 
-    .add-ones-hero {
+    .add-ones-hero , .why-build {
         margin-top: 10% !important;
+        height: auto !important;
+        padding: var(--spectrum-global-dimension-size-225) !important;
+    }
+
+    .add-ones-hero>div>div:nth-child(2){
+        margin-top: 10% !important;
+        height: auto !important;
+    }
+
+    .why-build > div > div > h1 , .why-build > div > div > p{
+        width: 90% !important;
     }
 
     .announcement>div,
@@ -547,7 +658,7 @@
         width: 100% !important;
     }
 
-    .support-label>div>div>div {
+    .support-label>div>div>div , .announcement>div>div>div , .announcement>div>div>div>h3{
         margin-bottom: 0 !important;
     }
 
@@ -567,6 +678,23 @@
         padding: 6% 0 !important;
     }
 
+    .creatorToolBox>div {
+        padding: 48px 5% !important;
+    }
+
+    .viewAddOn>div>div>div>div>div , .primaryBtn>div>div>div>div:nth-child(2)>div{
+        margin: 0 !important;
+    }
+
+    .trending-cards {
+        width: 80%;
+        margin: auto;
+    }
+
+    .trending-hero{
+        height: 75vh !important;
+    }
+
 }
 
 @media screen and (min-width:1024px) and (max-width:1500px) {
@@ -574,12 +702,6 @@
     .homeheroAssertImage {
         width: 600px !important;
         height: 370px !important;
-    }
-
-    .wrapperforCreatorTool>div {
-        width: 90% !important;
-        margin: auto !important;
-        overflow: hidden;
     }
 
     .explore>div>div {
@@ -617,7 +739,16 @@
         width: 95% !important;
     }
 
-
+    #gatsby-focus-wrapper > div > div:first-child #side-menu , .side-nav-content {
+        display: none !important;  
+    }
+  
+    #gatsby-focus-wrapper > div > div:first-child {
+        grid-template-areas:
+        'header header'
+        'main main' !important;
+    }
+    
 }
 
 @media screen and (min-width:1441px) and (max-width : 1500px) {
