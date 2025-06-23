@@ -126,7 +126,7 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### Blog
 
-[Link to blog post](https://adobe.ly/expressaddons)
+[Link to blog post](https://blog.developer.adobe.com/)
 
 ![Icon showing a code block](images/code.jpg)
 
