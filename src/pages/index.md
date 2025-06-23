@@ -62,9 +62,9 @@ import heroVideo from "./videos/R2_Add-on.mp4"
 
 ### Leverage familiar web technologies.
 
-Use HTML, CSS, JavaScript/TypeScript, and [Spectrum](https://developer.adobe.com/express/add-ons/docs/guides/design/) to build native-feeling user experiences for your add-on.
+Use HTML, CSS, JavaScript/TypeScript, and [Spectrum](https://developer.adobe.com/express/add-ons/docs/guides/build/design/) to build native-feeling user experiences for your add-on.
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/frameworks-libraries-bundling/)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/build/advanced-topics/frameworks-libraries-bundling/)
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left" />
 
@@ -74,7 +74,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 ![Abstract illustration of services being connected in a secure manner](images/Explore_Image_2.png)
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/oauth2/)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/learn/how_to/oauth2/)
 
 <TextBlock slots="image, heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
@@ -84,7 +84,7 @@ Tap into helper libraries to access secure API endpoints with OAuth 2.0.
 
 Enable users to drag and drop any image or video asset to a document.
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/drag_and_drop/)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/learn/how_to/drag_and_drop/)
 
 <TextBlock slots="heading,text,image,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="left"/>
 
@@ -94,7 +94,7 @@ Export renditions of your users' work to a variety of formats.
 
 ![Illustration showing the ability to export assets to other surfaces from Adobe Express](images/Explore_Image_4.png)
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/create_renditions/)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/learn/how_to/create_renditions/)
 
 <TextBlock slots="image,heading,text,buttons" theme="lightest" headerElementType="h2" variantsTypePrimary='secondary' variantStyleFill = "outline" homeZigZag className="explore" position="right" />
 
@@ -104,7 +104,7 @@ Export renditions of your users' work to a variety of formats.
 
 Get deep access to a user’s active document to add rich data visualizations, generate variations from data, and more.
 
-- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/develop/how_to/use_text/)
+- [Learn more](https://developer.adobe.com/express/add-ons/docs/guides/learn/how_to/use_text/)
 
 <TextBlock slots="heading,text" className="announcement exploreCapabilities" theme="light"/>
 
@@ -132,13 +132,13 @@ We’ve got a set of libraries and developer tools to make your job even easier.
 
 ### Code samples
 
-[Link to code samples](https://developer.adobe.com/express/add-ons/docs/samples/)
+[Link to code samples](https://developer.adobe.com/express/add-ons/docs/guides/learn/samples/)
 
 ![Icon showing a changelog](images/change_log.jpg)
 
 ### Changelog
 
-[Link to changelog](https://developer.adobe.com/express/add-ons/docs/references/changelog/)
+[Link to changelog](https://developer.adobe.com/express/add-ons/docs/guides/getting_started/changelog/)
 
 <TeaserBlock  slots="heading,text,buttons" textColor="white" bgURL={bgImg} className="viewAddOn" variant="fullwidth"/>
 

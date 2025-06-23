@@ -1,15 +1,14 @@
-
 <TextBlock slots="image, heading, text" width="33%" theme="light"  className="creatorToolBox"/>
 
 ![Familiar web technology](./images/CodeAssist.svg)
 
 ### Familiar Web Technology
 
-Use HTML, CSS, JavaScript or TypeScript combined with Adobe's design system called [Spectrum](https://developer.adobe.com/express/add-ons/docs/guides/design/) to build native-feeling user experiences for your add-on.
+Use HTML, CSS, JavaScript or TypeScript combined with Adobe's design system called [Spectrum](https://developer.adobe.com/express/add-ons/docs/guides/build/design/) to build native-feeling user experiences for your add-on.
 
 <TextBlock slots="image, heading, text" width="33%"  theme="light" className="creatorToolBox" />
 
-![Dedicated dev resources & tools](./images//AdobeExpress_EmbedSDK_Tools.svg)
+![Dedicated dev resources & tools](./images/AdobeExpress_EmbedSDK_Tools.svg)
 
 ### Dedicated Dev Resources & Tools
 
