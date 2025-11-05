@@ -22,4 +22,4 @@ https://adobesparkpost.app.link/TR9Mb7TXFLb?addOnId=w072hm543
 
 Present your documents as interactive flipbooks
 
-https://adobesparkpost.app.link/TR9Mb7TXFLb?addOnId=wji52hkm6
+https://new.express.adobe.com/add-ons?addOnId=w7nl9lm19
